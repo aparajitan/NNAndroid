@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    android:layout_height="match_parent"
+    tools:context=".event.EventAllListCurrentData">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/them_color">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/_26sdp"
+            android:id="@+id/img_back"
+            android:src="@drawable/demo_left_p"
+            android:layout_gravity="center_vertical"
+            android:layout_height="@dimen/_27sdp" />
+        <TextView
+            android:text="Events"
+            android:textSize="@dimen/toolbar_text_size"
+            android:textColor="#fff"
+            android:fontFamily="@font/montserrat_medium"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+   <FrameLayout
+       android:id="@+id/create_event_id"
+
+       android:layout_width="@dimen/_24sdp"
+       android:layout_marginRight="@dimen/_10sdp"
+       android:layout_gravity="end|center_vertical"
+       android:layout_height="@dimen/_24sdp">
+       <ImageView
+           android:layout_width="@dimen/plus_icon_size"
+           android:background="@drawable/circle_white_solid"
+           android:src="@drawable/ic_plus_actionbar"
+           android:tint="@color/white"
+           android:padding="@dimen/_1sdp"
+           android:layout_gravity="center"
+           android:layout_height="@dimen/plus_icon_size"
+           tools:ignore="UseAppTint" />
+   </FrameLayout>
+    <ImageView
+        android:id="@+id/img_event_search"
+        android:padding="@dimen/_2sdp"
+        android:layout_width="@dimen/search_img_size"
+        android:layout_marginRight="@dimen/_33sdp"
+        android:src="@drawable/search_icon_white"
+        android:layout_gravity="end|center_vertical"
+        android:layout_height="@dimen/search_img_size"
+        />
+    <RelativeLayout
+        android:id="@+id/search_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/round_corner_dialog"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="gone">
+        <EditText
+            android:id="@+id/search_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:layout_toStartOf="@+id/cancel_iv"
+            android:hint="search..."
+            android:focusable="true"
+            android:imeOptions="actionSearch"
+            android:imeActionLabel="Search"
+            android:singleLine="true"
+            android:textSize="@dimen/_12sdp"
+            android:drawableTint="@color/black"
+
+            android:fontFamily="@font/montserrat_regular"/>
+
+        <ImageView
+            android:id="@+id/cancel_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:src="@drawable/baseline_close_24"
+            app:tint="@color/grey_font">
+
+        </ImageView>
+
+    </RelativeLayout>
+</FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:orientation="vertical"
+                android:background="@drawable/neighbrsnook_banner"
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/yellow"
+                android:layout_height="@dimen/_150sdp">
+                <LinearLayout
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_height="@dimen/_45sdp">
+
+                    <FrameLayout
+                        android:layout_gravity="bottom"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:background="@drawable/card_background_shape"
+                        android:id="@+id/past_card_id"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_11ssp"
+                            android:text="Past"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_16ssp"
+                            android:text="0"
+                            android:id="@+id/id_past"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_gravity="bottom"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:id="@+id/current_card_id"
+                        android:layout_marginLeft="@dimen/_3sdp"
+
+                        android:layout_weight="1"
+                        android:background="@drawable/select_background_event_list"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_11ssp"
+                            android:text="Current"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="@dimen/_10sdp"
+
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_16ssp"
+                            android:text="0"
+                            android:layout_marginBottom="@dimen/_5sdp"
+
+                            android:id="@+id/id_current"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:id="@+id/upcoming_card_id"
+                        app:cardElevation="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:background="@drawable/card_background_upcoming"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_11ssp"
+                            android:text="Upcoming"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_16ssp"
+                            android:text="0"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:id="@+id/id_upcoming"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_corner_dialog_themcolor"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    >
+                    <TextView
+                        android:id="@+id/neighbrhoo_tv_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/them_color"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:includeFontPadding="false"
+                        android:text="Sector 143"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15ssp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="(My Neighbourhood)"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12ssp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/post_property_tab_layout"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextColor="#000"
+                    app:tabIndicatorColor="@color/background_color"
+                    app:tabIndicatorHeight="03dp"
+                    android:scrollbars="horizontal"
+                    app:tabMode="scrollable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/yellow"
+                    app:tabGravity="fill"
+                    app:tabTextAppearance="@style/tab_text"
+                    />
+                <FrameLayout
+                    android:id="@+id/frame_filter_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </FrameLayout>
+                <androidx.viewpager.widget.ViewPager
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:visibility="visible"
+                    android:id="@+id/filters_view_pager"
+                    android:layout_height="wrap_content">
+                </androidx.viewpager.widget.ViewPager>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_16ssp"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_marginLeft="@dimen/screens_padding_left_right"
+                android:text="Events"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/current_id"
+
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:visibility="visible"
+                        android:id="@+id/recy_my_events"
+                        android:layout_marginLeft="@dimen/screens_padding_left_right"
+                        android:layout_marginRight="@dimen/screens_padding_left_right"
+                        android:layout_height="match_parent"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/upcoming_id"
+                    android:visibility="gone"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:visibility="visible"
+                        android:id="@+id/recy_upcoming"
+                        android:layout_marginLeft="@dimen/screens_padding_left_right"
+                        android:layout_marginRight="@dimen/screens_padding_left_right"
+                        android:layout_height="match_parent"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/past_id"
+                    android:visibility="gone"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:visibility="visible"
+                        android:id="@+id/rec_past"
+                        android:layout_marginLeft="@dimen/screens_padding_left_right"
+                        android:layout_marginRight="@dimen/screens_padding_left_right"
+                        android:layout_height="match_parent"/>
+                </FrameLayout>
+
+
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_16ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_marginTop="@dimen/background_gap_centre"
+                        android:layout_marginLeft="@dimen/screens_padding_left_right"
+                        android:text="Events"
+                        android:visibility="visible"
+                        android:layout_height="wrap_content"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/events_recycler_view"
+                        android:visibility="visible"
+                        android:layout_height="wrap_content">
+                    </androidx.recyclerview.widget.RecyclerView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="@dimen/_115sdp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                android:id="@+id/card_view_first"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/blood_one"
+                                    android:layout_height="@dimen/image_size_event"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="37dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:gravity="center"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Blood Donation Camp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp" />
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                android:id="@+id/card_diwali"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/new_year"
+                                    android:layout_height="@dimen/image_size_event"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="New Year Event"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:id="@+id/img_third_id"
+                                    android:src="@drawable/chrismas_image"
+                                    android:layout_height="@dimen/_80sdp"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Chrismas Carnival"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+                            </androidx.cardview.widget.CardView>
+
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_110sdp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_four"
+                                    android:layout_height="@dimen/image_size_event"/>
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Republic day"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_nine"
+                                    android:layout_height="@dimen/image_size_event"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Navratri"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_eight"
+                                    android:layout_height="@dimen/image_size_event"/>
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Night party"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_110sdp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_eleven"
+                                    android:layout_height="@dimen/image_size_event"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Navratri"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_saven"
+                                    android:layout_height="@dimen/image_size_event"/>
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Gandhi jayanti"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_one"
+                                    android:layout_height="@dimen/image_size_event"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Dashera event"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_110sdp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_three"
+                                    android:layout_height="@dimen/image_size_event"/>
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Republic day"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_ten"
+                                    android:layout_height="@dimen/image_size_event"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Independence day"
+                                    android:gravity="center"
+                                    android:justificationMode="inter_word"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:layout_width="@dimen/_90sdp"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardBackgroundColor="@color/yellow"
+                                android:background="@drawable/round_corner_dialog"
+                                android:layout_height="match_parent">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/music_eight"
+                                    android:layout_height="@dimen/image_size_event"/>
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_82sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Diwali event"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:textColor="@color/white"
+                                    android:gravity="center"
+                                    android:justificationMode="inter_word"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+
+
+</LinearLayout>

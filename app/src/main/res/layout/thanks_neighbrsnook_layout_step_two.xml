@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/round_corner_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Thank You!"
+                    android:textColor="@color/dialog_heading_top"
+                    android:textSize="@dimen/dialog_text_size"
+                    />
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Thank you for choosing Neighbrsnook."
+                android:textColor="@color/dialog_heading_top"
+                android:textSize="@dimen/dialog_text_size" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Your account will be active after a"
+                android:textColor="@color/dialog_heading_top"
+                android:textSize="@dimen/dialog_text_size" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="quick verification."
+                android:textColor="@color/dialog_heading_top"
+                android:textSize="@dimen/dialog_text_size" />
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_13ssp" />
+            <View
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/line_color_dialog" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:layout_gravity="center"
+                    android:id="@+id/post_frm"
+                    android:layout_marginBottom="1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/btn_update_password"
+                        android:layout_width="wrap_content"
+                        android:text="OK"
+                        android:layout_gravity="center"
+                        android:gravity="start"
+                        android:textColor="@color/them_color"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+
+
+            </FrameLayout>
+
+
+
+            <!--
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="@dimen/_2sdp"
+                        app:cardCornerRadius="@dimen/_25sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        android:layout_height="@dimen/_18sdp">
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Has good school"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="@dimen/_2sdp"
+                        app:cardCornerRadius="@dimen/_25sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        android:layout_height="@dimen/_18sdp">
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="I have been living here for long"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_5sdp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="@dimen/_2sdp"
+                        app:cardCornerRadius="@dimen/_25sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        android:layout_height="@dimen/_18sdp">
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="It has lots of restaurants"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="@dimen/_2sdp"
+                        app:cardCornerRadius="@dimen/_25sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        android:layout_height="@dimen/_18sdp">
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Its very green environment"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="@dimen/_2sdp"
+                        app:cardCornerRadius="@dimen/_25sdp"
+                        android:layout_width="@dimen/_18sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        android:layout_height="@dimen/_18sdp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="It is safe locality"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:id="@+id/post_id"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/button_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp">
+                    <TextView
+                        android:id="@+id/signin"
+                        android:layout_width="wrap_content"
+                        android:text="Ok"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+
+            -->
+
+
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="end|top"
+        app:cardElevation="@dimen/_15sdp"
+        android:visibility="gone"
+
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp">
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/oval_card_background"
+            app:cardCornerRadius="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp">
+
+
+            <ImageView
+                android:id="@+id/iv9"
+                android:src="@drawable/close_icon_p"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_15sdp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</FrameLayout>

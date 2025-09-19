@@ -1,0 +1,1262 @@
+package com.app_neighbrsnook.SalesModuleMarketPlace;
+
+import static android.view.View.VISIBLE;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ContentUris;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaCodec;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMuxer;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.ParcelFileDescriptor;
+import android.os.SystemClock;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
+import android.provider.OpenableColumns;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.app_neighbrsnook.adapter.MediaViewAdapter;
+import com.app_neighbrsnook.R;
+import com.app_neighbrsnook.adapter.ImageUploadAdapter;
+import com.app_neighbrsnook.adapter.ImageUploadAdapter1;
+import com.app_neighbrsnook.adapter.MarketPlaceCategoryAdapter;
+import com.app_neighbrsnook.adapter.PreviewAdapter;
+import com.app_neighbrsnook.apiService.ApiExecutor;
+import com.app_neighbrsnook.login.AddressResponse;
+import com.app_neighbrsnook.model.ImagePOJO;
+import com.app_neighbrsnook.network.APIClient;
+import com.app_neighbrsnook.network.APIInterface;
+import com.app_neighbrsnook.pojo.Nbdatum;
+import com.app_neighbrsnook.pojo.StatePojo;
+import com.app_neighbrsnook.utils.GlobalMethods;
+import com.app_neighbrsnook.utils.SharedPrefsManager;
+import com.app_neighbrsnook.libraries.cropper.CropImage;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CreateSellActivity extends AppCompatActivity implements MarketPlaceCategoryAdapter.CategoryInterface, View.OnClickListener, ImageUploadAdapter1.ImageItemClick, ImageUploadAdapter.ImageRequest, MediaViewAdapter.OnItemClickListener {
+    TextView item_category, image_textview, titleTv, tv_take_photo, tv_choose_photo, tv_take_video, tv_choose_video, preview_textview, paid_item_tv, free_item_tv, negotiable_item_tv, fix_item_tv;
+    EditText item_name, item_price, item_desc, item_brand, item_quantity, totalAmount;
+    Dialog mail_dialog, preview_dialog;
+    String edit;
+    String categoriId = "";
+    SharedPrefsManager sm;
+    private int maxImageCount = 0;
+    File imageFile;
+
+
+    List<String> emailsList = new ArrayList<>();
+    ImageView back_btn, add_imageview, search_imageview;
+    ArrayList<Uri> mArrayUri = new ArrayList();
+    List<Nbdatum> categorylist = new ArrayList<>();
+
+    MarketPlaceCategoryAdapter emailListAdapter;
+    Bitmap photo1, galleryPhoto;
+    private final int TAKE_VIDEO_FROM_GALLARY = 1;
+    private final int TAKE_VIDEO_FROM_CAMERA = 2;
+    private final int TAKE_PIC_FROM_GALLARY = 3;
+    private final int TAKE_PIC_FROM_CAMERA = 4;
+    Uri imageUri, cropUri;
+    ImageUploadAdapter imageUploadAdapter;
+
+    String currentPhotoPath, takePicFromCamera;
+    private final int REQUEST_CODE_DOC = 5;
+    ArrayList<Uri> mArrayUri1 = new ArrayList<>();
+    ArrayList<String> imageList1 = new ArrayList<>();
+    Dialog image_dialog;
+    ProgressDialog progressDialog;
+    int compressionRatio = 20;
+
+    RelativeLayout upload_options_rl, video_or_image_upload_rl;
+    RelativeLayout rl_upload;
+    LinearLayout price_ll;
+    ArrayList<ImagePOJO> bitmapList = new ArrayList<>();
+    String CLICK_ON = "";
+    String FIRST_IMAGE = "FirstImage";
+    Bitmap bitmap, pdfBitmap;
+    Uri filePath;
+    Bitmap bitmap1;
+
+    Uri filePath1;
+    RecyclerView photo_recycler_view;
+    ImageUploadAdapter1 uploadAdapter;
+    String price_status = "";
+    TextView cancle_tv,rent_item_tv;
+    String price, itemName, distance, type;
+    ArrayList<Bitmap> mArrayGalleryPhoto = new ArrayList<>();
+    Context context;
+    Activity activity;
+    ArrayList<Uri> imageUris = new ArrayList<>();
+    ArrayList<Uri> videoUris = new ArrayList<>();
+    int totalImageCount, totalVideoCount, itemCount, postVideoSize;
+    private ArrayList<String> videoFilePaths = new ArrayList<>();
+    MediaViewAdapter mediaViewAdapter;
+    RelativeLayout rlPriceMp;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = activity = this;
+        setContentView(R.layout.activity_create_sell);
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
+        sm = new SharedPrefsManager(this);
+       //28-01 GlobalMethods.checkPermission(this);
+
+        init();
+        categoryApi();
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.back_btn:
+                onBackPressed();
+                break;
+
+            case R.id.item_category:
+                selectCategory();
+                break;
+
+            case R.id.title:
+                onBackPressed();
+                break;
+
+            case R.id.video_or_image_upload_rl:
+                if ( GlobalMethods.checkCameraAndGalleryPermission(CreateSellActivity.this)) {
+                    if (bitmapList.size() < 100) {
+                        CLICK_ON = FIRST_IMAGE;
+                        upload_options_rl.setVisibility(View.VISIBLE);
+                    }
+                }
+                break;
+
+            case R.id.take_photo:
+                upload_options_rl.setVisibility(View.GONE);
+                takePhotoFromCamera();
+                break;
+
+            case R.id.choose_photo:
+                upload_options_rl.setVisibility(View.GONE);
+                takePhotoFromGallery();
+                break;
+
+            case R.id.make_video:
+                upload_options_rl.setVisibility(View.GONE);
+                takeVideoFromCamera();
+                break;
+
+            case R.id.choose_video:
+                upload_options_rl.setVisibility(View.GONE);
+                takeVideoFromGallary();
+                break;
+
+            case R.id.preview_textview:
+                if (CheckAllFields()) {
+                    progressDialog.show();
+                    new SimulateTask().execute();
+                } else {
+                }
+                break;
+
+            case R.id.free_item_tv:
+                price_status = "Donate";
+                resetColor();
+                price_ll.setVisibility(View.GONE);
+                free_item_tv.setTextColor(getResources().getColor(R.color.white));
+                free_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_dialog_themcolor));
+                rlPriceMp.setVisibility(View.GONE);
+                 item_price.setText("0");
+                break;
+
+            case R.id.paid_item_tv:
+                price_status = "Sell";
+                resetColor();
+                paid_item_tv.setTextColor(getResources().getColor(R.color.white));
+                paid_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_dialog_themcolor));
+                price_ll.setVisibility(View.VISIBLE);
+                rlPriceMp.setVisibility(VISIBLE);
+
+                break;
+                case R.id.rent_item_tv:
+                price_status = "Rent";
+                resetColor();
+                    rent_item_tv.setTextColor(getResources().getColor(R.color.white));
+                    rent_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_dialog_themcolor));
+                price_ll.setVisibility(View.VISIBLE);
+                rlPriceMp.setVisibility(VISIBLE);
+
+                break;
+
+            case R.id.negotiable_item_tv:
+                resetColor1();
+                negotiable_item_tv.setTextColor(getResources().getColor(R.color.white));
+                negotiable_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_dialog_themcolor));
+                break;
+
+            case R.id.fix_item_tv:
+                resetColor1();
+                fix_item_tv.setTextColor(getResources().getColor(R.color.white));
+                fix_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_dialog_themcolor));
+                break;
+        }
+
+    }
+
+    private void takePhotoFromGallery() {
+        try {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), TAKE_PIC_FROM_GALLARY);
+        } catch (Exception e) { }
+    }
+
+    private void takePhotoFromCamera() {
+        String fileName = "photo";
+        File storageDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        try {
+            imageFile = File.createTempFile(fileName, "jpg", storageDirectory);
+            currentPhotoPath = imageFile.getAbsolutePath();
+            imageUri = FileProvider.getUriForFile(CreateSellActivity.this, "com.app_neighbrsnook.fileprovider", imageFile);
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            startActivityForResult(intent, TAKE_PIC_FROM_CAMERA);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void takeVideoFromGallary() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("video/*");
+        startActivityForResult(Intent.createChooser(intent, "Select Video"), TAKE_VIDEO_FROM_GALLARY);
+    }
+
+    private void takeVideoFromCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        startActivityForResult(intent, TAKE_VIDEO_FROM_CAMERA);
+    }
+
+    @Override
+    protected void onActivityResult(int req, int result, Intent data) {
+        super.onActivityResult(req, result, data);
+        if (result == RESULT_OK) {
+            if (req == TAKE_PIC_FROM_GALLARY) {
+                handleImageResult(data, false);
+            } else if (req == TAKE_PIC_FROM_CAMERA) {
+                handleImageResult(data, true);
+            } else if (req == TAKE_VIDEO_FROM_GALLARY || req == TAKE_VIDEO_FROM_CAMERA) {
+                handleVideoResult(data);
+            } else if (req == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                handleCropResult(data);
+            } else if (req == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                onBackPressed();
+            }
+        }
+    }
+
+    private void handleImageResult(Intent data, boolean isCamera) {
+        if (imageUris.size() >= totalImageCount) {
+            Toast.makeText(this, "You can only add up to " + totalImageCount + " images", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (isCamera) {
+            // If the image is captured from the camera
+            Uri imageUri = Uri.fromFile(new File(currentPhotoPath));
+            performCrop(imageUri);
+        } else if (data != null && data.getClipData() != null) {
+            // If multiple images are selected from the gallery
+            ClipData clipData = data.getClipData();
+            int maxImageCountToAdd = Math.min(clipData.getItemCount(), totalImageCount - imageUris.size());
+
+            for (int i = 0; i < maxImageCountToAdd; i++) {
+                Uri imageUri = clipData.getItemAt(i).getUri();
+                performCrop(imageUri);
+
+                // Break if the maximum image limit is reached
+                if (imageUris.size() + videoUris.size() >= totalImageCount) break;
+            }
+        } else if (data != null && data.getData() != null) {
+            // If a single image is selected from the gallery
+            Uri imageUri = data.getData();
+            performCrop(imageUri);
+        }
+    }
+
+    private void handleVideoResult(Intent data) {
+        if (data == null || data.getData() == null) {
+            Toast.makeText(this, "Failed to get video. Please try again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (videoUris.size() >= totalVideoCount) {
+            Toast.makeText(this, "You can only add up to " + totalVideoCount + " video", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Uri videoUri = data.getData();
+        String videoPath = getPath(this, videoUri);
+        if (videoPath == null) {
+            Toast.makeText(this, "Unable to get the video path", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        long fileSize = new File(videoPath).length();
+        if (fileSize > postVideoSize * 1024 * 1024) {
+            Toast.makeText(this, "Video size exceeds " + postVideoSize + "MB limit", Toast.LENGTH_LONG).show();
+            return;
+        }
+        compressVideo(videoUri);
+    }
+
+    private void handleCropResult(Intent data) {
+        CropImage.ActivityResult result = CropImage.getActivityResult(data);
+        if (result != null && result.getUri() != null) {
+            Uri croppedUri = result.getUri();
+            imageUris.add(croppedUri);
+            mArrayUri.add(croppedUri);
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), croppedUri);
+                mArrayGalleryPhoto.add(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            updateImageTextView();
+        } else {
+            Toast.makeText(this, "Crop failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void performCrop(Uri fileUri) {
+        CropImage.activity(fileUri)
+                .setCropMenuCropButtonTitle("Set Image")
+                .setAspectRatio(1, 1)
+                .setFixAspectRatio(false)
+                .start(this);
+    }
+    private void compressVideo(Uri videoUri) {
+        File movieDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+        if (!movieDirectory.exists()) {
+            movieDirectory.mkdirs();
+        }
+
+        File compressedVideoFile = new File(movieDirectory, "compressed_video_" + System.currentTimeMillis() + ".mp4");
+        String outputPath = compressedVideoFile.getAbsolutePath();
+
+        videoFilePaths.add(outputPath);
+        progressDialog.show();
+
+        // Execute compression in background thread
+        new Thread(() -> {
+            try {
+                boolean success = compressVideoWithMediaCodec(videoUri, outputPath);
+
+                runOnUiThread(() -> {
+                    progressDialog.dismiss();
+                    if (success) {
+                        Uri compressedUri = Uri.fromFile(compressedVideoFile);
+                        videoUris.add(compressedUri);
+                        if (mediaViewAdapter != null) {
+                            mediaViewAdapter.notifyDataSetChanged();
+                        }
+                        updateVideoTextView();
+                        Toast.makeText(CreateSellActivity.this, "Video compressed successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(CreateSellActivity.this, "Video compression failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Exception e) {
+                runOnUiThread(() -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(CreateSellActivity.this, "Video compression error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+        }).start();
+    }
+
+    private boolean compressVideoWithMediaCodec(Uri videoUri, String outputPath) {
+        MediaExtractor extractor = null;
+        MediaMuxer muxer = null;
+
+        try {
+            extractor = new MediaExtractor();
+            extractor.setDataSource(this, videoUri, null);
+
+            muxer = new MediaMuxer(outputPath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4);
+
+            int videoTrackIndex = -1;
+            int audioTrackIndex = -1;
+            int videoTrackId = -1;
+            int audioTrackId = -1;
+
+            // Find video and audio tracks
+            for (int i = 0; i < extractor.getTrackCount(); i++) {
+                MediaFormat format = extractor.getTrackFormat(i);
+                String mime = format.getString(MediaFormat.KEY_MIME);
+
+                if (mime.startsWith("video/")) {
+                    // Configure video compression
+                    format.setInteger(MediaFormat.KEY_BIT_RATE, 1500000); // 1.5 Mbps
+                    format.setInteger(MediaFormat.KEY_FRAME_RATE, 30);
+                    format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 2);
+
+                    videoTrackIndex = i;
+                    videoTrackId = muxer.addTrack(format);
+                } else if (mime.startsWith("audio/")) {
+                    // Configure audio compression
+                    format.setInteger(MediaFormat.KEY_BIT_RATE, 96000); // 96 kbps
+                    audioTrackIndex = i;
+                    audioTrackId = muxer.addTrack(format);
+                }
+            }
+
+            if (videoTrackIndex == -1) {
+                return false; // No video track found
+            }
+
+            muxer.start();
+
+            // Process video track
+            if (videoTrackIndex != -1) {
+                extractor.selectTrack(videoTrackIndex);
+                MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
+                ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
+
+                while (true) {
+                    int sampleSize = extractor.readSampleData(buffer, 0);
+                    if (sampleSize < 0) {
+                        break;
+                    }
+
+                    bufferInfo.offset = 0;
+                    bufferInfo.size = sampleSize;
+                    bufferInfo.flags = MediaCodec.BUFFER_FLAG_SYNC_FRAME;
+                    bufferInfo.presentationTimeUs = extractor.getSampleTime();
+
+                    muxer.writeSampleData(videoTrackId, buffer, bufferInfo);
+                    extractor.advance();
+                }
+                extractor.unselectTrack(videoTrackIndex);
+            }
+
+            // Process audio track if available
+            if (audioTrackIndex != -1) {
+                extractor.selectTrack(audioTrackIndex);
+                MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
+                ByteBuffer buffer = ByteBuffer.allocate(64 * 1024);
+
+                while (true) {
+                    int sampleSize = extractor.readSampleData(buffer, 0);
+                    if (sampleSize < 0) {
+                        break;
+                    }
+
+                    bufferInfo.offset = 0;
+                    bufferInfo.size = sampleSize;
+                    bufferInfo.flags = MediaCodec.BUFFER_FLAG_SYNC_FRAME;
+                    bufferInfo.presentationTimeUs = extractor.getSampleTime();
+
+                    muxer.writeSampleData(audioTrackId, buffer, bufferInfo);
+                    extractor.advance();
+                }
+            }
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (extractor != null) {
+                extractor.release();
+            }
+            if (muxer != null) {
+                try {
+                    muxer.stop();
+                    muxer.release();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+  /*  private void compressVideo(Uri videoUri) {
+        File movieDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+        if (!movieDirectory.exists()) {
+            movieDirectory.mkdirs();
+        }
+
+        File compressedVideoFile = new File(movieDirectory, "compressed_video_" + System.currentTimeMillis() + ".mp4");
+        String inputPath = getPath(this, videoUri);
+        String outputPath = compressedVideoFile.getAbsolutePath();
+
+        videoFilePaths.add(outputPath);
+
+        String[] cmd = {"-y", "-i", inputPath, "-vcodec", "libx264", "-crf", "28", "-preset", "fast", "-acodec", "aac", "-b:a", "192k", "-ac", "2", outputPath};
+
+        progressDialog.show();
+
+        FFmpeg.executeAsync(cmd, (executionId, returnCode) -> {
+            if (returnCode == Config.RETURN_CODE_SUCCESS) {
+                // Compression was successful
+                progressDialog.dismiss();
+                Uri compressedUri = Uri.fromFile(compressedVideoFile);
+                videoUris.add(compressedUri);
+                if (mediaViewAdapter != null) {
+                    mediaViewAdapter.notifyDataSetChanged();
+                }
+                updateVideoTextView();
+            } else {
+                progressDialog.dismiss();
+                Toast.makeText(CreateSellActivity.this, "Video compression failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }*/
+
+    private void updateCombinedUriList() {
+        mArrayUri.clear();
+        mArrayUri.addAll(imageUris);
+        mArrayUri.addAll(videoUris);
+    }
+
+    private void updateImageTextView() {
+        updateCombinedUriList();
+        if (mArrayUri.size() > 0) {
+            image_textview.setVisibility(View.VISIBLE);
+            image_textview.setText(mArrayUri.size() + " preview");
+        } else {
+            image_textview.setVisibility(View.GONE);
+        }
+    }
+
+    private void updateVideoTextView() {
+        updateCombinedUriList();
+        if (mArrayUri.size() > 0) {
+            image_textview.setVisibility(View.VISIBLE);
+            image_textview.setText(mArrayUri.size() + " preview");
+        } else {
+            image_textview.setVisibility(View.GONE);
+        }
+    }
+
+    private String getPath(Context context, Uri uri) {
+        // DocumentProvider
+        if (DocumentsContract.isDocumentUri(context, uri)) {
+            if (isExternalStorageDocument(uri)) {
+                String docId = DocumentsContract.getDocumentId(uri);
+                String[] split = docId.split(":");
+                String type = split[0];
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+            } else if (isDownloadsDocument(uri)) {
+                String id = DocumentsContract.getDocumentId(uri);
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                return getDataColumn(context, contentUri, null, null);
+            } else if (isMediaDocument(uri)) {
+                String docId = DocumentsContract.getDocumentId(uri);
+                String[] split = docId.split(":");
+                String type = split[0];
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+                String selection = "_id=?";
+                String[] selectionArgs = new String[]{split[1]};
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        }
+        // MediaStore and general
+        else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
+        }
+        // File
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+        return null;
+    }
+
+    private String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
+        Cursor cursor = null;
+        String[] projection = {MediaStore.MediaColumns.DATA};
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+                return cursor.getString(index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+
+    private boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    private boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    private boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    private File uriToFile(Uri uri) {
+        File file = new File(getCacheDir(), getFileName(uri));
+        try (InputStream inputStream = getContentResolver().openInputStream(uri);
+             FileOutputStream outputStream = new FileOutputStream(file)) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
+    @SuppressLint("Range")
+    private String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public void onItemClick(Uri uri) {
+
+    }
+
+    @Override
+    public void onRemoveClick(int position, String type) {
+        if(type.equals("Video")){
+            videoUris.remove(0);
+        } else {
+            imageUris.remove(position);
+            mArrayGalleryPhoto.remove(position);
+
+        }
+        mArrayUri.remove(position);
+        if (mediaViewAdapter != null) {
+            mediaViewAdapter.notifyDataSetChanged();
+        }
+        updateMediaCountText();
+    }
+
+    private void updateMediaCountText() {
+        if (mArrayUri.size() > 0) {
+            image_textview.setVisibility(View.VISIBLE);
+            image_textview.setText(mArrayUri.size() + " preview");
+        } else {
+            image_textview.setVisibility(View.GONE);
+            image_dialog.cancel();
+        }
+    }
+
+    @Override
+    public void removeImage(int position) {
+        bitmapList.remove(position);
+        uploadAdapter.notifyDataSetChanged();
+    }
+
+    private void openPreview(String name, String desc, String price, String price_status, String brand_tv) {
+
+        RecyclerView rv;
+        ImageView cancel;
+        TextView item_name, item_price, item_desc, item_posted_by, nebgourhood_tv, distance_tv, publish_textview;
+        preview_dialog = new Dialog(this);
+        preview_dialog.setContentView(R.layout.preview_layout);
+        rv = preview_dialog.findViewById(R.id.rv_category);
+        item_name = preview_dialog.findViewById(R.id.item_name);
+        item_price = preview_dialog.findViewById(R.id.item_price);
+        item_desc = preview_dialog.findViewById(R.id.item_desc);
+        item_posted_by = preview_dialog.findViewById(R.id.item_posted_by);
+        distance_tv = preview_dialog.findViewById(R.id.distance_tv);
+        publish_textview = preview_dialog.findViewById(R.id.publish_textview);
+        nebgourhood_tv = preview_dialog.findViewById(R.id.nebgourhood_tv);
+        cancel = preview_dialog.findViewById(R.id.cross_imageview);
+        if (price_status.equals("free")) {
+            item_price.setVisibility(View.GONE);
+        } else {
+            item_price.setText("\u20B9" + price);
+        }
+        item_desc.setText(item_desc.getText().toString());
+        item_name.setText(name);
+
+        item_desc.setText(desc);
+        item_posted_by.setText("Sudhanshu kumar");
+        nebgourhood_tv.setText("Noida sector 16" + "," + " 2 kms");
+
+        rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        PreviewAdapter emailListAdapter = new PreviewAdapter(CreateSellActivity.this, bitmapList);
+        rv.setAdapter(emailListAdapter);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                preview_dialog.cancel();
+            }
+        });
+/*  08/05/24
+        publish_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (edit.equals("edit")) {
+                    FancyToast.makeText(getApplicationContext(), "Your update has been saved.", Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+                } else {
+                    FancyToast.makeText(getApplicationContext(), "Your item is now in the marketplace.", Toast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+                }
+                onBackPressed();
+            }
+        });
+        */
+        preview_dialog.getWindow().setBackgroundDrawableResource(R.drawable.round_corner_dialog);
+        preview_dialog.setCancelable(true);
+        preview_dialog.show();
+
+    }
+
+    private Bitmap uriToBitmap(Uri selectedFileUri) {
+        try {
+            ParcelFileDescriptor parcelFileDescriptor =
+                    getContentResolver().openFileDescriptor(selectedFileUri, "r");
+            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+            pdfBitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+
+            parcelFileDescriptor.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return pdfBitmap;
+    }
+
+    public File bitmapToFile(Bitmap bitmap, String fileNameToSave) {
+        File file = null;
+        try {
+            file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + fileNameToSave);
+            file.createNewFile();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos); // YOU can also save it in JPEG
+            byte[] bitmapdata = bos.toByteArray();
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+            return file;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return file;
+        }
+    }
+
+    private void resetColor() {
+
+        rent_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_white));
+        paid_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_white));
+        free_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_white));
+        paid_item_tv.setTextColor(getResources().getColor(R.color.text_color));
+        rent_item_tv.setTextColor(getResources().getColor(R.color.text_color));
+        free_item_tv.setTextColor(getResources().getColor(R.color.text_color));
+    }
+
+    private void resetColor1() {
+
+        negotiable_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_white));
+        fix_item_tv.setBackground(getResources().getDrawable(R.drawable.round_corner_white));
+        negotiable_item_tv.setTextColor(getResources().getColor(R.color.text_color));
+        fix_item_tv.setTextColor(getResources().getColor(R.color.text_color));
+    }
+
+    private boolean CheckAllFields() {
+        if (item_name.getText().toString().matches("")) {
+            return GlobalMethods.setError(item_name, "Please enter item name");
+        }else if (item_category.getText().toString().equals("Select category")) {
+            Toast.makeText(CreateSellActivity.this, "Please select category", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (item_price.getText().toString().matches("")) {
+            return GlobalMethods.setError(item_price, "Please enter item price");
+
+        } else if (item_desc.length() == 0) {
+            return GlobalMethods.setError(item_desc, "Please enter description");
+
+        }
+        return true;
+    }
+
+    public void init() {
+        Intent i = getIntent();
+        titleTv = findViewById(R.id.title);
+        titleTv.setText("Sell or Donate");
+        item_category = findViewById(R.id.item_category);
+        rlPriceMp = findViewById(R.id.rlPriceMp);
+        cancle_tv = findViewById(R.id.cancle_tv);
+        preview_textview = findViewById(R.id.preview_textview);
+        item_name = findViewById(R.id.item_name);
+        item_price = findViewById(R.id.item_price);
+        totalAmount = findViewById(R.id.totalAmount);
+        item_desc = findViewById(R.id.item_desc);
+        item_brand = findViewById(R.id.item_brand);
+        free_item_tv = findViewById(R.id.free_item_tv);
+        paid_item_tv = findViewById(R.id.paid_item_tv);
+        item_quantity = findViewById(R.id.quantity_price);
+        rent_item_tv = findViewById(R.id.rent_item_tv);
+
+        image_textview = findViewById(R.id.image_textview);
+        // Integer intValue = Integer.parseInt(String.valueOf(item_quantity));
+        //textFromEditText = item_quantity.getText().toString();
+//        int intValue = Integer.parseInt(textFromEditText);
+
+        search_imageview = findViewById(R.id.search_imageview);
+        add_imageview = findViewById(R.id.add_imageview);
+
+        search_imageview.setVisibility(View.GONE);
+        add_imageview.setVisibility(View.GONE);
+
+        free_item_tv.setOnClickListener(this);
+        paid_item_tv.setOnClickListener(this);
+        rent_item_tv.setOnClickListener(this);
+        cancle_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rl_upload.setVisibility(View.GONE);
+            }
+        });
+
+        fix_item_tv = findViewById(R.id.fix_item_tv);
+        fix_item_tv.setOnClickListener(this);
+
+        negotiable_item_tv = findViewById(R.id.negotiable_item_tv);
+        negotiable_item_tv.setOnClickListener(this);
+
+        preview_textview.setOnClickListener(this);
+        rl_upload = findViewById(R.id.upload_options_rl);
+        video_or_image_upload_rl = findViewById(R.id.video_or_image_upload_rl);
+        video_or_image_upload_rl.setOnClickListener(this);
+        item_category.setOnClickListener(this);
+        titleTv.setOnClickListener(this);
+        upload_options_rl = findViewById(R.id.upload_options_rl);
+        tv_take_photo = findViewById(R.id.take_photo);
+        tv_choose_photo = findViewById(R.id.choose_photo);
+        tv_take_video = findViewById(R.id.make_video);
+        tv_choose_video = findViewById(R.id.choose_video);
+        tv_take_photo.setOnClickListener(this);
+        tv_choose_photo.setOnClickListener(this);
+        tv_take_video.setOnClickListener(this);
+        tv_choose_video.setOnClickListener(this);
+
+        price_ll = findViewById(R.id.price_ll);
+
+        back_btn = findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(this);
+        image_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                imageDialog(mArrayUri, "img");
+            }
+        });
+    }
+
+    @Override
+    public void onClick(String categoryName, String id) {
+        item_category.setText(categoryName);
+        // category = categoryName;
+        categoriId = id;
+        mail_dialog.cancel();
+    }
+
+    private void imageDialog(ArrayList<Uri> mArrayUri, String from) {
+        RecyclerView rv;
+        TextView confirm;
+        ImageView cancel, iv_uploaded_image;
+        CardView card;
+        image_dialog = new Dialog(this);
+        image_dialog.setContentView(R.layout.open_image_dialog);
+        rv = image_dialog.findViewById(R.id.rv_image);
+        cancel = image_dialog.findViewById(R.id.cross_imageview);
+        card = image_dialog.findViewById(R.id.card);
+        iv_uploaded_image = image_dialog.findViewById(R.id.iv_uploaded_image);
+        rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mediaViewAdapter = new MediaViewAdapter(this, image_dialog, mArrayUri, CreateSellActivity.this);
+        rv.setAdapter(mediaViewAdapter);
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(rv);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                image_dialog.dismiss();
+            }
+        });
+
+        image_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, android.R.color.black)));
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(image_dialog.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.gravity = Gravity.CENTER;
+        image_dialog.getWindow().setAttributes(layoutParams);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            image_dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            image_dialog.getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
+        }
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, android.R.color.black)));
+        }
+        image_dialog.setCancelable(true);
+        image_dialog.show();
+    }
+
+    @Override
+    public void onImageClick(int pos) {
+
+    }
+
+    @Override
+    public void onCrossClick(int pos, String from) {
+
+        mArrayUri.remove(pos);
+        mArrayGalleryPhoto.remove(pos);
+        imageUploadAdapter.notifyDataSetChanged();
+
+        if (mArrayUri.size() == 1) {
+            image_textview.setVisibility(View.VISIBLE);
+            image_textview.setText(mArrayUri.size() + " Image");
+
+        }
+        if (mArrayUri.size() >= 1) {
+            image_textview.setVisibility(View.VISIBLE);
+            image_textview.setText(mArrayUri.size() + " Images");
+
+        }
+        if (mArrayUri.size() == 0) {
+
+            image_dialog.dismiss();
+            image_textview.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
+    public void onCrossClick1(int pos, String from) {
+
+    }
+
+    private void categoryApi() {
+        APIInterface service = APIClient.getRetrofit3().create(APIInterface.class);
+        Call<StatePojo> call = service.createCategoryProducr();
+        call.enqueue(new Callback<StatePojo>() {
+            @Override
+            public void onResponse(Call<StatePojo> call, Response<StatePojo> response) {
+                categorylist = response.body().getCategory();
+                totalImageCount = Integer.parseInt(response.body().getMkpImageLimit());
+                totalVideoCount = Integer.parseInt(response.body().getMkpVideoLimit());
+                postVideoSize = Integer.parseInt(response.body().getMkpVideoSize());
+            }
+
+            @Override
+            public void onFailure(Call<StatePojo> call, Throwable t) {
+                Toast.makeText(CreateSellActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("res---", t.getMessage());
+            }
+        });
+    }
+
+    private void selectCategory() {
+        RecyclerView rv;
+        ImageView cancel;
+        mail_dialog = new Dialog(this);
+        mail_dialog.setContentView(R.layout.market_place_open_category_list);
+        rv = mail_dialog.findViewById(R.id.rv_category);
+//        confirm = mail_dialog.findViewById(R.id.cross_imageview);
+        cancel = mail_dialog.findViewById(R.id.cross_imageview);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        emailListAdapter = new MarketPlaceCategoryAdapter(CreateSellActivity.this, categorylist);
+        rv.setAdapter(emailListAdapter);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mail_dialog.cancel();
+            }
+        });
+        mail_dialog.getWindow().setBackgroundDrawableResource(R.drawable.round_corner_dialog);
+        mail_dialog.setCancelable(true);
+        mail_dialog.show();
+    }
+
+    private void createItem() {
+        ArrayList<MultipartBody.Part> mediaList = new ArrayList<>();
+        File mediaFile;
+        int compressionRatio = 20;
+        MultipartBody.Part userMedia;
+
+        // Handle images
+        for (Bitmap bitmap : mArrayGalleryPhoto) {
+            mediaFile = bitmapToFile(bitmap, getString(R.string.app_name) + System.currentTimeMillis() + ".jpg");
+            Log.d("mArrayGalleryPhoto...", mediaFile.toString());
+            try {
+                Bitmap bitmapDecoded = BitmapFactory.decodeFile(mediaFile.getPath());
+                bitmapDecoded.compress(Bitmap.CompressFormat.JPEG, compressionRatio, new FileOutputStream(mediaFile));
+            } catch (Throwable t) {
+                Log.e("ERROR", "Error compressing file." + t);
+                t.printStackTrace();
+            }
+            RequestBody image = RequestBody.create(MediaType.parse("image/jpeg"), mediaFile);
+            userMedia = MultipartBody.Part.createFormData("p_images[]", mediaFile.getName(), image);
+            mediaList.add(userMedia);
+            Log.d("post_list", mediaList.toString());
+        }
+
+        // Handle videos
+        for (Uri videoUri : videoUris) {
+            mediaFile = uriToFile(videoUri);
+            Log.d("mArrayVideo...", mediaFile.toString());
+
+            RequestBody video = RequestBody.create(MediaType.parse("video/mp4"), mediaFile);
+            userMedia = MultipartBody.Part.createFormData("p_images[]", mediaFile.getName(), video);
+            mediaList.add(userMedia);
+            Log.d("post_list", mediaList.toString());
+        }
+        HashMap<String, RequestBody> hashMap = new HashMap<>();
+        hashMap.put("p_title", RequestBody.create(MultipartBody.FORM, item_name.getText().toString()));
+        hashMap.put("p_description", RequestBody.create(MultipartBody.FORM, item_desc.getText().toString()));
+        // hashMap.put("p_quantity", RequestBody.create(MultipartBody.FORM, String.valueOf(Integer.parseInt(item_quantity.getText().toString()))));
+        hashMap.put("sale_type", RequestBody.create(MultipartBody.FORM, price_status));
+      //  hashMap.put("sale_type", RequestBody.create(MultipartBody.FORM, free_item_tv.getText().toString()));
+        hashMap.put("sale_price", RequestBody.create(MultipartBody.FORM, item_price.getText().toString()));
+        hashMap.put("total_price", RequestBody.create(MultipartBody.FORM, String.valueOf(0)));
+        hashMap.put("brand_name", RequestBody.create(MultipartBody.FORM, item_brand.getText().toString()));
+        hashMap.put("seller_name", RequestBody.create(MultipartBody.FORM, sm.getString("user_name")));
+        hashMap.put("cat_id", RequestBody.create(MultipartBody.FORM, String.valueOf(categoriId)));
+        hashMap.put("p_status", RequestBody.create(MultipartBody.FORM, String.valueOf(1)));
+        hashMap.put("neighborhood_id", RequestBody.create(MultipartBody.FORM, String.valueOf(Integer.parseInt(sm.getString("neighbrhood")))));
+        hashMap.put("created_by", RequestBody.create(MultipartBody.FORM, String.valueOf(Integer.parseInt(sm.getString("user_id")))));
+        ApiExecutor.getLaravelApiService().createProduct(
+                mediaList,
+                hashMap,
+                "application/json"
+        ).enqueue(new Callback<AddressResponse>() {
+            @Override
+            public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
+                try {
+                    if (response.isSuccessful() && response.body() != null) {
+                        AddressResponse res = response.body();
+
+                        if ("200".equals(res.getStatus())) {
+                            onBackPressed();
+                            progressDialog.dismiss();
+                        } else if (res.getMessage() != null) {
+                            Toast.makeText(context, res.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    } else {
+                        Log.e("API_ERROR", "Code: " + response.code());
+                        if (response.errorBody() != null) {
+                            try {
+                                String errorBody = response.errorBody().string();
+                                Log.e("API_ERROR_BODY", errorBody);
+                                Toast.makeText(context, errorBody, Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        progressDialog.dismiss();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    progressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddressResponse> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.e("API_FAILURE", t.toString());
+                Toast.makeText(CreateSellActivity.this, "Something went wrong. Please try again", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+    }
+
+
+    private class SimulateTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            if (CheckAllFields()) {
+                createItem();
+            }
+            SystemClock.sleep(3000);
+            return null;
+        }
+    }
+
+    // Handle Permission Results
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 200) {
+            boolean allGranted = true;
+
+            for (int result : grantResults) {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    allGranted = false;
+                    break;
+                }
+            }
+
+            if (allGranted) {
+                // All permissions granted
+                Toast.makeText(this, "Permissions granted!", Toast.LENGTH_SHORT).show();
+                if (bitmapList.size() < 100) {
+                    CLICK_ON = FIRST_IMAGE;
+                    upload_options_rl.setVisibility(View.VISIBLE);
+                }
+            } else {
+                // Check if "Don't Ask Again" is selected
+                boolean shouldShowRationale = false;
+                for (String permission : permissions) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                        shouldShowRationale = true;
+                        break;
+                    }
+                }
+
+                if (shouldShowRationale) {
+                    // User denied permissions without "Don't Ask Again"
+                    Toast.makeText(this, "Permissions are required for this feature.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // User selected "Don't Ask Again"
+                    showSettingsDialog();
+                }
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    // Show Settings Dialog for "Don't Ask Again"
+    private void showSettingsDialog() {
+        String message;
+
+        // Customize message based on Android version
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            message = "Camera permission is required for this feature. Please allow it from Settings.";
+        } else {
+            message = "Camera and storage permissions are required for this feature. Please allow them from Settings.";
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Permissions Required")
+                .setMessage(message) // Set the custom message
+                .setPositiveButton("Go to Settings", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+}
+
+
+

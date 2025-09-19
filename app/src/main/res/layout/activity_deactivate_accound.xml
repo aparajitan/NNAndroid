@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+
+    android:orientation="vertical"
+    tools:context=".setting.DeactivateAccound">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/yellow">
+            <FrameLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/img_back"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+                    <TextView
+                        android:text="Deactivate Account"
+                        android:textSize="@dimen/toolbar_text_size"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/screens_padding_left_right"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/background_gap_centre"
+        android:layout_marginRight="@dimen/screens_padding_left_right"
+        android:background="@drawable/round_corner_dialog"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Please select one of them"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textColor="@color/text_color"
+            android:layout_height="wrap_content"/>
+        <RadioGroup
+            android:id="@+id/radio_group_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/thrity_days"
+                android:text="30 Days"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="#989797"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/sixty_days"
+                android:layout_gravity="right"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:textColor="#989797"
+                android:text="60 Days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/ninety_days"
+                android:layout_gravity="right"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:textColor="#989797"
+                android:text="90 Days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/btn_deactivate"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/button_back"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Submit"
+            android:textColor="@color/button_text_color"
+            android:textSize="@dimen/button_size" />
+    </FrameLayout>
+
+
+
+
+</LinearLayout>

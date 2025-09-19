@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner_dialog"
+        android:orientation="vertical"
+        android:padding="@dimen/_4sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_4sdp">
+
+            <TextView
+                android:id="@+id/thanks_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:paddingTop="@dimen/_2sdp"
+                android:text="Thank You!"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:text="Business has been modified succesfully. It will be published after a quick review."
+                android:textColor="@color/dialog_heading_top"
+                android:textSize="@dimen/dialog_text_size" />
+
+            <TextView
+                android:id="@+id/ok_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="OK"
+
+                android:textColor="@color/them_color"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".8dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/_38sdp"
+        android:background="@color/divider_color" />
+
+</FrameLayout>

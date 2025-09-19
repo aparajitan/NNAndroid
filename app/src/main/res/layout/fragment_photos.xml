@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".fragment.PhotosFragment">
+    <FrameLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Great|"
+                />
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginLeft="03dp"
+                android:textColor="@color/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Upload Photos"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
+
+
+
+    <FrameLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginLeft="03dp"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Get 3x responses when you post property with"
+                    />
+
+
+            </LinearLayout>
+            <FrameLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Photos.Increase score by 30%" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <LinearLayout
+        android:layout_marginTop="26dp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+        <FrameLayout
+            android:background="@drawable/select_from_gallary_background"
+            android:layout_marginRight="6dp"
+            android:layout_width="match_parent"
+            android:id="@+id/frm_gallary"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_menu_gallery"
+                android:layout_height="55dp" />
+            <TextView
+                android:textSize="12sp"
+                android:layout_gravity="center_horizontal|center"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select from Gallary" />
+        </FrameLayout>
+        <FrameLayout
+            android:background="@drawable/select_from_gallary_background"
+            android:id="@+id/frm_take_picture"
+            android:layout_marginLeft="6dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_gravity="center"
+                android:src="@drawable/take_a_picture"
+                android:layout_height="55dp" />
+            <TextView
+                android:textSize="12sp"
+                android:layout_gravity="center_horizontal|center"
+                android:textColor="@color/text_color"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Take a Picture"
+
+                />
+
+
+
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp" />
+
+            <TextView
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Accepted File Formats."
+                />
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginLeft="03dp"
+                android:textColor="@color/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="jpg.jpeg"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_marginTop="@dimen/_85sdp"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/button_back"
+        android:id="@+id/upload_id"
+        android:visibility="visible"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center"
+            android:textColor="@color/button_text_color"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+
+</LinearLayout>

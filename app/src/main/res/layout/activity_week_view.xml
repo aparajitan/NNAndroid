@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background_color"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".calendar.WeekViewActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:background="@drawable/rounded_background_btn"
+        android:layout_marginTop="20dp">
+        <FrameLayout
+            android:layout_width="@dimen/_60sdp"
+            android:onClick="previousWeekAction"
+            android:background="@drawable/button_back"
+            android:layout_height="@dimen/_40sdp"
+            tools:ignore="OnClick">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/back"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_left"
+                android:layout_height="@dimen/_35sdp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/back"
+                android:visibility="gone"
+                android:textColor="@color/teal_200"
+                android:background="@null"
+                android:textStyle="bold"
+                android:onClick="previousMonthAction"
+                android:textSize="20sp"
+                tools:ignore="OnClick" />
+        </FrameLayout>
+        <TextView
+            android:id="@+id/monthYearTV"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:text="Feb 2021"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"/>
+        <FrameLayout
+            android:layout_width="@dimen/_60sdp"
+            android:onClick="nextWeekAction"
+            android:background="@drawable/button_back"
+            android:layout_height="@dimen/_40sdp"
+            tools:ignore="OnClick">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/back"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_height="@dimen/_35sdp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/back"
+                android:visibility="gone"
+                android:textColor="@color/teal_200"
+                android:background="@null"
+                android:textStyle="bold"
+                android:onClick="nextMonthAction"
+                android:textSize="20sp"
+                tools:ignore="OnClick" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SUN"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MON"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TUE"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="WED"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="THUR"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FRI"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SAT"
+            android:textColor="@color/yellow"
+            android:textAlignment="center"
+            android:textSize="16sp"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendar_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_weight="1"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/button_back"
+        android:layout_height="@dimen/_35sdp">
+        <TextView
+            android:layout_width="match_parent"
+            android:text="NEW EVENT"
+            android:backgroundTint="@color/yellow"
+            android:onClick="newEventAction"
+            android:textSize="20sp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            tools:ignore="OnClick"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+    <ListView
+        android:id="@+id/eventListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+

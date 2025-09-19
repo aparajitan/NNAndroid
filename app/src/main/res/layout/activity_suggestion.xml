@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical"
+    tools:context=".suggestion.SuggestionActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/yellow">
+            <FrameLayout
+                android:id="@+id/frm_group_bar_hide"
+                android:layout_marginLeft="20dp"
+                android:visibility="visible"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/img_back"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+                    <TextView
+                        android:text="Suggestions"
+                        android:textSize="@dimen/toolbar_text_size"
+                        android:textColor="#fff"
+                        android:id="@+id/group_id"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/search_img_size"
+                    android:id="@+id/search_id"
+                    android:visibility="visible"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/search_icon_white"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/search_img_size" />
+                <ImageView
+                    android:layout_width="@dimen/plus_icon_size"
+                    android:visibility="gone"
+                    android:id="@+id/suggestion_create_pluse"
+                    android:src="@drawable/ic_plus_actionbar"
+                    app:tint="@color/text_color"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/plus_icon_size" />
+
+
+
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/frm_show_second_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:src="@drawable/search_icon_white"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="25dp" />
+                    <EditText
+                        android:hint="Groups"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:backgroundTint="@null"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/plus_icon_size"
+                    android:src="@drawable/close_dark"
+                    android:id="@+id/id_cancel"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/plus_icon_size" />
+
+
+
+            </FrameLayout>
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/screens_padding_left_right"
+        android:layout_marginRight="@dimen/screens_padding_left_right"
+        android:background="@drawable/round_corner_dialog"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/suggestion_backgroun_img"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:id="@+id/id_cafe_baker"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/electrician_icon_second"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Electrician"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/restaurant_suggestion"
+                    android:layout_gravity="center|top"
+                    android:id="@+id/restaurant_id"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/plumber_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Plumber"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/day_care_suggestion"
+                    android:layout_gravity="end"
+                    android:layout_width="@dimen/_50sdp"
+                    android:id="@+id/dry_care_id"
+                    android:layout_height="@dimen/_50sdp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/garden_nursery"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Gardener"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/pet_suggestion"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:id="@+id/pet_care_id"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/dog_walker"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Dog walker"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/garden_suggestion"
+                    android:layout_gravity="center"
+                    android:id="@+id/garden_id"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/garden_nursery"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Nursery"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/hospital_suggestion"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:id="@+id/hospital_id"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/laundry_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|start"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Laundry"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:id="@+id/carpentar_saventh_card"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_eleven"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/carpenter_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Carpenter"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_twelve"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ac_repair"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Ac repair"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_thirteen"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/car_cleaner"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|start"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Car cleaner"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_sixteen"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/physiotherapist_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Physiotherapist"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_fifteen"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/cook_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Cook"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/garden_suggestion"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/maid_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Maid"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_fourteen"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/nurse_icon"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Nurse"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:background="@drawable/background_thirteen"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/suggestion_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/car_driver"
+                        android:layout_height="@dimen/suggestion_icon_size"/>
+
+                </FrameLayout>
+                <TextView
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Driver"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+</ScrollView>
+</LinearLayout>

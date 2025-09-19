@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MergeMarker">
+    <color name="purple_200">#5C5C5C</color>
+    <color name="purple_500">#554F4F</color>
+    <color name="purple_700">#FF3700B3</color>
+
+    <color name="gray">#D9D9D9</color>
+
+    <color name="teal_200">#008000</color>
+    <color name="teal_20">#4797b4</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="btn_gray">#B8B7B7</color>
+    <color name="yellow">#008000</color>
+    <color name="line_color_dialog">#E3E3EA</color>
+    <color name="suscribe">#CD5C5C</color>
+    <color name="gradient_announce">#AA4A44</color>
+<!--    <color name="them_color">#4797b4</color>-->
+<!--    <color name="background_color">#f7c569</color>-->
+    <color name="them_color_second">#f7c569</color>
+<!--    fefbea-->
+    <color name="reciever_bg">#e6e3d3</color>
+    <color name="request_pending_group">#D9828B</color>
+    <color name="sender_bg">#dcedc9</color>
+    <color name="yello_color">#F4C430</color>
+    <color name="them_color">#008000</color>
+    <color name="background_color">#F0F7F0 </color>
+    <color name="wall_title">#008000</color>
+    <color name="poll_result_progress_color">#9C9999</color>
+    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">@color/them_color</color>
+    <color name="colorBackground">#E0E0E0</color>
+    <color name="colorSecondaryProgress">#FFBB86FC</color>
+    <color name="colorProgress">#FF3700B3</color>
+    <color name="text_color">#5C5C5C</color>
+    <color name="text_color5">#353535</color>
+    <color name="text_color_3">#515151</color>
+    <color name="oval_card_background">#929191</color>
+    <color name="divider_color">#E8E6E6</color>
+    <color name="line_color">#E8E6E6</color>
+    <color name="green_color">#007649</color>
+    <color name="text_second_bold">#E8787878</color>
+    <color name="icon_color">#858282</color>
+    <color name="button_text_color">#FFFFFFFF</color>
+    <color name="post_pro_second_color">#000000</color>
+    <color name="secondary_text_color">#777777</color>
+<!--    <color name="member">#1eb7d6</color>-->
+    <color name="member">#1e6bd6</color>
+    <color name="group">#FB8C00</color>
+    <color name="markep_place">#89C83F</color>
+    <color name="comment_background">#F5F5F5</color>
+    <color name="reply_background">#FAFAFA</color>
+    <color name="primary_text_color">#333333</color>
+    <color name="event">#6233D6</color>
+    <color name="post">#A3B526</color>
+    <color name="poll1">#d11717</color>
+    <color name="poll">#fb3fea</color>
+    <color name="business">#36b336</color>
+    <color name="suggestion">#FB8C00</color>
+    <color name="setting_text_color">#434343</color>
+    <color name="dialog_top_color">#565353</color>
+    <color name="dialog_heading_top">#6A6A6A</color>
+    <color name="color_announcement">#BF360C</color>
+    <color name="dm">#25b2f3</color>
+    <color name="ti_color">#000000</color>
+    <color name="t2_color">#858282</color>
+    <color name="gradient_group">#4F7959</color>
+    <color name="gradient_poll">#AF9D66</color>
+    <color name="gradient_post">#985646</color>
+    <color name="gradient_event">#9DAC7C</color>
+    <color name="gradient_business">#829591</color>
+    <color name="gradient_favorite">#8E836F</color>
+    <color name="gradient_dm">#CD853F</color>
+    <color name="gradient_announcement">#6CA2AF</color>
+
+</resources>
+

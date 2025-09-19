@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_250sdp"
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/dialog_bg">
+    <TextView
+        android:text="Upload Document"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imgFrontDialog"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:background="@drawable/photo_back_reg"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:id="@+id/imgBackDialog"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:background="@drawable/photo_back_reg"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+</LinearLayout>

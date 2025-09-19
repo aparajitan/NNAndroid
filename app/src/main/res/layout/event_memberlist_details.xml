@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/lnr_root"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp">
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_gravity="center"
+                    android:id="@+id/img_event_userp_pic"
+                    android:layout_height="@dimen/_35sdp"
+
+                    android:src="@drawable/user_icon_p"
+                    />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_username_event"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textColor="@color/yellow"
+                    android:layout_height="wrap_content"
+                    android:text="Geeta Laxmi"
+
+                    />
+                <TextView
+                    android:layout_gravity=""
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_10ssp"
+                    android:id="@+id/tv_neighbrhood_event"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"
+                    android:text="Sector 104"
+
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

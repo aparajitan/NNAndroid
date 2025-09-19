@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".realStateModule.WriteReviewRealState">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/yellow">
+                <FrameLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:id="@+id/back_arrow_write_review"
+                            android:src="@drawable/demo_left_p"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="40dp" />
+                        <TextView
+                            android:text="Write a Review Riyaz PG"
+                            android:textSize="@dimen/toolbar_text_size"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <FrameLayout
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <FrameLayout
+                        android:layout_gravity="end"
+                        android:orientation="vertical"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:background="@drawable/card_view_background_suggestion"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_width="@dimen/_57sdp"
+                        android:layout_height="@dimen/_45sdp">
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:gravity="start"
+                            android:background="@drawable/card_view_suggestion_second"
+                            android:layout_height="@dimen/_20sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="3.8"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/_5sdp"
+                                android:textSize="@dimen/_14ssp"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:textColor="@color/white"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:layout_marginLeft="@dimen/_12sdp"
+                                android:layout_gravity="center"
+                                android:layout_width="@dimen/_12sdp"
+                                android:src="@drawable/ic_baseline_star_rate_first24"
+                                android:layout_height="@dimen/_12sdp"/>
+                        </FrameLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Average"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Rating"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+
+                    </FrameLayout>
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Your thoughts on Riyaz PG"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_15ssp"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_25sdp"
+                            android:layout_width="wrap_content"
+                            android:text="Safety &amp; Security"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Do you feel safe at all times in this locality?"
+
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="wrap_content"
+                        android:text="Environment"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="How calm, hygiene &amp; soothing are the surroundings?"
+
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="wrap_content"
+                        android:text="Connectivity &amp; Commute"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Availability of public or private conveyance"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_width="wrap_content"
+                        android:text="Facilities"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Hos is the qaulity of life and necessary service"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="@dimen/_30sdp"
+                        android:src="@drawable/rating_custom_two"
+                        android:layout_height="@dimen/_30sdp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="wrap_content"
+                    android:text="What do you like about this PG?"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Confuse what do you write?"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <FrameLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:background="@drawable/comment_drawable"
+                    android:layout_height="@dimen/_80sdp">
+
+                    <EditText
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:background="@null"
+                        android:backgroundTintMode="@null"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColorHint="@color/text_color"
+                        android:backgroundTint="@null"
+                        android:layout_width="match_parent"
+                        android:hint="Share your feel good experiance with this locality...."
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:gravity="center"
+                    android:visibility="visible"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:background="@drawable/upload_button_background"
+                    android:id="@+id/upload_id"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="POST"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/button_size"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

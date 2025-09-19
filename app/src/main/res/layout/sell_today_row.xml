@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:background="@color/them_color"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_width="@dimen/_145sdp"
+        app:cardElevation="@dimen/_2sdp"
+        android:layout_height="@dimen/_150sdp"
+        app:cardCornerRadius="@dimen/_7sdp"
+        app:cardUseCompatPadding="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/porduct_image"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/marketplace_ppl"
+                    android:layout_height="@dimen/_103sdp" />
+
+                <FrameLayout
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:background="@drawable/transparent_market_place_time"
+                    android:layout_width="@dimen/_26sdp"
+                    android:layout_height="@dimen/_14sdp">
+
+                    <TextView
+                        android:id="@+id/post_time"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center|center_vertical"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Time"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_9ssp" />
+
+
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/soldFrm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="@dimen/_3sdp"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:paddingRight="@dimen/_4sdp"
+                    android:background="@drawable/sold_background_market">
+
+                    <TextView
+                        android:id="@+id/soldTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|center_vertical"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="SOLD"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_8ssp"
+                        android:layout_margin="@dimen/_4sdp"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/saveImag"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center|end|bottom"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:background="@drawable/round_corner_button_them"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/saved_fill_parent"
+                    app:tint="@color/white" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:id="@+id/item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="item"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp" />
+
+
+            </FrameLayout>
+            <FrameLayout
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:id="@+id/item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nebhourhood_tv"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:text="Price"
+                    android:textColor="@color/text_color"
+
+                    android:textSize="@dimen/_8sdp" />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:id="@+id/nebhourhood_tv"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Noida"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_9ssp" />
+
+
+            </FrameLayout>
+
+            <TextView
+                    android:id="@+id/product_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nebhourhood_tv"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/item_price"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wall_image_rv"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

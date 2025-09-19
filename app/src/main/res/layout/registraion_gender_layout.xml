@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:id="@+id/root"
+    android:padding="@dimen/_5sdp">
+
+    <!--    <CheckBox-->
+    <!--        android:id="@+id/checkbox"-->
+    <!--        android:layout_width="@dimen/_20sdp"-->
+    <!--        android:layout_height="@dimen/_20sdp"-->
+    <!--        android:layout_gravity="center_vertical"-->
+    <!--        android:button="@null"-->
+    <!--        />-->
+    <!--    android:background="@drawable/day_selector"-->
+
+
+    <ImageView
+        android:id="@+id/tik_iv"
+        android:layout_width="@dimen/_20sdp"
+        android:visibility="gone"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/img_selector"
+        />
+
+    <TextView
+        android:id="@+id/days_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_13ssp"
+        android:gravity="center_vertical"
+        android:textColor="#605F5F"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="home"
+        android:paddingLeft="@dimen/_5sdp"
+        android:layout_gravity="center_vertical"
+        />
+
+</LinearLayout>
