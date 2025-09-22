@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:background="@drawable/round_corner_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/_5sdp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/profile_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_imageview"
+                    android:layout_width="@dimen/_34sdp"
+                    android:layout_height="@dimen/_34sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+
+                    app:civ_border_color="@color/text_color" />
+
+                <!--        <ImageView-->
+                <!--            android:id="@+id/profile_imageview"-->
+                <!--            android:layout_width="@dimen/_35sdp"-->
+                <!--            android:layout_height="@dimen/_35sdp"-->
+                <!--            android:layout_alignParentStart="true"-->
+
+                <!--            android:layout_centerVertical="true"-->
+
+                <!--            android:paddingLeft="@dimen/_5sdp"-->
+
+                <!--            android:src="@drawable/a1" />-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/profile_imageview"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:text="Arya sen"
+                        android:textColor="@color/them_color"
+                        android:textSize="@dimen/_11ssp" />
+
+                    <TextView
+                        android:id="@+id/created_date_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/user_tv"
+
+                        android:fontFamily="@font/montserrat_regular"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:text="Noida 104 , 2d"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp" />
+
+                </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/threedot_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    app:tint="@color/text_color" />
+
+            </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_13sdp">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/event" />
+        <TextView
+            android:id="@+id/event_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/icon"
+            android:fontFamily="@font/montserrat_regular"
+            android:paddingLeft="@dimen/_5sdp"
+            android:text="Christmas carnival 2022"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/_14sdp"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start event: "
+                android:paddingBottom="@dimen/_2sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:layout_gravity="start"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/text_color"
+                />
+            <TextView
+                android:id="@+id/start_date_value_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/montserrat_regular"
+                android:paddingBottom="@dimen/_2sdp"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/text_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/state_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End event: "
+                android:paddingBottom="@dimen/_2sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/text_color"
+                />
+
+            <TextView
+                android:id="@+id/end_date_value_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/montserrat_regular"
+                android:paddingBottom="@dimen/_2sdp"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/text_color"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="1dp"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/imgHomeEvent"
+            android:src="@drawable/event_for_app"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        >-->
+<!--        &lt;!&ndash;            <ImageView&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_width="@dimen/_20sdp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_height="@dimen/_20sdp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:src="@drawable/group"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:paddingLeft="@dimen/_5sdp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                />&ndash;&gt;-->
+
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Venue :"-->
+<!--            android:paddingTop="@dimen/_2sdp"-->
+<!--            android:paddingBottom="@dimen/_2sdp"-->
+<!--            android:paddingLeft="@dimen/_8sdp"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            android:fontFamily="@font/montserrat_medium"-->
+<!--            android:textSize="@dimen/_12ssp">-->
+
+<!--        </TextView>-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/venue_tv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=""-->
+<!--            android:fontFamily="@font/montserrat_regular"-->
+<!--            android:paddingLeft="@dimen/_5sdp"-->
+<!--            android:paddingTop="@dimen/_2sdp"-->
+<!--            android:paddingBottom="@dimen/_2sdp"-->
+<!--            android:layout_gravity="center_vertical"-->
+
+<!--            android:textSize="@dimen/_12ssp"-->
+<!--            android:textColor="@color/text_color"-->
+<!--            />-->
+
+
+<!--    </LinearLayout>-->
+
+    <com.app_neighbrsnook.libraries.readmoretextview.ReadMoreTextView
+        android:id="@+id/event_desc_textview"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="come bea part kahfkafhakf  akfhkahfakhfdkaf kjaf"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/_12ssp"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        app:colorClickableText="@color/them_color"
+        app:trimExpandedText="@string/show"
+        app:trimCollapsedText="@string/less"
+        app:trimLength="150"/>
+
+</LinearLayout>

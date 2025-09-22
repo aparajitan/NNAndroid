@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    android:id="@+id/rl_parent_layout"
+    android:windowOptOutEdgeToEdgeEnforcement="true"
+
+    android:layout_height="match_parent"
+    tools:context=".group.UpdateCreateGroups">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/them_color">
+            <FrameLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/img_back"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+                    <TextView
+                        android:text="Create Group"
+                        android:textSize="@dimen/toolbar_text_size"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:visibility="visible">
+        <FrameLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_create_group"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:adjustViewBounds="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_145sdp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/photos_recycler_view"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+                </androidx.recyclerview.widget.RecyclerView>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/upload_image_dimension"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:background="@drawable/round_corner_dialog">
+                    <EditText
+                        android:id="@+id/edt_group_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/text_padding_left"
+                        android:background="@null"
+                        android:backgroundTint="@null"
+                        android:inputType="textCapWords"
+                        android:backgroundTintMode="@null"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:hint="Group name"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size_short" />
+                </FrameLayout>
+                <FrameLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/upload_image_dimension"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:background="@drawable/round_corner_dialog"
+                    android:visibility="gone">
+                    <EditText
+                        android:id="@+id/edt_group_name_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/text_padding_left"
+                        android:background="@null"
+                        android:backgroundTint="@null"
+                        android:backgroundTintMode="@null"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:hint="Group Name Second"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size_short" />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/group_crt_upload_image_frm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/upload_image_dimension"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:background="@drawable/round_corner_dialog">
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginRight="15dp"
+                        android:padding="@dimen/_5sdp"
+                        android:background="@drawable/ic_baseline_circle_24"
+                        android:tint="@color/white"
+                        android:src="@drawable/ic_plus_actionbar"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/text_padding_left"
+                        android:background="@null"
+                        android:backgroundTint="@null"
+                        android:backgroundTintMode="@null"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:hint="Upload group image"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/text_size_short" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/round_corner_dialog"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_collections_24" />
+
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+
+                    android:layout_marginTop="@dimen/background_gap_centre"
+
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:background="@drawable/round_corner_dialog"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:padding="@dimen/text_padding_left">
+
+                        <EditText
+                            android:id="@+id/about_group_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:inputType="textCapSentences|textMultiLine"
+
+                            android:backgroundTintMode="@null"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:gravity="start"
+                            android:hint="About group"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size_short" />
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:background="@drawable/round_corner_dialog"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Publish in"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/text_color"
+                            android:text="Nearby neighbourhood"
+                            android:layout_height="wrap_content"/>
+                        <RadioGroup
+                            android:id="@+id/nearby_radgroup_id"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RadioButton
+                                android:id="@+id/nearby_yes_id"
+                                android:text="Yes"
+                                android:textSize="@dimen/_12ssp"
+                                android:textColor="#989797"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+
+                            <RadioButton
+                                android:id="@+id/nearby_no_id"
+                                android:layout_gravity="right"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:textColor="#989797"
+                                android:text="No"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:background="@drawable/round_corner_dialog"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Who can join"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                    <RadioGroup
+                        android:id="@+id/can_join_radgrp_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/can_join_anyone"
+                            android:text="Anyone"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="#989797"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <RadioButton
+                            android:id="@+id/can_join_approve_id"
+                            android:layout_gravity="right"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:textColor="#989797"
+                            android:text="Approved members"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </RadioGroup>
+                </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/upload_id"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/button_back"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Create"
+                        android:textColor="@color/button_text_color"
+                        android:textSize="@dimen/button_size" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/upload_options_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="#BF424040">
+
+        <LinearLayout
+            android:id="@+id/upload_ll"
+            android:layout_width="@dimen/take_photo_take_picture"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cancle_tv"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_corner_dialog"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp">
+
+            <TextView
+                android:id="@+id/take_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp"
+                android:text="Take Photo"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_14ssp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/line_color_dialog" />
+            <TextView
+                android:id="@+id/choose_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/upload_Video"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp"
+                android:text="Choose Photo"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_14ssp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cancle_tv"
+            android:layout_width="@dimen/take_photo_take_picture"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:background="@drawable/round_corner_dialog"
+            android:fontFamily="@font/montserrat_regular"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="Cancel"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_14ssp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

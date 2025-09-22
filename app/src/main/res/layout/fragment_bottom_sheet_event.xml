@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:paddingLeft="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_5sdp"
+
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/dm_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp"     >
+
+        <ImageView
+            android:id="@+id/direct_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_baseline_send_24"
+            app:tint="@color/text_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/direct_msg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Direct Message"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Send direct message to post owner"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8ssp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_1sdp"-->
+<!--        android:background="@color/divider_color"/>-->
+
+
+    <RelativeLayout
+        android:id="@+id/fav_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp"
+        >
+
+        <ImageView
+            android:id="@+id/favourite_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/svg_bookmark_outline_small"
+            app:tint="@color/text_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/favourite_business"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/fav_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Favourite Event"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:id="@+id/fav_subtitle_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Add this to my favourite event"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8ssp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/divider_color"/>
+
+
+    <RelativeLayout
+        android:id="@+id/share_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp"
+        >
+
+        <ImageView
+            android:id="@+id/share_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/share"
+            app:tint="@color/text_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/share_business"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Share Event"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Share this event"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8ssp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+
+        android:background="@color/divider_color"/>
+
+    <RelativeLayout
+        android:id="@+id/block_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_2sdp">
+
+        <ImageView
+            android:id="@+id/iv_block_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/block_svgrepo_com"
+            app:tint="@color/text_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_block_user"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Block User"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Block this user"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8ssp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

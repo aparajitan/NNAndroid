@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/_8sdp">
+
+    <!-- Main Comment -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Circular Profile Image for Comment -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_imageview"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:src="@drawable/profile" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_8sdp">
+
+            <!-- Username and Timestamp -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textSize="@dimen/_9ssp"
+                    android:textColor="@color/them_color"
+                    android:fontFamily="@font/montserrat_semibold" />
+
+                <TextView
+                    android:id="@+id/time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" • 2h ago"
+                    android:textSize="@dimen/_8ssp"
+                    android:textColor="@color/secondary_text_color"
+                    android:layout_marginStart="@dimen/_5sdp" />
+            </LinearLayout>
+
+            <!-- Comment Text -->
+            <TextView
+                android:id="@+id/message_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is a sample comment"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/secondary_text_color"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_2sdp">
+
+        <ImageView
+            android:id="@+id/iv_comment_like"
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="@dimen/_14sdp"
+            android:src="@drawable/ic_outline_favorite_border_24"
+            android:layout_marginRight="@dimen/_5sdp"/>
+
+        <TextView
+            android:id="@+id/tv_total_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_11ssp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:drawablePadding="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_10sdp"/>
+
+        <TextView
+            android:id="@+id/reply_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reply"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_9ssp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:drawablePadding="@dimen/_5sdp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/view_replies_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View 3 more replies"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:drawablePadding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/replies_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:visibility="gone" />
+
+</LinearLayout>

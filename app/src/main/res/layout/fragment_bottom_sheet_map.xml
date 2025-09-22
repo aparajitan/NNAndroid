@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:paddingLeft="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
+    android:paddingTop="@dimen/_10sdp"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+       <ImageView
+             android:id="@+id/ic_back"
+             app:srcCompat="@drawable/ic_back"
+             android:layout_width="wrap_content"
+             android:paddingLeft="@dimen/_5sdp"
+             android:layout_height="?attr/actionBarSize"
+             android:background="@android:color/transparent"
+             app:tint="@color/text_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner_white"
+        android:padding="@dimen/_5sdp">
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Search places"
+            android:padding="@dimen/_5sdp">
+
+        </EditText>
+
+    </RelativeLayout>
+
+
+
+          <fragment android:id="@+id/autocomplete_fragment"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+           />
+
+
+</LinearLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragment.MarketPlaceFragment">
+    <include
+        android:id="@+id/header"
+        layout="@layout/custom_toolbar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:layout_below="@+id/nebourhood_ll"
+        android:layout_marginLeft="@dimen/_2sdp"
+        android:layout_marginRight="@dimen/_2sdp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/all_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+
+            android:background="@drawable/round_corner_dialog_themcolor"
+            android:layout_margin="@dimen/_2sdp"
+            android:layout_gravity="center">
+
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/_25sdp"-->
+<!--                android:layout_height="@dimen/_25sdp"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:paddingTop="@dimen/_5sdp"-->
+<!--                android:src="@drawable/ic_outline_local_hospital_24"/>-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:text="All"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/montserrat_medium"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sell_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_2sdp"
+            android:background="@drawable/round_corner_dialog_themcolor"
+            android:layout_gravity="center">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:text="Sold"
+               android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buy_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_2sdp"
+            android:background="@drawable/round_corner_dialog_themcolor"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:text="Bought"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/donate_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_2sdp"
+            android:background="@drawable/round_corner_dialog_themcolor"
+            android:layout_gravity="center">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:text="Donate"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:weightSum="2"
+
+
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hospital_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/divider_color"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

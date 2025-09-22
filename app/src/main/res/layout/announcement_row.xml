@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:background="@drawable/round_corner_dialog"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="Announcement"
+        android:textAllCaps="true"
+        android:layout_toEndOf="@+id/icon"
+        android:textColor="@color/white"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:background="@drawable/round_corner_announcemet"
+        android:includeFontPadding="false"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/_15ssp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_5sdp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:paddingLeft="@dimen/_5sdp"
+            android:src="@drawable/ic_announcement_icon" />
+
+        <TextView
+            android:id="@+id/announcement_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textAllCaps="true"
+            android:layout_toEndOf="@+id/icon"
+            android:fontFamily="@font/montserrat_semibold"
+            android:paddingLeft="@dimen/_5sdp"
+            android:text="Covid alert"
+            android:textColor="@color/color_announcement"
+            android:textSize="@dimen/_12ssp" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <com.app_neighbrsnook.libraries.readmoretextview.ReadMoreTextView
+            android:id="@+id/post_msg_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Taking note of the comparatively higher daily Covid cases and positivity rate, the Centre on Friday directed Kerala, Mizoram, Maharashtra, Delhi, and, Haryana to continue monitoring the spread of the infection and undertake the required steps for prompt and effective management."
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12ssp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingRight="@dimen/_10ssp"
+            app:colorClickableText="@color/them_color"
+            app:trimExpandedText="@string/show"
+            app:trimCollapsedText="@string/less"
+            app:trimLength="150"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+    <!--</LinearLayout>-->

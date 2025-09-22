@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/sector_137"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:hint="sector 137"
+                android:background="@null"
+                android:backgroundTintMode="@null"
+                android:id="@+id/sector_ngh_list_edt"
+                android:backgroundTint="@null"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:textSize="@dimen/_13ssp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/them_color"
+                android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:enabled="false"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:id="@+id/radio_button"
+                    android:src="@drawable/checked_checkbox"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"/>
+
+        </FrameLayout>
+        <TextView
+            android:background="@color/line_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/UvLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

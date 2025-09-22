@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:orientation="vertical"
+
+        android:background="@drawable/round_corner_dialog"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/msg_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="Incomplete Document"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/dialog_top_color"
+                    android:textSize="@dimen/_13ssp" />
+                <TextView
+                    android:id="@+id/msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Are you sure you want to logout ?"
+                    android:textColor="@color/dialog_top_color"
+                    android:textSize="@dimen/_12ssp" />
+            </LinearLayout>
+            <TextView
+                android:background="@color/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp">
+                <FrameLayout
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:text="No"
+                        android:gravity="center"
+                        android:id="@+id/no_id"
+                        android:textColor="#F44336"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_14ssp"
+                        android:layout_height="match_parent"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:background="@color/line_color"
+                    android:layout_gravity="center|top"
+                    android:visibility="gone"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="@dimen/_45sdp"/>
+
+                <FrameLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:text="OK"
+                        android:id="@+id/yes_id"
+                        android:gravity="center"
+                        android:textColor="@color/green_color"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_height="match_parent"/>
+
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

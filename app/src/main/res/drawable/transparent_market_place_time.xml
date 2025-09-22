@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!-- res/drawable/transparent_bg.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background layer (transparent) -->
+    <item>
+        <shape android:shape="rectangle">
+        </shape>
+    </item>
+    <!-- Border layer (black) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#8D000000"/>
+            <corners android:radius="@dimen/_2sdp"/>
+        </shape>
+    </item>
+</layer-list>

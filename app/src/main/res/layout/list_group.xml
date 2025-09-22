@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="4dp"
+    >
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="@dimen/_39sdp"
+        android:layout_height="@dimen/_39sdp"
+        android:src="@drawable/ic_outline_sell_24"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/_5sdp"/>
+
+    <TextView
+        android:id="@+id/lblListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/_12ssp"
+        android:layout_centerVertical="true"
+
+        android:text="sdadfa"/>
+
+
+</LinearLayout>

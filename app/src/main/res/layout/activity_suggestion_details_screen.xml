@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".suggestion.SuggestionDetailsScreen">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/yellow">
+            <FrameLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/img_back"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="Plumber Amar"
+                            android:textSize="@dimen/_16ssp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/suggestion_create_pluse"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@drawable/circle_white_solid"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/ic_plus_actionbar"
+                    android:visibility="visible"
+                    app:tint="@color/white"
+                    />
+            </FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_marginRight="@dimen/screens_padding_left_right"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/screens_padding_left_right"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:background="@drawable/round_corner_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:src="@drawable/arsad_pic"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="@dimen/_25sdp"/>
+                    <FrameLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Amarpal singh "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:id="@+id/call_direct"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        </FrameLayout>
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_width="@dimen/_22sdp"
+                        android:src="@drawable/calling_prsnl"
+                        android:id="@+id/calling_no"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="@dimen/_22sdp"/>
+                </LinearLayout>
+                <FrameLayout
+                    android:layout_gravity="end"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_view_background_suggestion"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="@dimen/_57sdp"
+                    android:layout_height="@dimen/_45sdp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:gravity="start"
+                        android:background="@drawable/card_view_suggestion_second"
+                        android:layout_height="@dimen/_20sdp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="4.0"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:textSize="@dimen/_14ssp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_marginLeft="@dimen/_12sdp"
+                            android:layout_gravity="center"
+                            android:layout_width="@dimen/_12sdp"
+                            android:src="@drawable/ic_baseline_star_rate_first24"
+                            android:layout_height="@dimen/_12sdp"/>
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="2.5k"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_10ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Reviews"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_10ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="#878686"
+                        android:layout_height="wrap_content"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Age "
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="35 "
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:textSize="@dimen/_10ssp"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+            </FrameLayout>
+            <LinearLayout
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:id="@+id/lnr_suggested_by_ngh"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/information_icon"
+                    android:layout_height="@dimen/_12sdp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Suggested by 3 neighbours"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:background="@color/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+<LinearLayout
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:src="@drawable/location_icon_text_color"
+        android:layout_height="@dimen/_20sdp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/text_color"
+        android:justificationMode="inter_word"
+        android:text="7 Greater Kailash-2, M Block,Market,Block M, Greater Kailash ||,Greater Kailash,New Delhi, Delhi 110048"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Aadhar card"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_width="wrap_content"
+                        android:text="No"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_gravity="center_vertical|end"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp"
+                        android:layout_height="wrap_content"/>
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_10ssp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:textColor="@color/yellow"
+                        android:clickable="true"
+                        android:checked="true"
+                        android:layout_gravity="end"
+                        android:layout_height="@dimen/_25sdp"/>
+
+                    <TextView
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_width="wrap_content"
+                        android:text="Yes"
+                        android:layout_gravity="center_vertical|end"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10ssp"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </FrameLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="@dimen/_150sdp"
+                    android:text="Police verification"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+                <FrameLayout
+                    android:layout_gravity="end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_gravity="end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="No"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_gravity="center_vertical|end"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_height="wrap_content"/>
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_10ssp"
+                            android:showText="true"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:textColor="@color/yellow"
+                            android:layout_gravity="end"
+                            android:layout_height="@dimen/_25sdp"/>
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="Yes"
+                            android:layout_gravity="center_vertical|end"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Hours of operation: "
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="(Sunday to Monday)"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/yellow"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Availability  7.00 am - 10.00 pm"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/text_color"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:text="Services:"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_width="wrap_content"
+                    android:text="Drain cleaning, Kitchen sink, installation Burst, pipe repair, Pipe leak, detection Garbage, disposal repair Toilet"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/text_color"
+                    android:justificationMode="inter_word"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Reviews"
+                    android:textSize="@dimen/_12ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="592124965587"
+                    android:layout_gravity="end"
+                    android:textSize="@dimen/_13ssp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lnr_direction"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/location_icon_text_color"
+                    android:layout_height="@dimen/_15sdp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Directions"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_width="wrap_content"
+                android:id="@+id/lnr_calling"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/phone_icon_yello"
+                    android:layout_height="@dimen/_18sdp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Asseds"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/visit_website"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:background="@drawable/green_background_button"
+                android:layout_height="@dimen/_30sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Visit website"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textSize="@dimen/text_size_short"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Neighbours speak"
+                    android:textColor="@color/text_color"
+                    android:layout_gravity="top"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_height="wrap_content"/>
+                <ImageView
+                    android:padding="@dimen/_1sdp"
+                    android:id="@+id/img_plus_ic_yellow"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_width="@dimen/upload_image_select_plus_icon"
+                    android:src="@drawable/plus_icon_deemed_sec"
+                    android:layout_height="@dimen/upload_image_select_plus_icon"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:src="@drawable/arsad_pic"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"/>
+                <FrameLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Yasar khan "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="27 April-2022 "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Excellent carpener"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="@dimen/_5sdp"
+
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="5.0"
+                        android:layout_gravity="end"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:src="@drawable/ic_baseline_star_rate_24" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:src="@drawable/music_twelve"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"/>
+                <FrameLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Nijat khan "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="22 May-2022 "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="nijat was very polite or nice, and finishing was awesome"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="top"
+
+                            android:layout_marginRight="@dimen/_28sdp"
+                            android:justificationMode="inter_word"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="3.2"
+                        android:layout_gravity="end"
+                        android:layout_marginRight="@dimen/_15sdp"
+
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_gravity="end"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:src="@drawable/ic_baseline_star_rate_24"
+                        android:layout_height="@dimen/_13sdp"/>
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:src="@drawable/music_saven"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="Shudhanshu kumar "
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="12 May-2022 "
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="excellent service"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="4.5"
+                        android:layout_marginRight="@dimen/_15sdp"
+
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_12ssp" />
+                    <ImageView
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:src="@drawable/ic_baseline_star_rate_24" />
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:src="@drawable/music_ten"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"/>
+                <FrameLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Naved ali"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="25 January-2022 "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Awesome experiance"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="5.0"
+                        android:layout_gravity="end"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginRight="@dimen/_15sdp"
+
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_gravity="end"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:src="@drawable/ic_baseline_star_rate_24"
+                        android:layout_height="@dimen/_13sdp"/>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:src="@drawable/music_nine"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"/>
+                <FrameLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Arjun kumar "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="5 January-2022 "
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_gravity="center_vertical"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Fast and nice service"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content"/>
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="3.2"
+                        android:layout_gravity="end"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginRight="@dimen/_15sdp"
+
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/text_color"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_gravity="end"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:src="@drawable/ic_baseline_star_rate_24"
+                        android:layout_height="@dimen/_13sdp"/>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:id="@+id/lnr_first"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="@dimen/_42sdp"
+                        android:src="@drawable/background_six"
+                        android:layout_height="@dimen/_42sdp">
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textColor="@color/yellow"
+                            android:layout_height="wrap_content"
+                            android:text="Roy Ray"
+
+                            />
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_9ssp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"
+                            android:text="04 January 7:14 AM,Sector 104"
+
+                            />
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"
+                            android:text="This is where user can leave a comment"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:background="@color/line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="@dimen/_42sdp"
+                        android:src="@drawable/background_fifth"
+
+                        android:layout_height="@dimen/_42sdp">
+
+
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/lnr_second"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textColor="@color/yellow"
+                            android:layout_height="wrap_content"
+                            android:text="Susan Kelly"
+
+                            />
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_9ssp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"
+                            android:text="04 January 7:14 AM,Sector 104"
+
+                            />
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"
+                            android:text="This is where user can leave a comment"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:background="@color/line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="@dimen/_42sdp"
+                        android:src="@drawable/background_image_testing"
+                        android:layout_height="@dimen/_42sdp">
+                    </de.hdodenhof.circleimageview.CircleImageView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:id="@+id/lnr_third"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textColor="@color/yellow"
+                            android:layout_height="wrap_content"
+                            android:text="Roy Ray"
+
+                            />
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_9ssp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"
+                            android:text="04 January 7:14 AM,Sector 104"
+
+                            />
+                        <TextView
+                            android:layout_gravity=""
+                            android:layout_width="wrap_content"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:layout_height="wrap_content"
+                            android:text="This is where user can leave a comment"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
+
+</ScrollView>
+
+
+</LinearLayout>

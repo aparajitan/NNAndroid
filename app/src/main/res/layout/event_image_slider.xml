@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:orientation="vertical"
+    android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_88sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <FrameLayout
+       android:layout_margin="@dimen/_5sdp"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/_85sdp">
+       <androidx.cardview.widget.CardView
+           android:id="@+id/cardView"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_82sdp"
+           app:cardElevation="1dp"
+           app:cardCornerRadius="@dimen/_10sdp"
+           tools:ignore="MissingConstraints">
+           <ImageView
+               android:id="@+id/imageview"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:scaleType="fitXY"
+               android:src="@drawable/a1"
+               tools:ignore="MissingConstraints"
+               tools:layout_editor_absoluteX="6dp" />
+           <TextView
+               android:id="@+id/image_count"
+               android:layout_width="@dimen/_24sdp"
+               android:layout_height="@dimen/_15sdp"
+               android:layout_marginTop="2dp"
+               android:layout_marginEnd="2dp"
+               android:visibility="gone"
+               android:background="@drawable/round_corner_white"
+               android:paddingLeft="@dimen/_7sdp"
+               android:paddingTop="@dimen/_1sdp"
+               android:paddingRight="@dimen/_7sdp"
+               android:gravity="center"
+               android:paddingBottom="@dimen/_2sdp"
+               android:text="1/1"
+               android:textSize="@dimen/_6ssp"
+               android:textColor="@color/black"
+               android:layout_gravity="start"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="@+id/cardView"
+               app:layout_constraintHorizontal_bias="0.976"
+               app:layout_constraintStart_toStartOf="@+id/cardView"
+               app:layout_constraintTop_toTopOf="@+id/cardView"
+               app:layout_constraintVertical_bias="0.088"
+               tools:ignore="MissingConstraints" />
+       </androidx.cardview.widget.CardView>
+   </FrameLayout>
+    <ImageView
+        android:id="@+id/iv_remove_image"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_alignEnd="@id/pdfView"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="end"
+        android:src="@drawable/ic_cancel_dialog"
+        app:tint="@color/white" />
+</FrameLayout>

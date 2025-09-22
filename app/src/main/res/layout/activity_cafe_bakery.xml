@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    tools:context=".suggestion.CafeBakeryActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/yellow">
+            <FrameLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/iv43"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="Plumber"
+                            android:textSize="@dimen/_16ssp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/search_img_size"
+                    android:src="@drawable/search_icon_white"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/search_img_size" />
+                <ImageView
+                    android:layout_width="@dimen/plus_icon_size"
+                    android:id="@+id/add_suggestion"
+                    android:background="@drawable/circle_white_solid"
+                    app:tint="@color/white"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/ic_plus_actionbar"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/plus_icon_size" />
+
+
+
+
+
+            </FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/lnr_parent_layout_plumber"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <FrameLayout
+            android:background="@drawable/round_corner_dialog"
+            android:layout_marginTop="@dimen/vertical_gap_centre"
+            android:layout_marginRight="@dimen/screens_padding_left_right"
+            android:layout_marginLeft="@dimen/screens_padding_left_right"
+            android:orientation="vertical"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_2sdp"
+            android:id="@+id/lnr_cafe_bakery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/lnr_holi_hai_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:background="@drawable/plumbar_suggestion"
+                        android:src="@drawable/plumber_icon"
+                        android:layout_height="@dimen/_25sdp"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_13ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/yellow"
+                        android:layout_gravity="center_vertical"
+                        android:text="Raju Rastogi"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_gravity="end"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/card_view_background_suggestion"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_width="@dimen/_57sdp"
+                android:layout_height="@dimen/_45sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/card_view_suggestion_second"
+                    android:layout_height="@dimen/_20sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="4.0"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_12sdp"
+                        android:src="@drawable/ic_baseline_star_rate_first24"
+                        android:layout_height="@dimen/_12sdp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="15"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Reviews"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_8ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="#878686"
+                    android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+        </FrameLayout>
+        <FrameLayout
+            android:background="@drawable/round_corner_dialog"
+            android:layout_marginTop="@dimen/vertical_gap_centre"
+            android:layout_marginRight="@dimen/screens_padding_left_right"
+            android:layout_marginLeft="@dimen/screens_padding_left_right"
+            android:orientation="vertical"
+            android:id="@+id/frm_second_card"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_2sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_gravity="end"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/card_view_background_suggestion"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="@dimen/_57sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/card_view_suggestion_second"
+                    android:layout_height="@dimen/_20sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="3.8"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_12sdp"
+                        android:src="@drawable/ic_baseline_star_rate_first24"
+                        android:layout_height="@dimen/_12sdp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="20"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Reviews"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_8ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="#878686"
+                    android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:background="@drawable/plumbar_suggestion"
+                        android:src="@drawable/plumber_icon"
+                        android:layout_height="@dimen/_25sdp"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_13ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/yellow"
+                        android:layout_gravity="center_vertical"
+                        android:text="Shaved Ali"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+            android:background="@drawable/round_corner_dialog"
+            android:layout_marginTop="@dimen/vertical_gap_centre"
+            android:layout_marginRight="@dimen/screens_padding_left_right"
+            android:layout_marginLeft="@dimen/screens_padding_left_right"
+            android:orientation="vertical"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:id="@+id/frm_third_card"
+            app:cardElevation="@dimen/_2sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_gravity="end"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/card_view_background_suggestion"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="@dimen/_57sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/card_view_suggestion_second"
+                    android:layout_height="@dimen/_20sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="3.0"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_12sdp"
+                        android:src="@drawable/ic_baseline_star_rate_first24"
+                        android:layout_height="@dimen/_12sdp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="22"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Reviews"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_8ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="#878686"
+                    android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:background="@drawable/plumbar_suggestion"
+                        android:src="@drawable/plumber_icon"
+                        android:layout_height="@dimen/_25sdp"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_13ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/yellow"
+                        android:layout_gravity="center_vertical"
+                        android:text="Arjun Pandey"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+            android:background="@drawable/round_corner_dialog"
+            android:layout_marginTop="@dimen/vertical_gap_centre"
+            android:layout_marginRight="@dimen/screens_padding_left_right"
+            android:layout_marginLeft="@dimen/screens_padding_left_right"
+            android:orientation="vertical"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:id="@+id/frm_fourth_card"
+            app:cardElevation="@dimen/_2sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_gravity="end"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/card_view_background_suggestion"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="@dimen/_57sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="@dimen/_45sdp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/card_view_suggestion_second"
+                    android:layout_height="@dimen/_20sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="2.0"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_14ssp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_12sdp"
+                        android:src="@drawable/ic_baseline_star_rate_first24"
+                        android:layout_height="@dimen/_12sdp"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="11"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Reviews"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_8ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="#878686"
+                    android:layout_height="wrap_content"/>
+
+            </FrameLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_25sdp"
+                        android:background="@drawable/plumbar_suggestion"
+                        android:src="@drawable/plumber_icon"
+                        android:layout_height="@dimen/_25sdp"/>
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_13ssp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/yellow"
+                        android:layout_gravity="center_vertical"
+                        android:text="Altaaz Pasha"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

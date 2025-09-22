@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    tools:context=".fragment.SellFragment">
+    <include
+        android:id="@+id/header"
+        layout="@layout/custom_toolbar" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_2sdp">
+
+        <TextView
+            android:id="@+id/category_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_vertical"
+            android:text="Today's Listing"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/view_all_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center_vertical"
+
+            android:text="View All"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12sdp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="gone"
+        android:background="@drawable/round_corner_white">
+        <TextView
+            android:id="@+id/item_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:drawableTint="@color/text_color"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:text="Select category"
+            android:textColor="@color/text_color"
+            android:textCursorDrawable="@drawable/ic_baseline_arrow_drop_down_24"
+            android:textSize="@dimen/_14ssp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_32sdp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/sale_item_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Sale items"
+            android:textColor="@color/text_color"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:textSize="@dimen/_12sdp"
+            android:background="@drawable/round_corner_white"/>
+        <TextView
+            android:id="@+id/free_item_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Free items"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_12sdp"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:background="@drawable/round_corner_white"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_sell"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        />
+
+
+
+
+</LinearLayout>

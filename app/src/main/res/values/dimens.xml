@@ -1,0 +1,49 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="text_padding_left">@dimen/_10sdp</dimen>
+    <dimen name="globalPaddingList">@dimen/_5sdp</dimen>
+    <dimen name="text_padding_top_register">@dimen/_10sdp</dimen>
+    <dimen name="margin_left_and_right_10sdp">@dimen/_10sdp</dimen>
+    <dimen name="text_padding_top_second">@dimen/_5sdp</dimen>
+    <dimen name="profile_padding_gap">@dimen/_8sdp</dimen>
+    <dimen name="toolbar_text_size">@dimen/_14ssp</dimen>
+    <dimen name="text_size_short">@dimen/_12ssp</dimen>
+    <dimen name="text_size_mini_short">@dimen/_11ssp</dimen>
+    <dimen name="tv_real_state_pg">@dimen/_11ssp</dimen>
+    <dimen name="background_gap_centre">@dimen/_7sdp</dimen>
+    <dimen name="search_img_size">@dimen/_19sdp</dimen>
+    <dimen name="plus_icon_size">@dimen/_15sdp</dimen>
+    <dimen name="upload_image_select_plus_icon">@dimen/_25sdp</dimen>
+    <dimen name="screens_padding_left_right">@dimen/_5sdp</dimen>
+    <dimen name="toolbar_padding_left_right">@dimen/_5sdp</dimen>
+    <dimen name="upload_image_dimension">@dimen/_40sdp</dimen>
+    <dimen name="amar_dubey_profile">@dimen/_8sdp</dimen>
+    <dimen name="setting_left_right_padding">@dimen/_10sdp</dimen>
+    <dimen name="suggestion_icon_size">@dimen/_35sdp</dimen>
+    <dimen name="close_icon_size">@dimen/_22sdp</dimen>
+    <dimen name="vertical_gap_centre">@dimen/_7sdp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="image_size_event">@dimen/_80sdp</dimen>
+    <dimen name="all_event_show">@dimen/_82sdp</dimen>
+    <dimen name="button_width">@dimen/_150sdp</dimen>
+    <dimen name="button_height">@dimen/_30sdp</dimen>
+    <dimen name="button_size">@dimen/_15ssp</dimen>
+    <dimen name="text_dialog_padding_left_right">@dimen/_5sdp</dimen>
+    <dimen name="dialog_screen_padding_parent">@dimen/_20sdp</dimen>
+    <dimen name="dialog_padding_top_gap">@dimen/_16sdp</dimen>
+    <dimen name="dialog_text_size">@dimen/_13ssp</dimen>
+    <dimen name="take_photo_take_picture">@dimen/_285sdp</dimen>
+    <dimen name="take_photo_upload_image_btm_top">@dimen/_4sdp</dimen>
+    <dimen name="post_property_form_left_right_padding">@dimen/_10sdp</dimen>
+    <dimen name="post_property_second_heading">@dimen/_12ssp</dimen>
+    <dimen name="post_property_3rd_size">@dimen/_11ssp</dimen>
+    <dimen name="post_line_size">@dimen/_4sdp</dimen>
+    <dimen name="post_property_start_padding">@dimen/_10sdp</dimen>
+    <dimen name="padding_one">@dimen/_10sdp</dimen>
+    <dimen name="listing_bold_size">@dimen/_14sdp</dimen>
+    <dimen name="toolbar_size35">60dp</dimen>
+    <dimen name="icon_sdk35">@dimen/_7sdp</dimen>
+
+
+</resources>

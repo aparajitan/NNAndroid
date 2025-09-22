@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:paddingLeft="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_5sdp"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/upload_options_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#BF424040">
+
+        <LinearLayout
+            android:id="@+id/upload_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/round_corner_dialog">
+
+            <TextView
+                android:id="@+id/take_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Take Photo"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12sdp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/divider_color"/>
+
+            <TextView
+                android:id="@+id/choose_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Photo"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12sdp"
+                android:layout_below="@+id/upload_Video"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/divider_color"/>
+
+            <TextView
+                android:id="@+id/make_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Make Video"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:layout_below="@+id/upload_image"
+                android:textSize="@dimen/_12sdp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/divider_color"/>
+
+            <TextView
+                android:id="@+id/choose_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Video"
+                android:padding="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/text_color"
+                android:layout_below="@+id/upload_image"
+                android:textSize="@dimen/_12sdp"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/cancle_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:text="Cancel"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:textColor="@color/text_color"
+            android:padding="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:background="@drawable/round_corner_white"
+            android:textSize="@dimen/_12sdp"/>
+
+    </LinearLayout>
+</LinearLayout>

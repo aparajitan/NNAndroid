@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_125sdp">
+    <VideoView
+        android:id="@+id/videoView"
+        android:focusableInTouchMode="true"
+        android:visibility="gone"
+        android:fitsSystemWindows="true"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp" />
+    <ImageView
+        android:id="@+id/iv_uploaded_image"
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:layout_height="@dimen/_120sdp" />
+
+
+</FrameLayout>

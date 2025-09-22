@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="DialogAnimation">
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+        <item name="android:layout_marginRight">@dimen/_3sdp</item>
+        <item name="android:layout_marginLeft">@dimen/_3sdp</item>
+    </style>
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+        <style name="foodRatingBar" parent="@android:style/Widget.RatingBar">
+            <item name="android:progressDrawable">@drawable/rating_selector</item>
+            <item name="android:minHeight">24dip</item>
+            <item name="android:maxHeight">50dip</item>
+            <item name="colorControlNormal">@color/yellow</item>
+            <item name="colorControlActivated">@color/yellow</item>
+        </style>
+
+    <style name="timepickerStyle" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#b71c1c</item>
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="android:minHeight">22dip</item>
+        <item name="android:maxHeight">22dip</item>
+        <item name="colorControlNormal">@color/yellow</item>
+        <item name="android:selectableItemBackgroundBorderless">@drawable/round_corner_dialog</item>
+    </style>
+    <style name="MyTimePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="showTitle">false</item>
+        <item name="colorControlActivated">@color/them_color</item>
+        <item name="colorAccent">@color/them_color</item>
+        <item name="android:textColorPrimary">@color/text_color</item>
+        <item name="android:textColorSecondary">@color/them_color</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+    <style name="MyDatePicker" parent="@style/ThemeOverlay.AppCompat.DayNight.ActionBar">
+        <item name="showTitle">false</item>
+        <item name="colorControlActivated">@color/them_color</item>
+        <item name="colorAccent">@color/them_color</item>
+        <item name="android:textColorPrimary">@color/text_color</item>
+        <item name="android:textColorSecondary">@color/them_color</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+    <style name="markdate">
+    </style>
+    <style name="CustomPickerTheme">
+        <item name="colorAccent">@color/them_color</item>
+    </style>
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/them_color_second</item>
+        <item name="colorOnSecondary">@color/them_color</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:weekNumberColor">@color/green_color</item>
+    </style>
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <style name="RatingBarlatest" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/teal_200</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+    <style name="MyProgressBarTwo" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="colorButtonNormal">#f50057</item>
+        <item name="colorControlActivated">#7EA56E</item>
+        <item name="colorControlHighlight">#ff6d00</item>
+        <item name="android:progressDrawable">@drawable/custom_progressbar_horizontal</item>
+        <item name="android:minWidth">@dimen/_25sdp</item>
+    </style>
+
+    //
+    <style name="customRatingBar"
+        parent="android:style/Widget.Material.RatingBar.Small">
+    </style>
+    <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget"/>
+
+    <style name="TimePickerDialogStyle" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/them_color</item>
+    </style>
+
+    <style name="progressBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/pie_type_background</item>
+        <item name="android:minHeight">24dip</item>
+        <item name="android:maxHeight">50dip</item><!--
+        <item name="colorControlNormal">@color/yellow</item>
+        <item name="colorControlActivated">@color/yellow</item>-->
+    </style>
+    <style name="FullscreenDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorAccent">@android:color/black</item>
+        <item name="colorPrimaryVariant">@android:color/black</item>
+
+
+        </style>
+
+    <!-- res/values/styles.xml -->
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    </style>
+
+    <style name="CustomBottomSheet2" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        </style>
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item> <!-- Transparent background -->
+        <item name="android:layout_margin">16dp</item> <!-- Add margin -->
+    </style>
+
+</resources>
