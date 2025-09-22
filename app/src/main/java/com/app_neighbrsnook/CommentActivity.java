@@ -491,6 +491,8 @@ public class CommentActivity extends AppCompatActivity implements View.OnClickLi
                     msg_et.setText("");
                     InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     mgr.hideSoftInputFromWindow(msg_et.getWindowToken(), 0);
+                    // Automatically expand the comment that was replied to
+                    expandedCommentIds.add(postCommentId);
                     commentListApi();
                 }
                 progressDialog.dismiss();

@@ -573,7 +573,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                     return;
                 }
                 // Final checks
-                if (!isVerifiedOtp) {
+               /* if (!isVerifiedOtp) {
                     Toast.makeText(activity, "Please verify your OTP", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -585,7 +585,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                 if (!checkBox.isChecked()) {
                     globalDialog(); // Show terms & conditions dialog
                     return;
-                }
+                }*/
                 signup();
            /*     emailChecked(new EmailVerificationCallback() {
                     @Override
