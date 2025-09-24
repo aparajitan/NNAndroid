@@ -136,11 +136,13 @@ public class MyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         context = activity = this;
         setContentView(R.layout.activity_my_profile);
+
         Intent intent = getIntent();
         source = intent.getStringExtra("source");
+        sm = new SharedPrefsManager(this);
+
         frm_events = findViewById(R.id.events_card_id);
         tv_cancel = findViewById(R.id.cancle_tv);
-        sm = new SharedPrefsManager(this);
         img_edit_icon = findViewById(R.id.img_edit_profile);
         tvFirtsName = findViewById(R.id.firstName);
         rl_profile_layout = findViewById(R.id.rl_profile_layout);
@@ -216,16 +218,19 @@ public class MyProfile extends AppCompatActivity {
         usernameFrm = findViewById(R.id.usernameFrm);
         profileFrontView = findViewById(R.id.profileFrontView);
         profileBackView = findViewById(R.id.profileBackView);
-        bitmap2 = bitmap4;
         tv_take_photo = findViewById(R.id.take_photo);
         tvLine = findViewById(R.id.tvLine);
         tv_choose_photo = findViewById(R.id.choose_photo);
+
+        littleMoreSkip();
+
+        bitmap2 = bitmap4;
         bitmap3 = GlobalMethods.getInstance(context).getInitialBitmap(imgDefaultImg, sm.getString("user_name"), MyProfile.this);
         imgDefaultImg.setImageBitmap(bitmap3);
         progressEvent.setMax(100);
         img_address.setVisibility(View.GONE);
         edit_address_neighbrhood.setVisibility(View.GONE);
-        // बस यह method use करें
+
         profileFrontView.setOnClickListener(v -> showImageDialogSimple(frontImageUrl, "Front Document"));
         profileBackView.setOnClickListener(v -> showImageDialogSimple(backImageUrl, "Back Document"));
         img_profile.setOnClickListener(new View.OnClickListener() {
@@ -246,7 +251,6 @@ public class MyProfile extends AppCompatActivity {
                 startActivity(new Intent(MyProfile.this, YourItemListActivity.class));
             }
         });
-
         editNameUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -322,7 +326,6 @@ public class MyProfile extends AppCompatActivity {
                 });
             }
         });
-
         img_edit_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -567,15 +570,12 @@ public class MyProfile extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 rl_my_profile.setVisibility(View.GONE);
             }
         });
-        littleMoreSkip();
-
     }
 
     private void littleMoreSkip() {

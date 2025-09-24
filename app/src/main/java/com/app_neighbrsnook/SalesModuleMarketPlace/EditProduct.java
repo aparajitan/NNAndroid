@@ -409,6 +409,7 @@ public class EditProduct extends AppCompatActivity implements MarketPlaceCategor
                 .setFixAspectRatio(false)
                 .start(this);
     }
+
     private void compressVideo(Uri videoUri) {
         File movieDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
         if (!movieDirectory.exists()) {

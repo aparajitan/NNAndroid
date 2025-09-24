@@ -165,7 +165,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
         add_imageview1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ( GlobalMethods.checkCameraAndGalleryPermission(CreatePostActivity.this)) {
+                if (GlobalMethods.checkCameraAndGalleryPermission(CreatePostActivity.this)) {
                     if (mArrayUri.size() < itemCount) {
                         rl_upload_layout.setVisibility(View.VISIBLE);
                     } else {
@@ -305,6 +305,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
             }
         });
     }
+
     private void selectCategory() {
         RecyclerView rv;
         ImageView cancel;
@@ -325,6 +326,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
         mail_dialog.setCancelable(true);
         mail_dialog.show();
     }
+
     public File bitmapToFile(Bitmap bitmap, String fileNameToSave) { // File name like "image.png"
         File file = null;
         try {
@@ -343,6 +345,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
             return file;
         }
     }
+
     @Override
     protected void onActivityResult(int req, int result, Intent data) {
         super.onActivityResult(req, result, data);
@@ -479,6 +482,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
         }
         compressVideo(videoUri);
     }
+
     private void compressVideo(Uri videoUri) {
         File movieDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
         if (!movieDirectory.exists()) {
@@ -930,6 +934,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
     public void onImageClick(int pos) {
 
     }
+
     @Override
     public void onCrossClick(int pos, String from) {
         mArrayUri.remove(pos);
@@ -949,10 +954,12 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
             image_textview.setVisibility(View.GONE);
         }
     }
+
     @Override
     public void onCrossClick1(int pos, String from) {
 
     }
+
     @Override
     public void onClick(View view) {
         if (checkAllFields()) {
@@ -960,10 +967,12 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
             new SimulateTask().execute();
         }
     }
+
     @Override
     public void onItemClick(Uri uri) {
 
     }
+
     @Override
     public void onRemoveClick(int position, String type) {
         if (type.equals("Video")) {
@@ -999,6 +1008,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
             SystemClock.sleep(5000);
             return null;
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
             if (apiStatus.equals("success")) {
@@ -1104,7 +1114,7 @@ public class CreatePostActivity extends AppCompatActivity implements BusinessCat
         }
     }
 
-// Show Settings Dialog for "Don't Ask Again"
+    // Show Settings Dialog for "Don't Ask Again"
     private void showSettingsDialog() {
         String message;
 
