@@ -14,3 +14,7 @@
 .cxx
 local.properties
 misc.xml
+/app/build/
+*.apk
+*.aab
+*.zip

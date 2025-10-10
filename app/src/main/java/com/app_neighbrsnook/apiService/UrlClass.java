@@ -1,8 +1,8 @@
 package com.app_neighbrsnook.apiService;
 public class UrlClass {
-    public static final String BASE_URL="https://dev.neighbrsnook.com/oldadmin/";
+    public static final String BASE_URL="https://neighbrsnook.com/oldadmin/";
     public static final String SIGN_UP= BASE_URL+"api/master?flag=createuser";
-    public static final String LARAVEL_BASE_URL="https://dev.neighbrsnook.com/admin/";
+    public static final String LARAVEL_BASE_URL="https://neighbrsnook.com/admin/";
     public static final String OTP=BASE_URL+"api/master?flag=sendotp";
     public static final String OTP_FORGOT=BASE_URL+"api/otpverification?flag=forget";
     public static final String MAIL_API=BASE_URL+"api/testuu?flag=hitmail";

@@ -51,9 +51,11 @@ import com.app_neighbrsnook.termsCondition.PrivacyPolicy;
 import com.app_neighbrsnook.termsCondition.TermsConditions;
 import com.app_neighbrsnook.utils.AppSignatureHelper;
 import com.app_neighbrsnook.utils.GlobalMethods;
+import com.app_neighbrsnook.utils.MetaEventLogger;
 import com.app_neighbrsnook.utils.PrefMananger;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.app_neighbrsnook.utils.UtilityFunction;
+import com.facebook.appevents.AppEventsConstants;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -93,7 +95,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
     Activity activity;
     Context context;
     TextView tv_send_otp, checkeMail;
-    ImageView imgShowPassword, imgHidePassword, img_confirm_password, imgHidePasswordConfirm, imgRightIcon, imgCrossIcon;
+    ImageView imgShowPassword, imgHidePassword, img_confirm_password, imgRightIcon, imgCrossIcon;
     private EditText et_password;
     private EditText tv_mail;
     TextView tv_terms_condition;
@@ -422,27 +424,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
             public void afterTextChanged(Editable s) {
             }
         };
-        TextWatcher confirmPasswordWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String password = et_password.getText().toString();
-                String confirmPassword = s.toString();
-                if (confirmPassword.equals(password)) {
-                    et_confirm_password.setError(null);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        };
-
         et_password.addTextChangedListener(passwordTextWatcher);
-        et_confirm_password.addTextChangedListener(confirmPasswordWatcher);
         tv_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -470,28 +452,6 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                 imgHidePassword.setVisibility(View.GONE);    // Hide the "Hide Password" icon
                 imgShowPassword.setVisibility(View.VISIBLE); // Show the "Show Password" icon
                 et_password.setSelection(et_password.getText().length()); // Move cursor to end
-            }
-        });
-        et_confirm_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        img_confirm_password.setVisibility(View.VISIBLE);
-        imgHidePasswordConfirm.setVisibility(View.GONE);
-        img_confirm_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                et_confirm_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                img_confirm_password.setVisibility(View.GONE);    // Hide the "Show Password" icon
-                imgHidePasswordConfirm.setVisibility(View.VISIBLE); // Show the "Hide Password" icon
-                et_confirm_password.setSelection(et_confirm_password.getText().length()); // Move cursor to end
-            }
-        });
-        imgHidePasswordConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Hide password
-                et_confirm_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                imgHidePasswordConfirm.setVisibility(View.GONE);    // Hide the "Hide Password" icon
-                img_confirm_password.setVisibility(View.VISIBLE); // Show the "Show Password" icon
-                et_confirm_password.setSelection(et_confirm_password.getText().length()); // Move cursor to end
             }
         });
         tv_send_otp.setOnClickListener(new View.OnClickListener() {
@@ -573,7 +533,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                     return;
                 }
                 // Final checks
-               /* if (!isVerifiedOtp) {
+                if (!isVerifiedOtp) {
                     Toast.makeText(activity, "Please verify your OTP", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -585,7 +545,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                 if (!checkBox.isChecked()) {
                     globalDialog(); // Show terms & conditions dialog
                     return;
-                }*/
+                }
                 signup();
            /*     emailChecked(new EmailVerificationCallback() {
                     @Override
@@ -617,7 +577,6 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
     }
 
     private void item() {
-        imgHidePasswordConfirm = findViewById(R.id.imgHidePasswordConfirm);
         imgShowPassword = findViewById(R.id.show_password);
         tv_sign = findViewById(R.id.tv_sign_in);
         imgHidePassword = findViewById(R.id.imgHidePassword);
@@ -779,7 +738,6 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
         progressDialog.setCancelable(false);
         progressDialog.show();
         logRegistrationEvent("first_step_started_android_app", "step_one_done");
-
         // 1. Name uthao
         String firstName = tv_first_name.getText().toString().trim();
 
@@ -821,6 +779,13 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                         String status = jsonObject.getString("status");
                         if (status.equals("success") && jsonObject.has("userid")) {
                             String userid = jsonObject.getString("userid");
+                            MetaEventLogger.logEvent(
+                                    FirstPageRegisteration.this,
+                                    AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
+                                    "meta_step_one_done",
+                                    userid
+                            );
+                            Log.d("MetaEventLogger", "Event sent to Meta: meta_step_one_done for user: " + userid);
 
                             // Save data in SharedPrefs
                             LoginPojo loginPojo = new LoginPojo();

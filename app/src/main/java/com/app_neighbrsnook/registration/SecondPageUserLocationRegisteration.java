@@ -67,9 +67,11 @@ import com.app_neighbrsnook.pojo.marketPlacePojo.CommonPojoSuccess;
 import com.app_neighbrsnook.profile.ProfileUpdateDocumentUser;
 import com.app_neighbrsnook.utils.DeviceUtils;
 import com.app_neighbrsnook.utils.GlobalMethods;
+import com.app_neighbrsnook.utils.MetaEventLogger;
 import com.app_neighbrsnook.utils.PrefMananger;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.app_neighbrsnook.utils.UtilityFunction;
+import com.facebook.appevents.AppEventsConstants;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -1092,6 +1094,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         dialog.setMessage("Please wait...");
         dialog.setCancelable(false);
         dialog.show();
+
         try {
             HashMap<String, RequestBody> hashMap = new HashMap<>();
             hashMap.put("userid", RequestBody.create(MultipartBody.FORM, sm.getString("user_id")));
@@ -1107,13 +1110,23 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                         public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
                             UtilityFunction.hideLoading();
                             try {
-                                if (response.body().getStatus().equals("success")) {
+                                if (response.body() != null && response.body().getStatus().equals("success")) {
                                     dialog.dismiss();
 
-                               //     startActivity(new Intent(AddressProofLocation.this, AddressDocumentDemo.class));
+                                    // ✅ Facebook Meta Event Logging (Step 2 Completed)
+                                    String userId = sm.getString("user_id");
+                                    MetaEventLogger.logEvent(
+                                            SecondPageUserLocationRegisteration.this,
+                                            AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
+                                            "meta_step_two_done",
+                                            userId
+                                    );
 
-                                    //littleMoreSkip1();
-                                } else if (response.body().getMessage() != null) {
+                                    // Optionally: navigate to next screen
+                                    // startActivity(new Intent(AddressProofLocation.this, AddressDocumentDemo.class));
+                                    // littleMoreSkip1();
+
+                                } else if (response.body() != null && response.body().getMessage() != null) {
                                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 }
@@ -1125,7 +1138,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                         @Override
                         public void onFailure(Call<AddressResponse> call, Throwable t) {
                             dialog.dismiss();
-                            Log.e("fdsadf", t.toString());
+                            Log.e("addressProofError", t.toString());
                         }
                     });
 

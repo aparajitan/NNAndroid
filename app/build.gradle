@@ -34,8 +34,8 @@ android {
         applicationId "com.app_neighbrsnook"
         minSdk 23
         targetSdk 36
-        versionCode 106
-        versionName "1.5.1"
+        versionCode 108
+        versionName "1.5.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions{
@@ -60,6 +60,7 @@ android {
 
     buildFeatures {
         viewBinding true
+
     }
     viewBinding {
         enabled = true
@@ -97,6 +98,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:19.2.0'
     implementation 'com.google.android.gms:play-services-location:21.3.0'
     implementation 'com.google.android.gms:play-services-places:17.1.0'
+    // facebook android app
+
+   // implementation 'com.facebook.android:facebook-core:16.3.0'
+
 
     // Google Places Library
     implementation 'com.google.android.libraries.places:places:4.4.1' // Updated version by Arshad Updated library
