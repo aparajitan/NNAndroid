@@ -69,9 +69,11 @@ import com.app_neighbrsnook.pojo.StateDropdownPojo;
 import com.app_neighbrsnook.pojo.marketPlacePojo.CommonPojoSuccess;
 import com.app_neighbrsnook.utils.FileUtil;
 import com.app_neighbrsnook.utils.GlobalMethods;
+import com.app_neighbrsnook.utils.MetaEventLogger;
 import com.app_neighbrsnook.utils.PrefMananger;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.app_neighbrsnook.utils.UtilityFunction;
+import com.facebook.appevents.AppEventsConstants;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -1085,6 +1087,13 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                         if (response.body().getStatus().equals("success")) {
                             dialog.dismiss();
                             logRegistrationEvent("registration_completed_android", "user_signup_done_android");
+                            String userId = sm.getString("user_id");
+                            MetaEventLogger.logEvent(
+                                    LastPageUserDocumentRegisteration.this,
+                                    AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
+                                    "meta_step_two_done",
+                                    userId
+                            );
                             shouldShowWelcomeDialog = true;
                             littleMoreSkip1();
                         } else if (response.body().getMessage() != null) {
