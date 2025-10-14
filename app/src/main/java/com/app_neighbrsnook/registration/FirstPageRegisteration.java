@@ -86,7 +86,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+import android.app.Application;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 public class FirstPageRegisteration extends AppCompatActivity implements SmsBroadcastReceiver.SmsBroadcastReceiverListener {
     TextView tv_sign;
     FrameLayout frm_register, frm_privacy_policy;
@@ -153,6 +155,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
             registerReceiver(smsBroadcastReceiver, intentFilter);
         }
         item();
+        MetaEventLogger.testMetaEvents(FirstPageRegisteration.this);
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -533,7 +536,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                     return;
                 }
                 // Final checks
-                if (!isVerifiedOtp) {
+               /* if (!isVerifiedOtp) {
                     Toast.makeText(activity, "Please verify your OTP", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -545,7 +548,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                 if (!checkBox.isChecked()) {
                     globalDialog(); // Show terms & conditions dialog
                     return;
-                }
+                }*/
                 signup();
            /*     emailChecked(new EmailVerificationCallback() {
                     @Override
@@ -782,11 +785,11 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                             MetaEventLogger.logEvent(
                                     FirstPageRegisteration.this,
                                     AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
-                                    "meta_step_one_done",
+                                    "registeration_step_one_done",
                                     userid
                             );
-                            Log.d("MetaEventLogger", "Event sent to Meta: meta_step_one_done for user: " + userid);
 
+                            Log.d("MetaEventLogger", "Event sent to Meta: meta_step_one_done for user: " + userid);
                             // Save data in SharedPrefs
                             LoginPojo loginPojo = new LoginPojo();
                             loginPojo.setUsername(tv_first_name.getText().toString());

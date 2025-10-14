@@ -34,8 +34,8 @@ android {
         applicationId "com.app_neighbrsnook"
         minSdk 23
         targetSdk 36
-        versionCode 108
-        versionName "1.5.3"
+        versionCode 109
+        versionName "1.5.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions{
@@ -70,6 +70,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.aar"])
 
+
+
+
     // Core Libraries
     implementation 'androidx.core:core-ktx:1.17.0'
     implementation 'androidx.appcompat:appcompat:1.7.1'
@@ -77,6 +80,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.viewpager2:viewpager2:1.1.0'
+
+
 
     // Google Material
     implementation 'com.google.android.material:material:1.12.0'

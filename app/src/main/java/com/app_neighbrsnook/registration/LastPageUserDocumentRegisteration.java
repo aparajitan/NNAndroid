@@ -1091,7 +1091,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                             MetaEventLogger.logEvent(
                                     LastPageUserDocumentRegisteration.this,
                                     AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
-                                    "meta_step_two_done",
+                                    "registeration_step_three_done_complete",
                                     userId
                             );
                             shouldShowWelcomeDialog = true;

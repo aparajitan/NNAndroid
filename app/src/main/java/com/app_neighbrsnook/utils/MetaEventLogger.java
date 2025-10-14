@@ -24,16 +24,20 @@ public class MetaEventLogger {
             AppEventsLogger logger = AppEventsLogger.newLogger(context);
             Bundle params = new Bundle();
 
-            params.putString("meta_registration_step", stepName);
-            params.putString("meta_platform", "android_app");
-            params.putString("meta_source", "user_registration");
-            if (userId != null && !userId.isEmpty()) {
-                params.putString("user_id", userId);
-            }
+            // ✅ YEH PARAMETERS CODE YAHAN USE KAREIN
+            params.putString(AppEventsConstants.EVENT_PARAM_REGISTRATION_METHOD, "email");
+            params.putString(AppEventsConstants.EVENT_PARAM_SUCCESS, "1");
+            params.putString("user_id", userId);
 
-            logger.logEvent(eventName, params);
+            // Additional custom parameters
+            params.putString("registration_step", stepName);
 
-            // Debug log (optional)
+            // ✅ YEH EVENT LOGGING CODE YAHAN USE KAREIN
+            logger.logEvent(AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION, params);
+
+            // ✅ YEH FLUSH CODE YAHAN USE KAREIN - Immediate send ke liye
+            logger.flush();
+
             Log.d("MetaEventLogger", "Event Logged: " + eventName + " | Step: " + stepName + " | UserID: " + userId);
 
         } catch (Exception e) {
@@ -41,5 +45,21 @@ public class MetaEventLogger {
             e.printStackTrace();
         }
     }
+    public static void testMetaEvents(Context context) {
+        try {
+            AppEventsLogger testLogger = AppEventsLogger.newLogger(context);
 
+            // Test events log karein
+            testLogger.logEvent("fb_mobile_activate_app");
+            testLogger.logEvent("test_event");
+
+            // Immediate flush karein
+            testLogger.flush();
+
+            Log.d("MetaEventLogger", "Test events sent successfully");
+
+        } catch (Exception e) {
+            Log.e("MetaEventLogger", "Test event error: " + e.getMessage());
+        }
+    }
 }

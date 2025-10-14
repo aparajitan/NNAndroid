@@ -10,7 +10,7 @@
         <item>Wife</item>
         <item>Other</item>
     </array>
-    <string name="facebook_app_id">1845017522768855</string>
+
     <string name="at_sign">\@</string>
     <!-- Navigation Drawer menu labels -->
     <array name="occasion">
@@ -25,7 +25,8 @@
     </array>
     <!--<string name="facebook_app_id">929962769257001</string>-->
 <!--    <string name="facebook_client_token">d5492151458f6c35a3177b9ea03e0c29</string>-->
-  <string name="facebook_client_token">541363f552e157ebd238d3d82612a88d</string>
+    <string name="facebook_app_id">929962769257001</string>
+  <string name="facebook_client_token">d5492151458f6c35a3177b9ea03e0c29</string>
 
     <string name="app_name">Neighbrsnook</string>
     <string name="nav_home">Home</string>

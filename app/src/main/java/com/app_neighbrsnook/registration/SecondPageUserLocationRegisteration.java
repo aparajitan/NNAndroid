@@ -1115,12 +1115,9 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
 
                                     // ✅ Facebook Meta Event Logging (Step 2 Completed)
                                     String userId = sm.getString("user_id");
-                                    MetaEventLogger.logEvent(
-                                            SecondPageUserLocationRegisteration.this,
+                                    MetaEventLogger.logEvent(SecondPageUserLocationRegisteration.this,
                                             AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
-                                            "meta_step_two_done",
-                                            userId
-                                    );
+                                            "registeration_step_two_done", userId);
 
                                     // Optionally: navigate to next screen
                                     // startActivity(new Intent(AddressProofLocation.this, AddressDocumentDemo.class));
