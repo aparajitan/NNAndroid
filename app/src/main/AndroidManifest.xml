@@ -124,6 +124,9 @@
             android:name=".marketPlace.MarketPlace"
             android:exported="false" />
         <activity
+            android:name=".ReferAnNeighbourActivity"
+            android:exported="false" />
+        <activity
             android:name=".setting.DeactivateAccound"
             android:exported="false">
             <meta-data

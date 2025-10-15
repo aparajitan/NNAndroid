@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical"
+    tools:context=".ReferAnNeighbourActivity">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/custom_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:background="#E6FFF0"
+                android:elevation="2dp"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:padding="8dp"
+                        android:text="@string/refereing_txt"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/upload_image_dimension"
+                android:layout_marginLeft="@dimen/screens_padding_left_right"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_marginRight="@dimen/screens_padding_left_right"
+                android:background="@drawable/round_corner_dialog">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                <Spinner
+                    android:id="@+id/neighbourhoodSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:background="@null"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="0dp"
+                    android:spinnerMode="dropdown" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/upload_image_dimension"
+                android:layout_marginLeft="@dimen/screens_padding_left_right"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:id="@+id/frm_neighbourhood"
+
+                android:layout_marginRight="@dimen/screens_padding_left_right"
+                android:background="@drawable/round_corner_dialog">
+
+                <ImageView
+                    android:id="@+id/what_do_you_do_id"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/dropdown_update" />
+
+                <TextView
+                    android:id="@+id/itemNeighbrhood"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/text_padding_left"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Neighbrhood"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_short" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frm_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/upload_image_dimension"
+                android:layout_marginLeft="@dimen/screens_padding_left_right"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_marginRight="@dimen/screens_padding_left_right"
+                android:background="@drawable/round_corner_dialog">
+
+                <ImageView
+                    android:id="@+id/img_show_password_login"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/show_password_prsnl"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imgHidePassword"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/first_name_icon_p" />
+
+                <EditText
+                    android:id="@+id/nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:background="@null"
+                    android:backgroundTint="@null"
+                    android:backgroundTintMode="@null"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Name"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_size_short" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frm_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/upload_image_dimension"
+                android:layout_marginLeft="@dimen/screens_padding_left_right"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_marginRight="@dimen/screens_padding_left_right"
+                android:background="@drawable/round_corner_dialog">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/email_or_phone_no_icon" />
+
+                <EditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:backgroundTint="@null"
+                    android:backgroundTintMode="@null"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="Mobile"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_size_short"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/refer"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/button_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="23dp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/upload_button_background">
+
+                <TextView
+                    android:id="@+id/btn_update_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Refer"
+                    android:textColor="@color/button_text_color"
+                    android:textSize="@dimen/button_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frm_my_referrals"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/upload_image_dimension"
+                android:layout_marginLeft="@dimen/screens_padding_left_right"
+                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_marginRight="@dimen/screens_padding_left_right"
+                android:background="@drawable/round_corner_dialog"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center_vertical"
+                    android:text="My referrals"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_size_short" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

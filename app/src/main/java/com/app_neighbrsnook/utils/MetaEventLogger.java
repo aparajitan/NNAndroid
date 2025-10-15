@@ -8,9 +8,6 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.appevents.AppEventsConstants;
 
 public class MetaEventLogger {
-
-
-
     /**
      * Logs a Facebook App Event for registration steps or other user actions.
      *
@@ -23,23 +20,14 @@ public class MetaEventLogger {
         try {
             AppEventsLogger logger = AppEventsLogger.newLogger(context);
             Bundle params = new Bundle();
-
-            // ✅ YEH PARAMETERS CODE YAHAN USE KAREIN
             params.putString(AppEventsConstants.EVENT_PARAM_REGISTRATION_METHOD, "email");
             params.putString(AppEventsConstants.EVENT_PARAM_SUCCESS, "1");
             params.putString("user_id", userId);
-
             // Additional custom parameters
             params.putString("registration_step", stepName);
-
-            // ✅ YEH EVENT LOGGING CODE YAHAN USE KAREIN
             logger.logEvent(AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION, params);
-
-            // ✅ YEH FLUSH CODE YAHAN USE KAREIN - Immediate send ke liye
             logger.flush();
-
             Log.d("MetaEventLogger", "Event Logged: " + eventName + " | Step: " + stepName + " | UserID: " + userId);
-
         } catch (Exception e) {
             Log.e("MetaEventLogger", "Error logging event: " + e.getMessage());
             e.printStackTrace();

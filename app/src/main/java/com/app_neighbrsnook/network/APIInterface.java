@@ -46,6 +46,7 @@ import com.app_neighbrsnook.pojo.directmessagelist.DirectMessagePojo;
 import com.app_neighbrsnook.pojo.dm.DmModel;
 import com.app_neighbrsnook.pojo.neighborhoodMember.MemberPojo;
 import com.app_neighbrsnook.pojo.reportModule.ReportTypePojo;
+import com.google.gson.JsonObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -142,6 +143,16 @@ public interface APIInterface {
     @FormUrlEncoded
     Call<JsonElement> deleteBusiness(@Query("flag") String flag,
                                      @FieldMap HashMap<String, Object> hm);
+    @POST("referrals/create")
+    Call<JsonElement> createReferral(@Body JsonObject body);
+
+    @GET("api/referrals/search-neighbourhood")
+    Call<JsonElement> searchNeighbourhoodbyNearby(
+            @Query("referrer_user_id") int referrerUserId,
+            @Query("search") String search,
+            @Query("api") String apiKey
+    );
+
 
 
     @POST("groups")

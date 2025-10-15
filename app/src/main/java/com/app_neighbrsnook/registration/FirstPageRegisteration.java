@@ -788,7 +788,6 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                                     "registeration_step_one_done",
                                     userid
                             );
-
                             Log.d("MetaEventLogger", "Event sent to Meta: meta_step_one_done for user: " + userid);
                             // Save data in SharedPrefs
                             LoginPojo loginPojo = new LoginPojo();

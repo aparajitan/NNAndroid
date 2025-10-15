@@ -23,8 +23,12 @@ public class MyApplication extends Application {
 
         // 🔹 2. Sirf Debugging ke liye logging enable karein (Optional, but recommended for testing)
         // Ye code production mein hata dein.
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
         FacebookSdk.setApplicationId(getString(R.string.facebook_app_id));
         FacebookSdk.setClientToken(getString(R.string.facebook_client_token));
+        FacebookSdk.setIsDebugEnabled(true);
+        FacebookSdk.addLoggingBehavior(LoggingBehavior.APP_EVENTS);
 
         // ✅ 2. Initialize Facebook SDK
         FacebookSdk.sdkInitialize(getApplicationContext());

@@ -514,8 +514,7 @@ public class ProfileStepTwoActivity extends AppCompatActivity implements View.On
         mail_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(ProfileStepTwoActivity.this, android.R.color.transparent)));
         mail_dialog.setCancelable(true);
         mail_dialog.show();
-        /*FrameLayout frm=mail_dialog.findViewById(R.id.post_frm);
-        frm.setVisibility(View.GONE);*/
+
     }
     private void chooseInterestDialog() {
         ImageView cancel;

@@ -255,6 +255,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         menuModel = new MenuModel("Public Agency Directory", true, false, "");
         headerList.add(menuModel);
 
+        menuModel = new MenuModel("Refer a neighbour", true, false, "");
+        headerList.add(menuModel);
+
         menuModel = new MenuModel("Share app", true, false, "");
         headerList.add(menuModel);
 
@@ -274,6 +277,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         menuModel = new MenuModel("Contact us", true, false, "");
         headerList.add(menuModel);
 
+
+
         menuModel = new MenuModel(vs, true, false, "");
         headerList.add(menuModel);
     }
@@ -290,6 +295,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 R.drawable.poll_ict,
                 R.drawable.post_ict,
                 R.drawable.public_dir,
+                R.drawable.ic_refer,
                 R.drawable.share,
 
                 // R.drawable.ic_market,
@@ -385,7 +391,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //                                intent.putExtra("title", "Public Agency Directory");
                             startActivity(intent);
                             drawerLayout.close();
-                        } else if (headerList.get(groupPosition).menuName.equals("Settings")) {
+                        }
+
+                        else if (headerList.get(groupPosition).menuName.equals("Refer a neighbour")) {
+                            Intent intent = new Intent(MainActivity.this, ReferAnNeighbourActivity.class);
+                            startActivity(intent);
+                            drawerLayout.close();
+                        }
+                        else if (headerList.get(groupPosition).menuName.equals("Settings")) {
                             Intent intent = new Intent(MainActivity.this, SettingAcitivity.class);
                             startActivity(intent);
                             drawerLayout.close();

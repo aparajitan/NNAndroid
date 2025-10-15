@@ -166,187 +166,223 @@
                                     android:textSize="12sp" />
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
-                        <FrameLayout
+
+
+
+                        <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:paddingStart="0dp"
-                            android:paddingLeft="0dp"
-                            android:paddingEnd="0dp"
-                            android:paddingRight="0dp">
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="10dp"
+                            android:elevation="2dp"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardBackgroundColor="@color/background_color">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:text="Select the Address Proof for your residence"
-                                android:textColor="@color/text_color5"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-                        </FrameLayout>
-
-                        <LinearLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_20sdp"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_20sdp"
-                            android:orientation="vertical">
-
-                            <!-- 🔷 Top Row: 3 Items -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_10sdp"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:weightSum="3">
+                                android:orientation="vertical">
 
-                                <!-- Box 1 -->
                                 <LinearLayout
-                                    android:id="@+id/rentLeaseLnr"
-                                    android:layout_width="0dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/round_corner_dialog"
-                                    android:gravity="center"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="24dp"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    android:layout_marginRight="@dimen/_20sdp"
                                     android:orientation="vertical">
 
                                     <ImageView
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:src="@drawable/home_icon_document" />
+                                        android:id="@+id/doc_arrow_section"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_gravity="end|center_vertical"
+                                        android:layout_marginRight="15dp"
+                                        android:src="@drawable/dropdown_update" />
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="Rent Lease"
-                                        android:textColor="#000000"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
                                 </LinearLayout>
 
-                                <!-- Box 2 -->
                                 <LinearLayout
-                                    android:id="@+id/driverLicencseLnr"
-                                    android:layout_width="0dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/round_corner_dialog"
+                                    android:id="@+id/doc_section"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:visibility="visible">
 
-                                    <ImageView
-                                        android:layout_width="42dp"
-                                        android:layout_height="42dp"
-                                        android:src="@drawable/dl_documetn" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
                                         android:gravity="center"
-                                        android:text="Driving License"
-                                        android:textColor="#000000"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
+                                        android:layout_marginBottom="@dimen/_10sdp">
 
-                                <!-- Box 3 -->
-                                <LinearLayout
-                                    android:id="@+id/voterIdLnr"
-                                    android:layout_width="0dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/round_corner_dialog"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Select the Address Proof for your residence"
+                                            android:textColor="@color/text_color5"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
 
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/voter_id_document" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
+                                    <!-- 🔷 Top Row: 3 Items -->
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="Voter ID"
-                                        android:textColor="#000000"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:layout_marginBottom="@dimen/_10sdp"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_marginRight="@dimen/_10sdp"
+                                        android:weightSum="3">
+
+                                        <!-- Box 1 -->
+                                        <LinearLayout
+                                            android:id="@+id/rentLeaseLnr"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginEnd="@dimen/_5sdp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/round_corner_dialog"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
+                                                android:src="@drawable/home_icon_document" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="8dp"
+                                                android:text="Rent Lease"
+                                                android:textColor="#000000"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+                                        </LinearLayout>
+
+                                        <!-- Box 2 -->
+                                        <LinearLayout
+                                            android:id="@+id/driverLicencseLnr"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:layout_marginEnd="@dimen/_5sdp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/round_corner_dialog"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="42dp"
+                                                android:layout_height="42dp"
+                                                android:src="@drawable/dl_documetn" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="8dp"
+                                                android:gravity="center"
+                                                android:text="Driving License"
+                                                android:textColor="#000000"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+                                        </LinearLayout>
+
+                                        <!-- Box 3 -->
+                                        <LinearLayout
+                                            android:id="@+id/voterIdLnr"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/round_corner_dialog"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="45dp"
+                                                android:layout_height="45dp"
+                                                android:src="@drawable/voter_id_document" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="8dp"
+                                                android:text="Voter ID"
+                                                android:textColor="#000000"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <!-- 🔷 Bottom Row: 2 Items Center Aligned -->
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:weightSum="3"
+                                        android:layout_marginBottom="@dimen/_20sdp">
+
+                                        <!-- Box 4 -->
+                                        <LinearLayout
+                                            android:id="@+id/passportLnr"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginEnd="@dimen/_5sdp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/round_corner_dialog"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="45dp"
+                                                android:layout_height="45dp"
+                                                android:src="@drawable/passport_document" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="8dp"
+                                                android:text="Passport"
+                                                android:textColor="#000000"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+                                        </LinearLayout>
+
+                                        <!-- Box 5 -->
+                                        <LinearLayout
+                                            android:id="@+id/adharcardLnr"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/round_corner_dialog"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="45dp"
+                                                android:layout_height="45dp"
+                                                android:src="@drawable/adhar_card_document" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="8dp"
+                                                android:text="Aadhaar"
+                                                android:textColor="#000000"
+                                                android:textSize="12sp"
+                                                android:textStyle="bold" />
+                                        </LinearLayout>
+                                    </LinearLayout>
                                 </LinearLayout>
+
                             </LinearLayout>
 
-                            <!-- 🔷 Bottom Row: 2 Items Center Aligned -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal"
-                                android:weightSum="3">
-
-                                <!-- Box 4 -->
-                                <LinearLayout
-                                    android:id="@+id/passportLnr"
-                                    android:layout_width="0dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/round_corner_dialog"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/passport_document" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="Passport"
-                                        android:textColor="#000000"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <!-- Box 5 -->
-                                <LinearLayout
-                                    android:id="@+id/adharcardLnr"
-                                    android:layout_width="0dp"
-                                    android:layout_height="100dp"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/round_corner_dialog"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/adhar_card_document" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="Aadhaar"
-                                        android:textColor="#000000"
-                                        android:textSize="12sp"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-
+                        </androidx.cardview.widget.CardView>
 
                         <FrameLayout
                             android:layout_width="match_parent"
