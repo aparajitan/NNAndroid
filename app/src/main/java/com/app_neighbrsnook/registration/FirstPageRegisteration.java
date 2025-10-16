@@ -782,17 +782,18 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                         String status = jsonObject.getString("status");
                         if (status.equals("success") && jsonObject.has("userid")) {
                             String userid = jsonObject.getString("userid");
-                            MetaEventLogger.logEvent(
-                                    FirstPageRegisteration.this,
-                                    AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
-                                    "registeration_step_one_done",
-                                    userid
-                            );
-                            Log.d("MetaEventLogger", "Event sent to Meta: meta_step_one_done for user: " + userid);
+                            int referralStatus = 0; // default value
+                            if (jsonObject.has("referral_status")) {
+                                referralStatus = jsonObject.getInt("referral_status");
+                            }
+
+                            // ✅ Save referral_status in SharedPreferences
+                            sm.setInt("referral_status", referralStatus);
                             // Save data in SharedPrefs
                             LoginPojo loginPojo = new LoginPojo();
                             loginPojo.setUsername(tv_first_name.getText().toString());
                             sm.setString("user_name", tv_first_name.getText().toString());
+                            sm.setString("phone_no", tv_phone_no.getText().toString());
                             loginPojo.setEmailid(tv_mail.getText().toString());
                             loginPojo.setPhoneno(tv_phone_no.getText().toString());
                             loginPojo.setId(userid);

@@ -298,73 +298,6 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         neighbourhoodSpinner.setSelection(0);
     }
 
-    private void createReferralApi1(String name, String phone) {
-        progressDialog.show();
-
-        try {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("referrer_user_id", Integer.parseInt(sm.getString("user_id"))); // Session se user id
-            jsonObject.addProperty("referred_name", name);
-            jsonObject.addProperty("referred_phone", phone);
-           // jsonObject.addProperty("referred_email", "arsadli676@gmail.com"); // static email
-            jsonObject.addProperty("neighbourhood_id", 104); // static neighbourhood id
-          //  jsonObject.addProperty("remarks", "Friend from college"); // static remarks
-            jsonObject.addProperty("api", "DEV-3a9f1d2e7b8c4d6f1234abcd5678ef90"); // static API key
-
-            APIInterface service = new Retrofit.Builder()
-                    .baseUrl("https://dev.neighbrsnook.com/admin/api/")  // ✅ Correct base URL
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(new OkHttpClient.Builder()
-                            .connectTimeout(3, TimeUnit.MINUTES)
-                            .readTimeout(3, TimeUnit.MINUTES)
-                            .writeTimeout(3, TimeUnit.MINUTES)
-                            .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                            .build())
-                    .build()
-                    .create(APIInterface.class);
-
-            Call<JsonElement> call = service.createReferral(jsonObject);
-            call.enqueue(new Callback<JsonElement>() {
-                @Override
-                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                    progressDialog.dismiss();
-                    if (response.isSuccessful() && response.body() != null) {
-                        try {
-                            JSONObject json = new JSONObject(response.body().toString());
-                            boolean success = json.optBoolean("success");
-                            String message = json.optString("message");
-
-                            if (success) {
-                                JSONObject data = json.optJSONObject("data");
-                                String referralCode = data.optString("referral_code", "N/A");
-                                Toast.makeText(ReferAnNeighbourActivity.this, "Referral Created Successfully!\nCode: " + referralCode, Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(ReferAnNeighbourActivity.this,
-                                        message, Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Toast.makeText(ReferAnNeighbourActivity.this,
-                                    "Parsing error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(ReferAnNeighbourActivity.this,
-                                "Failed: " + response.message(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<JsonElement> call, Throwable t) {
-                    progressDialog.dismiss();
-                    Toast.makeText(ReferAnNeighbourActivity.this,
-                            "API Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (Exception e) {
-            progressDialog.dismiss();
-            Toast.makeText(this, "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
     private void createReferralApi(String name, String phone) {
         progressDialog.show();
 
@@ -525,7 +458,7 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         RecyclerView rv = dialog.findViewById(R.id.rv_category);
         ImageView cancel = dialog.findViewById(R.id.cross_imageview);
         TextView tv_itm = dialog.findViewById(R.id.tv_itm);
-        tv_itm.setText("Select Neighbrhood");
+        tv_itm.setText("Select Neighbourhood");
 
         rv.setLayoutManager(new LinearLayoutManager(this));
 

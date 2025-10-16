@@ -13,6 +13,7 @@ import com.app_neighbrsnook.pojo.marketPlacePojo.DetailsPojoMarketPlaceParent;
 import com.app_neighbrsnook.pojo.marketPlacePojo.MarketPlaceSendMsgPojo;
 import com.app_neighbrsnook.pojo.marketPlacePojo.MarketPlaceWallPojo;
 import com.app_neighbrsnook.pojo.marketPlacePojo.UsersListChatsPojo;
+import com.app_neighbrsnook.pojo.referal.ReferralResponse;
 import com.google.gson.JsonElement;
 import com.app_neighbrsnook.login.AddressResponse;
 import com.app_neighbrsnook.model.AppLimitPojo;
@@ -153,7 +154,11 @@ public interface APIInterface {
             @Query("api") String apiKey
     );
 
-
+    @GET("api/referrals/user-referral-code")
+    Call<ReferralResponse> getUserReferralByPhone(
+            @Query("referred_phone") String phone,
+            @Query("api") String apiKey
+    );
 
     @POST("groups")
     @FormUrlEncoded

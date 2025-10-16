@@ -24,32 +24,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:background="#E6FFF0"
-                android:elevation="2dp"
-                app:cardCornerRadius="@dimen/_10sdp">
+
 
                 <FrameLayout
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:padding="8dp"
                         android:text="@string/refereing_txt"
-                        android:textAlignment="center"
                         android:textColor="#000000"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/_12ssp" />
                 </FrameLayout>
 
-            </androidx.cardview.widget.CardView>
 
             <FrameLayout
                 android:visibility="gone"
@@ -82,8 +72,9 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/upload_image_dimension"
+
                 android:layout_marginLeft="@dimen/screens_padding_left_right"
-                android:layout_marginTop="@dimen/background_gap_centre"
+                android:layout_marginTop="@dimen/_12ssp"
                 android:id="@+id/frm_neighbourhood"
 
                 android:layout_marginRight="@dimen/screens_padding_left_right"

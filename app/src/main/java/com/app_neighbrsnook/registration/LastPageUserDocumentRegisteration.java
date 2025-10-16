@@ -1,6 +1,9 @@
 package com.app_neighbrsnook.registration;
 
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -67,6 +70,8 @@ import com.app_neighbrsnook.network.APIInterface;
 import com.app_neighbrsnook.pojo.Nbdatum;
 import com.app_neighbrsnook.pojo.StateDropdownPojo;
 import com.app_neighbrsnook.pojo.marketPlacePojo.CommonPojoSuccess;
+import com.app_neighbrsnook.pojo.referal.Data;
+import com.app_neighbrsnook.pojo.referal.ReferralResponse;
 import com.app_neighbrsnook.utils.FileUtil;
 import com.app_neighbrsnook.utils.GlobalMethods;
 import com.app_neighbrsnook.utils.MetaEventLogger;
@@ -167,9 +172,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     private static final int PIC_CROP_REQUEST = 2;
     TextView tv_take_photo, tv_choose_photo, tv_cancel;
     String nghString;
-    HashMap<String, Object> hashMap;
-    TextView tvAboutYou;
-    LinearLayout lytParent, lnrParentLocationNext;
+    HashMap<String, Object> hashMap;LinearLayout lytParent, lnrParentLocationNext;
     RadioButton rdAdharCard, rdPassport, rdVoter, rdDl, rentLease;
     private FirebaseAnalytics mFirebaseAnalytics;
     CommonPojoSuccess statusPojo;
@@ -192,7 +195,13 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     String selectedIdType = "";
     TextView addressProofNghbrhod;
     private boolean shouldShowWelcomeDialog = true;
-    CardView lnrBack, lnrFront;
+    CardView lnrBack, lnrFront,doc_section;
+    ImageView doc_arrow_section;
+    private boolean isExpanded = true;
+    String phoneNumber,usernameRefered;
+    TextView tvReferalSet,textStatusDoc,textStatusNoDocs;
+    FrameLayout referedDropdown;
+    LinearLayout referalTextVisible;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -209,6 +218,8 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         frontid = findViewById(R.id.frontid);
 
         PrefMananger.saveScreen(context, PrefMananger.ADDRESS_PROOF);
+        phoneNumber = sm.getString("phone_no");
+
         recy_selecy_neighbrhood = findViewById(R.id.select_neighbrhood_recy);
         location_child = findViewById(R.id.location_child);
         lytParent = findViewById(R.id.lytParent);
@@ -217,11 +228,16 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         tvNghidAddress = findViewById(R.id.tvNghidAddress);
         lnrFront = findViewById(R.id.lnrFront);
         lnrBack = findViewById(R.id.lnrBack);
+        textStatusDoc = findViewById(R.id.textStatusDoc);
+        textStatusNoDocs = findViewById(R.id.textStatusNoDocs);
         genderFrm = findViewById(R.id.genderFrm);
         location_childChangelocation = findViewById(R.id.location_childChangelocation);
         frm_upload = findViewById(R.id.upload_id);
         imgAdharBack = findViewById(R.id.imgAdharBack);
         imgAdharFront = findViewById(R.id.imgAdharFront);
+        doc_arrow_section = findViewById(R.id.doc_arrow_section);
+        tvReferalSet = findViewById(R.id.tvReferalSet);
+        doc_section = findViewById(R.id.doc_section);
         adhar_front_img = findViewById(R.id.adhar_front_img);
         tvDateofBirth = findViewById(R.id.tv_date_of_birth);
         lnrNeighbrhoodUi = findViewById(R.id.lnrNeighbrhoodUi);
@@ -275,11 +291,13 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         adharcardLnr = findViewById(R.id.adharcardLnr);
         select_gender = findViewById(R.id.select_gender_frm);
         addressProofNghbrhod = findViewById(R.id.addressProofNghbrhod);
+        referedDropdown = findViewById(R.id.referedDropdown);
+        referalTextVisible = findViewById(R.id.referalTextVisible);
         //  nbdNamearea = String.valueOf(edt_area1);
         //    stateApi("100");
         state_tv.setOnClickListener(this);
         city_tv.setOnClickListener(this);
-        frmStepId.setVisibility(View.GONE);
+        frmStepId.setVisibility(GONE);
         Places.initialize(getApplicationContext(), getString(R.string.api_key));
         PlacesClient placesClient = Places.createClient(this);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -288,6 +306,28 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.METHOD, "manual_debug");
         FirebaseAnalytics.getInstance(this).logEvent("test_event", bundle);
+
+        int referralStatus = sm.getInt("referral_status", 0); // default 0
+
+        if (referralStatus == 1) {
+            doc_section.setVisibility(GONE);
+            referedDropdown.setVisibility(VISIBLE);
+            referedDropdown.setVisibility(VISIBLE);
+            textStatusNoDocs.setText("You have refered by Arsad Ali from okhla hence providing id is optional");
+            textStatusDoc.setVisibility(GONE);
+
+            Log.d("ReferralStatus", "Referral Active");
+        } else {
+            doc_section.setVisibility(VISIBLE);
+            referedDropdown.setVisibility(GONE);
+            referedDropdown.setVisibility(GONE);
+            textStatusDoc.setVisibility(VISIBLE);
+            textStatusNoDocs.setVisibility(GONE);
+
+
+            Log.d("ReferralStatus", "No Referral");
+        }
+
         select_gender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -298,9 +338,23 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         frm_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CheckAllFields()) {
-                    addressProofDocumentSubmit();
+                if (referralStatus == 1) {
+                    // ✅ Only validate gender & dob if referral is active
+                    if (validateGenderAndDob()) {
+                        addressProofDocumentSubmit();
+                    }
+                } else {
+                    // ✅ Run full validation
+                    if (CheckAllFields()) {
+                        addressProofDocumentSubmit();
+                    }
                 }
+            }
+        });
+        doc_arrow_section.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleSection();
             }
         });
         img_back_address_proof.setOnClickListener(new View.OnClickListener() {
@@ -315,7 +369,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             @Override
             public void onClick(View view) {
                 capturePhoto();
-                photo_dialog_open_rl.setVisibility(View.GONE);
+                photo_dialog_open_rl.setVisibility(GONE);
             }
         });
         tv_choose_photo.setOnClickListener(new View.OnClickListener() {
@@ -323,17 +377,18 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 2);
-                photo_dialog_open_rl.setVisibility(View.GONE);
+                photo_dialog_open_rl.setVisibility(GONE);
             }
         });
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                photo_dialog_open_rl.setVisibility(View.GONE);
+                photo_dialog_open_rl.setVisibility(GONE);
             }
         });
         shouldShowWelcomeDialog = false;
         littleMoreSkip1();
+        getReferralDetails(phoneNumber);
         allSelectableLayouts = new LinearLayout[]{
                 rentLeaseLnr, passportLnr, voterIdLnr, driverLicenseLnr, adharcardLnr
         };
@@ -345,7 +400,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     if (imgAdharFront.getDrawable() == null) {
                         Log.d("ImageDebug", "Front image drawable is null, opening camera/gallery");
                         CLICK_ON = FIRST_IMAGE;
-                        photo_dialog_open_rl.setVisibility(View.VISIBLE);
+                        photo_dialog_open_rl.setVisibility(VISIBLE);
                     } else {
                         type = 1;
                         Log.d("ImageDebug", "Front image has drawable, bitmap1 is null: " + (bitmap1 == null));
@@ -379,7 +434,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     if (imgAdharBack.getDrawable() == null) {
                         Log.d("ImageDebug", "Back image drawable is null, opening camera/gallery");
                         CLICK_ON = SECOND_IMAGE;
-                        photo_dialog_open_rl.setVisibility(View.VISIBLE);
+                        photo_dialog_open_rl.setVisibility(VISIBLE);
                     } else {
                         type = 2;
                         Log.d("ImageDebug", "Back image has drawable, bitmap2 is null: " + (bitmap2 == null));
@@ -419,9 +474,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 imgAdharBack.setImageDrawable(null);
 
                 // Show only front
-                frmAdharCard.setVisibility(View.VISIBLE);
-                lnrFront.setVisibility(View.VISIBLE);
-                lnrBack.setVisibility(View.GONE);
+                frmAdharCard.setVisibility(VISIBLE);
+                lnrFront.setVisibility(VISIBLE);
+                lnrBack.setVisibility(GONE);
 
                 // Label change only for rent lease
                 frontid.setText("Upload Rent Lease");
@@ -437,9 +492,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 bitmap2 = null;
                 imgAdharFront.setImageDrawable(null);
                 imgAdharBack.setImageDrawable(null);
-                frmAdharCard.setVisibility(View.VISIBLE);
-                lnrFront.setVisibility(View.VISIBLE);
-                lnrBack.setVisibility(View.VISIBLE);
+                frmAdharCard.setVisibility(VISIBLE);
+                lnrFront.setVisibility(VISIBLE);
+                lnrBack.setVisibility(VISIBLE);
                 frontid.setText("Front");
 
             }
@@ -454,9 +509,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 bitmap2 = null;
                 imgAdharFront.setImageDrawable(null);
                 imgAdharBack.setImageDrawable(null);
-                frmAdharCard.setVisibility(View.VISIBLE);
-                lnrFront.setVisibility(View.VISIBLE);
-                lnrBack.setVisibility(View.VISIBLE);
+                frmAdharCard.setVisibility(VISIBLE);
+                lnrFront.setVisibility(VISIBLE);
+                lnrBack.setVisibility(VISIBLE);
                 frontid.setText("Front");
 
             }
@@ -471,9 +526,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 bitmap1 = null;
                 bitmap2 = null;
                 imgAdharBack.setImageDrawable(null);
-                frmAdharCard.setVisibility(View.VISIBLE);
-                lnrFront.setVisibility(View.VISIBLE);
-                lnrBack.setVisibility(View.VISIBLE);
+                frmAdharCard.setVisibility(VISIBLE);
+                lnrFront.setVisibility(VISIBLE);
+                lnrBack.setVisibility(VISIBLE);
                 frontid.setText("Front");
 
             }
@@ -488,9 +543,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 bitmap1 = null;
                 bitmap2 = null;
                 imgAdharBack.setImageDrawable(null);
-                frmAdharCard.setVisibility(View.VISIBLE);
-                lnrFront.setVisibility(View.VISIBLE);
-                lnrBack.setVisibility(View.VISIBLE);
+                frmAdharCard.setVisibility(VISIBLE);
+                lnrFront.setVisibility(VISIBLE);
+                lnrBack.setVisibility(VISIBLE);
                 frontid.setText("Front");
 
             }
@@ -553,7 +608,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             }
         });
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 13);
-        frm_upload.setVisibility(View.VISIBLE);
+        frm_upload.setVisibility(VISIBLE);
         country_tv.setText("India");
         // getAddress(latitude,longitude );
         //29-05-25    requestAppPermissions();
@@ -681,9 +736,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 if (CLICK_ON.equals(FIRST_IMAGE)) {
                     bitmap1 = bitmap;
                     filePath1 = filePath;
-                    imgAdharFront.setVisibility(View.VISIBLE);
+                    imgAdharFront.setVisibility(VISIBLE);
                     imgAdharFront.setImageBitmap(bitmap);
-                    imgAdharFront.setVisibility(View.VISIBLE);
+                    imgAdharFront.setVisibility(VISIBLE);
                     ImagePOJO imagePOJO = new ImagePOJO();
                     imagePOJO.bitmap = bitmap;
                     imagePOJO.imageUri = filePath;
@@ -691,8 +746,8 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     bitmap2 = bitmap;
                     filePath2 = filePath;
                     imgAdharBack.setImageBitmap(bitmap);
-                    imgAdharBack.setVisibility(View.VISIBLE);
-                    imgAdharBack.setVisibility(View.VISIBLE);
+                    imgAdharBack.setVisibility(VISIBLE);
+                    imgAdharBack.setVisibility(VISIBLE);
                     //  runTextRecognition(imageUri);
 
                 }
@@ -1121,6 +1176,39 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     }
 
 
+    private void getReferralDetails(String phoneNumber) {
+        APIInterface service = APIClient.getRetrofit3().create(APIInterface.class);
+
+        Call<ReferralResponse> call = service.getUserReferralByPhone(phoneNumber, "DEV-3a9f1d2e7b8c4d6f1234abcd5678ef90");
+
+        call.enqueue(new Callback<ReferralResponse>() {
+            @Override
+            public void onResponse(Call<ReferralResponse> call, Response<ReferralResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    ReferralResponse referralResponse = response.body();
+                    Data data = referralResponse.getData();
+
+                    // Example: Showing the retrieved info in log
+                    Log.d("ReferralAPI", "Referral Name: " + data.getReferred_name());
+                    Log.d("ReferralAPI", "Referral Code: " + data.getReferral_code());
+                    Log.d("ReferralAPI", "Referrer Name: " + data.getReferrer().getName());
+                    Log.d("ReferralAPI", "Referrer Phone: " + data.getReferrer().getPhoneno());
+
+                    // You can also display it in TextView
+                    tvReferalSet.setText(data.getReferral_code());
+                    usernameRefered=data.getReferred_name();
+                    // textReferralCode.setText(data.getReferral_code());
+                } else {
+                    Log.e("ReferralAPI", "Failed: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ReferralResponse> call, Throwable t) {
+                Log.e("ReferralAPI", "Error: " + t.getMessage());
+            }
+        });
+    }
 
     private void imageDialog(Bitmap bitmap) {
         RecyclerView rv;
@@ -1143,12 +1231,12 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     bitmap1 = null;
                     iv_uploaded_image.setImageDrawable(null);
                     imgAdharFront.setImageDrawable(null);
-                    imgAdharFront.setVisibility(View.VISIBLE);
+                    imgAdharFront.setVisibility(VISIBLE);
                 } else if (type == 2) {
                     bitmap2 = null;
                     iv_uploaded_image.setImageDrawable(null);
                     imgAdharBack.setImageDrawable(null);
-                    imgAdharBack.setVisibility(View.VISIBLE);
+                    imgAdharBack.setVisibility(VISIBLE);
                 }
                 image_dialog.dismiss();
             }
@@ -1481,4 +1569,31 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             }
         });
     }
+    private void toggleSection() {
+        if (isExpanded) {
+            // Section ko hide karo
+            doc_section.setVisibility(GONE);
+            isExpanded = false;
+        } else {
+            // Section ko show karo
+            doc_section.setVisibility(VISIBLE);
+            isExpanded = true;
+        }
+    }
+    private boolean validateGenderAndDob() {
+        // gender validation
+        if (select_gender.getText().toString().trim().isEmpty()) {
+            showToast("Please select gender");
+            return false;
+        }
+
+        // dob validation
+        if (tvDateofBirth.getText().toString().trim().isEmpty()) {
+            showToast("Please select your date of birth");
+            return false;
+        }
+
+        return true;
+    }
+
 }

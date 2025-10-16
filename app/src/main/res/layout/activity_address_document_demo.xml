@@ -158,22 +158,58 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:id="@+id/textStatusDoc"
                                     android:layout_margin="@dimen/_10sdp"
                                     android:padding="8dp"
                                     android:text="@string/privacy_string"
                                     android:textAlignment="center"
                                     android:textColor="#000000"
                                     android:textSize="12sp" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:padding="8dp"
+                                    android:id="@+id/textStatusNoDocs"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp" />
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
 
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            android:id="@+id/referedDropdown"
+                            android:layout_marginTop="@dimen/_7sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Select the Address Proof for your residence"
+                                android:textColor="@color/text_color5"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                            <ImageView
+                                android:id="@+id/doc_arrow_section"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_gravity="end"
+                                android:src="@drawable/dropdown_update" />
 
+                        </FrameLayout>
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="15dp"
+                            android:id="@+id/doc_section"
+
                             android:layout_marginRight="10dp"
                             android:elevation="2dp"
                             app:cardCornerRadius="@dimen/_10sdp"
@@ -184,26 +220,9 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="24dp"
-                                    android:layout_marginLeft="@dimen/_20sdp"
-                                    android:layout_marginBottom="@dimen/_5sdp"
-                                    android:layout_marginRight="@dimen/_20sdp"
-                                    android:orientation="vertical">
 
-                                    <ImageView
-                                        android:id="@+id/doc_arrow_section"
-                                        android:layout_width="@dimen/_20sdp"
-                                        android:layout_height="@dimen/_20sdp"
-                                        android:layout_gravity="end|center_vertical"
-                                        android:layout_marginRight="15dp"
-                                        android:src="@drawable/dropdown_update" />
-
-                                </LinearLayout>
 
                                 <LinearLayout
-                                    android:id="@+id/doc_section"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
@@ -219,6 +238,7 @@
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/_5sdp"
                                             android:text="Select the Address Proof for your residence"
                                             android:textColor="@color/text_color5"
                                             android:textSize="14sp"
@@ -549,13 +569,45 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
+                                android:id="@+id/referalTextVisible"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
                                 <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:background="@drawable/round_corner_dialog">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/text_padding_left"
+                                        android:fontFamily="@font/montserrat_regular"
+
+                                        android:gravity="center_vertical"
+                                        android:hint="Referal:"
+                                        android:textColor="@color/text_color"
+                                        android:textSize="@dimen/text_size_short" />
+
+                                    <TextView
+                                        android:id="@+id/tvReferalSet"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/text_padding_left"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textColor="@color/text_color"
+                                        android:textSize="14sp" />
+
+                                </FrameLayout>
+                                <FrameLayout
                                     android:id="@+id/genderFrm"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+
                                     android:background="@drawable/round_corner_dialog">
 
                                     <TextView
