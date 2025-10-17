@@ -41,34 +41,17 @@
                 </FrameLayout>
 
 
-            <FrameLayout
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/upload_image_dimension"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/dialog_padding_top_gap"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/screens_padding_left_right"
-                android:layout_marginTop="@dimen/background_gap_centre"
-                android:layout_marginRight="@dimen/screens_padding_left_right"
-                android:background="@drawable/round_corner_dialog">
+                android:id="@+id/tvSelectAddressText"
+                android:text="Neighbour's Neighbourhood"
+                android:textColor="@color/text_color5"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                <Spinner
-                    android:id="@+id/neighbourhoodSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="@dimen/_35sdp"
-                    android:background="@null"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:padding="0dp"
-                    android:spinnerMode="dropdown" />
-            </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/upload_image_dimension"

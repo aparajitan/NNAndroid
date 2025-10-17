@@ -198,9 +198,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     CardView lnrBack, lnrFront,doc_section;
     ImageView doc_arrow_section;
     private boolean isExpanded = true;
-    String phoneNumber,usernameRefered;
-    TextView tvReferalSet,textStatusDoc,textStatusNoDocs;
-    FrameLayout referedDropdown;
+    String phoneNumber,usernameRefered,referNeighbrhoodName;
+    TextView tvReferalSet,textStatusDoc,textStatusNoDocs,tvSelectAddressText;
+    FrameLayout referedDropdown,frmReferalUi;
     LinearLayout referalTextVisible;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -221,6 +221,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         phoneNumber = sm.getString("phone_no");
 
         recy_selecy_neighbrhood = findViewById(R.id.select_neighbrhood_recy);
+        frmReferalUi = findViewById(R.id.frmReferalUi);
         location_child = findViewById(R.id.location_child);
         lytParent = findViewById(R.id.lytParent);
         lnrParentLocationNext = findViewById(R.id.lnrParentLocationNext);
@@ -237,6 +238,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         imgAdharFront = findViewById(R.id.imgAdharFront);
         doc_arrow_section = findViewById(R.id.doc_arrow_section);
         tvReferalSet = findViewById(R.id.tvReferalSet);
+        tvSelectAddressText = findViewById(R.id.tvSelectAddressText);
         doc_section = findViewById(R.id.doc_section);
         adhar_front_img = findViewById(R.id.adhar_front_img);
         tvDateofBirth = findViewById(R.id.tv_date_of_birth);
@@ -309,24 +311,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
 
         int referralStatus = sm.getInt("referral_status", 0); // default 0
 
-        if (referralStatus == 1) {
-            doc_section.setVisibility(GONE);
-            referedDropdown.setVisibility(VISIBLE);
-            referedDropdown.setVisibility(VISIBLE);
-            textStatusNoDocs.setText("You have refered by Arsad Ali from okhla hence providing id is optional");
-            textStatusDoc.setVisibility(GONE);
 
-            Log.d("ReferralStatus", "Referral Active");
-        } else {
-            doc_section.setVisibility(VISIBLE);
-            referedDropdown.setVisibility(GONE);
-            referedDropdown.setVisibility(GONE);
-            textStatusDoc.setVisibility(VISIBLE);
-            textStatusNoDocs.setVisibility(GONE);
-
-
-            Log.d("ReferralStatus", "No Referral");
-        }
 
         select_gender.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -460,9 +445,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 }
             }
         });
-
-
-
         rentLeaseLnr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -550,7 +532,26 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
 
             }
         });
+        if (referralStatus == 1) {
+            doc_section.setVisibility(GONE);
+            referedDropdown.setVisibility(VISIBLE);
+            referedDropdown.setVisibility(VISIBLE);
+          //  textStatusNoDocs.setText("You have been referred by " + usernameRefered + " from " + referNeighbrhoodName + ", hence providing ID is optional");
+            textStatusDoc.setVisibility(GONE);
+            tvSelectAddressText.setVisibility(VISIBLE);
+            frmReferalUi.setVisibility(VISIBLE);
 
+            Log.d("ReferralStatus", "Referral Active");
+        } else {
+            tvSelectAddressText.setVisibility(VISIBLE);
+            doc_section.setVisibility(VISIBLE);
+            doc_arrow_section.setVisibility(GONE);
+            frmReferalUi.setVisibility(GONE);
+            referedDropdown.setVisibility(VISIBLE);
+            textStatusDoc.setVisibility(VISIBLE);
+            textStatusNoDocs.setVisibility(GONE);
+            Log.d("ReferralStatus", "No Referral");
+        }
         DatePickerDialog.OnDateSetListener fromdate = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -906,17 +907,12 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     @Override
     public void onCrossClick(int pos, String from) {
     }
-
     @Override
     public void onCrossClick1(int pos, String from) {
     }
-
     @Override
     public void onLocationChanged(@NonNull Location location) {
     }
-
-
-
     // Activity start hone par check karo
     @Override
     protected void onStart() {
@@ -960,7 +956,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         FrameLayout frmpost=mail_dialog.findViewById(R.id.post_frm);
         frmpost.setVisibility(View.GONE);*/
     }
-
     @Override
     public void onClick(String categoryName) {
         select_gender.setText(categoryName);
@@ -970,13 +965,11 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         edt_address2.requestFocus(); // Clears focus from the EditText
         edt_address2.setCursorVisible(false);
     }
-
     public void date1() {
         String myFormat = "dd-MM-yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         tvDateofBirth.setText(sdf.format(calendar.getTime()));
     }
-
     Bitmap bitmap;
     Uri filePath;
     Bitmap bitmap1;
@@ -985,7 +978,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     Uri filePath2;
     String currentPath = "";
     Uri imageUri;
-
     public void capturePhoto() {
         String fileName = System.currentTimeMillis() + "";
         File fileDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -1000,8 +992,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             e.printStackTrace();
         }
     }
-
-
     private void performCrop(Uri fileUri) {
         try {
             CropImage.ActivityBuilder a1 = CropImage.activity(fileUri);
@@ -1016,7 +1006,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             toast.show();
         }
     }
-
 
     private void addressProofDocumentSubmit() {
         final ProgressDialog dialog = new ProgressDialog(this);
@@ -1124,6 +1113,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             HashMap<String, RequestBody> hashMap = new HashMap<>();
             hashMap.put("userid", RequestBody.create(MultipartBody.FORM, sm.getString("user_id")));
             hashMap.put("dob", RequestBody.create(MultipartBody.FORM, tvDateofBirth.getText().toString()));
+            hashMap.put("referral_code", RequestBody.create(MultipartBody.FORM, tvReferalSet.getText().toString()));
 
             //Log.d("erwerwsf", String.valueOf(RequestBody.create(MultipartBody.FORM, String.valueOf(cityId))));
             if (select_gender.getText().toString().equals("Male")) {
@@ -1143,12 +1133,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                             dialog.dismiss();
                             logRegistrationEvent("registration_completed_android", "user_signup_done_android");
                             String userId = sm.getString("user_id");
-                            MetaEventLogger.logEvent(
-                                    LastPageUserDocumentRegisteration.this,
-                                    AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
-                                    "registeration_step_three_done_complete",
-                                    userId
-                            );
                             shouldShowWelcomeDialog = true;
                             littleMoreSkip1();
                         } else if (response.body().getMessage() != null) {
@@ -1194,9 +1178,16 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     Log.d("ReferralAPI", "Referrer Name: " + data.getReferrer().getName());
                     Log.d("ReferralAPI", "Referrer Phone: " + data.getReferrer().getPhoneno());
 
+
                     // You can also display it in TextView
                     tvReferalSet.setText(data.getReferral_code());
-                    usernameRefered=data.getReferred_name();
+                    usernameRefered=data.getReferrer().getName();
+                    referNeighbrhoodName=data.getReferrer().getNbd_name();
+                    textStatusNoDocs.setText(
+                            "You have been referred by " + usernameRefered +
+                                    " from " + referNeighbrhoodName +
+                                    ", hence providing ID is optional"
+                    );
                     // textReferralCode.setText(data.getReferral_code());
                 } else {
                     Log.e("ReferralAPI", "Failed: " + response.message());
@@ -1297,31 +1288,51 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.gravity = Gravity.CENTER;
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(LastPageUserDocumentRegisteration.this,
-                android.R.color.transparent)));
+        dialog.getWindow().setBackgroundDrawable(
+                new ColorDrawable(ContextCompat.getColor(LastPageUserDocumentRegisteration.this, android.R.color.transparent))
+        );
         dialog.getWindow().setAttributes(lp);
+
         TextView frmCancel = dialog.findViewById(R.id.tvCancel);
         TextView frm_choose = dialog.findViewById(R.id.post_frm);
-        //littleMoreSkip1();
         TextView nghName = dialog.findViewById(R.id.nghName);
         TextView tvcancel = dialog.findViewById(R.id.tvCancel);
+
         nghName.setText(nghString);
+
         frmCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
+
+        // 🔹 Get referralStatus from SharedPreferences (PrefManager)
+        int referralStatus = sm.getInt("referral_status", 0); // default 0
+
+        // 🔹 Condition check
+        if (referralStatus == 1) {
+            // 👉 Directly go to MainActivity
+            frm_choose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(LastPageUserDocumentRegisteration.this, MainActivity.class));
+                    finishAffinity();
+                }
+            });
+        } else {
+            // 👉 Continue with normal flow
+            frm_choose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    welcomeDialogLast();
+                }
+            });
+        }
+
         dialog.show();
-        frm_choose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                welcomeDialogLast();
-
-
-            }
-        });
     }
+
     private void showToast(String message) {
         Toast.makeText(LastPageUserDocumentRegisteration.this, message, Toast.LENGTH_SHORT).show();
     }

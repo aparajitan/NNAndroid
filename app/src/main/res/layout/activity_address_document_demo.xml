@@ -190,6 +190,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/tvSelectAddressText"
                                 android:text="Select the Address Proof for your residence"
                                 android:textColor="@color/text_color5"
                                 android:textSize="14sp"
@@ -238,6 +239,7 @@
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:visibility="gone"
                                             android:layout_marginTop="@dimen/_5sdp"
                                             android:text="Select the Address Proof for your residence"
                                             android:textColor="@color/text_color5"
@@ -574,6 +576,7 @@
                                 android:orientation="vertical">
 
                                 <FrameLayout
+                                    android:id="@+id/frmReferalUi"
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:background="@drawable/round_corner_dialog">

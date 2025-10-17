@@ -49,8 +49,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ReferAnNeighbourActivity extends AppCompatActivity {
-
-    private Spinner neighbourhoodSpinner;
     private ArrayAdapter<String> neighbourhoodAdapter;
     private ImageView back_btn, search_btn, add_btn;
     private TextView titleTv;
@@ -67,6 +65,7 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
     private String selectedNeighbourhoodName = ""; // store selected name
     private ArrayList<String> neighbourhoodNames = new ArrayList<>();
     private ArrayList<Integer> neighbourhoodIds = new ArrayList<>();
+    String  ownerNeighbrsname,ownerNeighbrhoodId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,8 +82,10 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameEditText);
         phoneEditText = findViewById(R.id.phoneEditText);
         frmNeighbourhood = findViewById(R.id.frm_neighbourhood);
-        neighbourhoodSpinner = findViewById(R.id.neighbourhoodSpinner);
-
+        ownerNeighbrsname = sm.getString("neighbrhood_name");
+        ownerNeighbrhoodId = sm.getString("neighbrhood");
+        Log.d("sdsfsfdse",ownerNeighbrhoodId);
+        itemNeighbrhood.setText(ownerNeighbrsname);
         titleTv.setText("Refer a Neighbour");
         search_btn.setVisibility(View.GONE);
         add_btn.setVisibility(View.GONE);
@@ -93,7 +94,6 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         progressDialog.setMessage("Please wait...");
         progressDialog.setCancelable(false);
         setupPhoneNumberValidation();
-        setupNeighbourhoodSpinner();
         getNeighbourhoodList();
 
         itemNeighbrhood.setOnClickListener(v -> {
@@ -108,13 +108,6 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
             }
         });
 
-        frmNeighbourhood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Spinner open karenge
-                neighbourhoodSpinner.performClick();
-            }
-        });
 
         referButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,91 +133,6 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         // Only numbers allow karenge
         phoneEditText.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
     }
-
-    private void setupNeighbourhoodSpinner() {
-        // Data list banayenge
-        List<String> neighbourhoodsList = new ArrayList<>();
-        neighbourhoodsList.add("Select neighbourhood"); // Hint as first item
-        neighbourhoodsList.add("Sector 15");
-        neighbourhoodsList.add("Sector 15A");
-        neighbourhoodsList.add("Sector 16");
-        neighbourhoodsList.add("Sector 16A");
-        neighbourhoodsList.add("Sector 18");
-        neighbourhoodsList.add("Sector 18A");
-
-        // Create custom adapter for Spinner with hint text color
-        neighbourhoodAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_item,
-                neighbourhoodsList
-        ) {
-            @Override
-            public boolean isEnabled(int position) {
-                // First item (hint) selectable nahi hoga
-                return position != 0;
-            }
-
-            @Override
-            public View getView(int position, View convertView, android.view.ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView textView = (TextView) view;
-
-                if (position == 0) {
-                    // Hint text gray color mein
-                    textView.setTextColor(getResources().getColor(android.R.color.darker_gray));
-                } else {
-                    // Normal text black color mein
-                    textView.setTextColor(getResources().getColor(android.R.color.black));
-                }
-                return view;
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView, android.view.ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView textView = (TextView) view;
-                // Hint item ko dropdown mein disable karenge
-                if (position == 0) {
-                    textView.setEnabled(false);
-                    textView.setClickable(false);
-                    textView.setTextColor(getResources().getColor(android.R.color.darker_gray));
-                } else {
-                    textView.setTextColor(getResources().getColor(android.R.color.black));
-                }
-                return view;
-            }
-        };
-
-        // Dropdown layout set karenge
-        neighbourhoodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Adapter ko Spinner mein set karenge
-        neighbourhoodSpinner.setAdapter(neighbourhoodAdapter);
-
-        // Initially hint show karenge
-        neighbourhoodSpinner.setSelection(0, false);
-
-        // Spinner item selection handle karenge
-        neighbourhoodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position > 0) {
-                    String selectedNeighbourhood = (String) parent.getItemAtPosition(position);
-                    // Text color black karenge jab kuch select ho jaye
-                    if (view != null) {
-                        TextView textView = (TextView) view;
-                        textView.setTextColor(getResources().getColor(android.R.color.black));
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Kuch select nahi hua toh
-            }
-        });
-    }
-
     private boolean validateForm() {
         String name = nameEditText.getText().toString().trim();
         String phone = phoneEditText.getText().toString().trim();
@@ -259,43 +167,10 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         return true;
     }
 
-    private void submitReferral() {
-        // Get all form data
-        String name = nameEditText.getText().toString().trim();
-        String phone = phoneEditText.getText().toString().trim();
-        String neighbourhood = neighbourhoodSpinner.getSelectedItem().toString();
-
-        // Create share message
-        String shareMessage = createShareMessage(name, phone, neighbourhood);
-
-        // Share intent create karenge
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Refer a Neighbour");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-
-        // Share dialog show karenge
-        startActivity(Intent.createChooser(shareIntent, "Share via"));
-
-        // Reset form if needed
-        resetForm();
-    }
-
-    private String createShareMessage(String name, String phone, String neighbourhood) {
-        StringBuilder message = new StringBuilder();
-        message.append("Refer a Neighbour\n\n");
-        message.append("Name: ").append(name).append("\n");
-        message.append("Phone: ").append(phone).append("\n");
-        message.append("Neighbourhood: ").append(neighbourhood).append("\n\n");
-        message.append("I'm referring this person to join our community!");
-
-        return message.toString();
-    }
 
     private void resetForm() {
         nameEditText.setText("");
         phoneEditText.setText("");
-        neighbourhoodSpinner.setSelection(0);
     }
 
     private void createReferralApi(String name, String phone) {
@@ -306,12 +181,8 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
             jsonObject.addProperty("referrer_user_id", Integer.parseInt(sm.getString("user_id"))); // user id
             jsonObject.addProperty("referred_name", name);
             jsonObject.addProperty("referred_phone", phone);
-            //jsonObject.addProperty("referred_email", "arsadli6361@gmail.com"); // static
-           // jsonObject.addProperty("neighbourhood_id", 104); // static
             jsonObject.addProperty("neighbourhood_id", selectedNeighbourhoodId);
-          //  jsonObject.addProperty("remarks", "Friend from college"); // static
             jsonObject.addProperty("api", "DEV-3a9f1d2e7b8c4d6f1234abcd5678ef90");
-
             APIInterface service = new Retrofit.Builder()
                     .baseUrl("https://dev.neighbrsnook.com/admin/api/")
                     .addConverterFactory(GsonConverterFactory.create())
