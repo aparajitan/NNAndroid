@@ -196,10 +196,10 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
     TextView addressProofNghbrhod;
     private boolean shouldShowWelcomeDialog = true;
     CardView lnrBack, lnrFront,doc_section;
-    ImageView doc_arrow_section;
+    ImageView doc_arrow_section,imgIconPrivacy;
     private boolean isExpanded = true;
     String phoneNumber,usernameRefered,referNeighbrhoodName;
-    TextView tvReferalSet,textStatusDoc,textStatusNoDocs,tvSelectAddressText;
+    TextView tvReferalSet,textStatusDoc,textStatusNoDocs,tvSelectAddressText,tvOptional;
     FrameLayout referedDropdown,frmReferalUi;
     LinearLayout referalTextVisible;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -221,7 +221,9 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         phoneNumber = sm.getString("phone_no");
 
         recy_selecy_neighbrhood = findViewById(R.id.select_neighbrhood_recy);
+        imgIconPrivacy = findViewById(R.id.imgIconPrivacy);
         frmReferalUi = findViewById(R.id.frmReferalUi);
+        tvOptional = findViewById(R.id.tvOptional);
         location_child = findViewById(R.id.location_child);
         lytParent = findViewById(R.id.lytParent);
         lnrParentLocationNext = findViewById(R.id.lnrParentLocationNext);
@@ -308,6 +310,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.METHOD, "manual_debug");
         FirebaseAnalytics.getInstance(this).logEvent("test_event", bundle);
+        String refStatus = sm.getString("referrer_neighbourhood_status");
 
         int referralStatus = sm.getInt("referral_status", 0); // default 0
 
@@ -323,7 +326,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         frm_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (referralStatus == 1) {
+                if ("1".equals(refStatus)) {
                     // ✅ Only validate gender & dob if referral is active
                     if (validateGenderAndDob()) {
                         addressProofDocumentSubmit();
@@ -532,26 +535,49 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
 
             }
         });
-        if (referralStatus == 1) {
+
+        if ("1".equals(refStatus)) {
+            // No need for document in this scenario
             doc_section.setVisibility(GONE);
             referedDropdown.setVisibility(VISIBLE);
-            referedDropdown.setVisibility(VISIBLE);
-          //  textStatusNoDocs.setText("You have been referred by " + usernameRefered + " from " + referNeighbrhoodName + ", hence providing ID is optional");
             textStatusDoc.setVisibility(GONE);
+            imgIconPrivacy.setVisibility(GONE);
             tvSelectAddressText.setVisibility(VISIBLE);
             frmReferalUi.setVisibility(VISIBLE);
+            tvOptional.setVisibility(VISIBLE);
 
-            Log.d("ReferralStatus", "Referral Active");
-        } else {
+            Log.d("ReferralStatus", "Referred user - document optional");
+
+        } else if ("0".equals(refStatus)) {
+            // Special case: referralStatus = 1 but refStatus = 0 → document required
             tvSelectAddressText.setVisibility(VISIBLE);
             doc_section.setVisibility(VISIBLE);
+            imgIconPrivacy.setVisibility(VISIBLE);
             doc_arrow_section.setVisibility(GONE);
             frmReferalUi.setVisibility(GONE);
             referedDropdown.setVisibility(VISIBLE);
             textStatusDoc.setVisibility(VISIBLE);
             textStatusNoDocs.setVisibility(GONE);
-            Log.d("ReferralStatus", "No Referral");
+            tvOptional.setVisibility(GONE);
+
+            Log.d("ReferralStatus", "Referral 1 but refStatus 0 - document required");
+
+        } else {
+            // Default case: document upload required
+            tvSelectAddressText.setVisibility(VISIBLE);
+            doc_section.setVisibility(VISIBLE);
+            imgIconPrivacy.setVisibility(VISIBLE);
+            doc_arrow_section.setVisibility(GONE);
+            frmReferalUi.setVisibility(GONE);
+            referedDropdown.setVisibility(VISIBLE);
+            textStatusDoc.setVisibility(VISIBLE);
+            textStatusNoDocs.setVisibility(GONE);
+            tvOptional.setVisibility(GONE);
+
+            Log.d("ReferralStatus", "No Referral - document required");
         }
+
+
         DatePickerDialog.OnDateSetListener fromdate = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -1124,7 +1150,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 hashMap.put("gender", RequestBody.create(MultipartBody.FORM, "3"));
             }
 
-            ApiExecutor.getApiService().addressProofPhoto("reg-step-III", aadharFront, aadharBack, hashMap).enqueue(new Callback<AddressResponse>() {
+            ApiExecutor.getApiService().addressProofPhotoLast("reg-step-III", aadharFront, aadharBack, hashMap).enqueue(new Callback<AddressResponse>() {
                 @Override
                 public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
                     UtilityFunction.hideLoading();

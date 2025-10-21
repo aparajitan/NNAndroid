@@ -95,8 +95,8 @@ public class LoginActivity extends BaseActivity {
         imgShowPassword = findViewById(R.id.img_show_password_login);
         imgHidePassword = findViewById(R.id.imgHidePassword);
         tv_dont_have = findViewById(R.id.tv_id_dont_have);
-      /* et_email_phone.setText("8126177815");
-      et_password.setText("Admin");*/
+       et_email_phone.setText("8126177815");
+      et_password.setText("Admin@00");
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.METHOD, "manual_test");

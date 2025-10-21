@@ -59,6 +59,7 @@ import com.app_neighbrsnook.model.ImagePOJO;
 import com.app_neighbrsnook.network.APIClient;
 import com.app_neighbrsnook.network.APIInterface;
 import com.app_neighbrsnook.pojo.Nbdatum;
+import com.app_neighbrsnook.pojo.NeighbhoodAddressModel;
 import com.app_neighbrsnook.pojo.ReviewPojo;
 import com.app_neighbrsnook.pojo.StateDropdownHomePojo;
 import com.app_neighbrsnook.pojo.StateDropdownPojo;
@@ -325,7 +326,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 getLastLocation();
             }
         });
-        frm_upload.setOnClickListener(new View.OnClickListener() {
+       /* frm_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (CheckAllFields()) {
@@ -352,6 +353,15 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                     // intent = new Intent(AddressProofLocation.this, AddressDocumentDemo.class);
 
                     startActivity(intent);
+                }
+            }
+        });*/
+        frm_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheckAllFields()) {
+                    // ✅ Only call API, no intent here
+                    addressProofDocumentSubmit();
                 }
             }
         });
@@ -1089,6 +1099,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             GlobalMethods.getInstance(context).globalDialog(this, "No internet connection.");
         }
     }
+/*
     private void addressProofDocumentSubmit() {
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Please wait...");
@@ -1113,16 +1124,6 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                                 if (response.body() != null && response.body().getStatus().equals("success")) {
                                     dialog.dismiss();
 
-                                    // ✅ Facebook Meta Event Logging (Step 2 Completed)
-                                    String userId = sm.getString("user_id");
-                                    MetaEventLogger.logEvent(SecondPageUserLocationRegisteration.this,
-                                            AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION,
-                                            "registeration_step_two_done", userId);
-
-                                    // Optionally: navigate to next screen
-                                    // startActivity(new Intent(AddressProofLocation.this, AddressDocumentDemo.class));
-                                    // littleMoreSkip1();
-
                                 } else if (response.body() != null && response.body().getMessage() != null) {
                                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
@@ -1143,6 +1144,72 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             e.printStackTrace();
             if (dialog != null) {
                 dialog.dismiss();
+            }
+        }
+    }
+*/
+
+
+    private void addressProofDocumentSubmit() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        try {
+            HashMap<String, RequestBody> hashMap = new HashMap<>();
+            hashMap.put("userid", RequestBody.create(MultipartBody.FORM, sm.getString("user_id")));
+            hashMap.put("address", RequestBody.create(MultipartBody.FORM, edt_address1.getText().toString()));
+            hashMap.put("pincode", RequestBody.create(MultipartBody.FORM, edt_pincode.getText().toString()));
+            hashMap.put("areas", RequestBody.create(MultipartBody.FORM, String.valueOf(nbdId)));
+            hashMap.put("lati", RequestBody.create(MultipartBody.FORM, String.valueOf(latitude)));
+            hashMap.put("longi", RequestBody.create(MultipartBody.FORM, String.valueOf(longitude)));
+
+            ApiExecutor.getApiService().addressProofPhoto("reg-step-II", null, null, hashMap)
+                    .enqueue(new Callback<NeighbhoodAddressModel>() {
+                        @Override
+                        public void onResponse(Call<NeighbhoodAddressModel> call, Response<NeighbhoodAddressModel> response) {
+                            UtilityFunction.hideLoading();
+                            progressDialog.dismiss();
+
+                            try {
+                                NeighbhoodAddressModel body = response.body();
+                                if (body != null && "success".equalsIgnoreCase(body.getStatus())) {
+
+                                    String refMsg = body.getReferrerMsg();
+                                    int refStatus = body.getReferrerNeighbourhoodStatus();
+
+                                    if (refMsg != null && !refMsg.trim().isEmpty()) {
+                                        // ✅ Save value for next activity
+                                        sm.setString("referrer_neighbourhood_status", String.valueOf(refStatus));
+
+                                        // ✅ Show dialog for message
+                                        showReferrerDialog(refMsg, refStatus);
+                                    } else {
+                                        // 🔹 Normal redirect if no message
+                                        redirectAccordingToSource();
+                                    }
+
+                                } else if (body != null && body.getMessage() != null) {
+                                    Toast.makeText(context, body.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<NeighbhoodAddressModel> call, Throwable t) {
+                            progressDialog.dismiss();
+                            Log.e("addressProofError", t.toString());
+                        }
+                    });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (progressDialog != null) {
+                progressDialog.dismiss();
             }
         }
     }
@@ -1547,4 +1614,41 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         select_gender = findViewById(R.id.select_gender_frm);
 
     }
+
+    private void showReferrerDialog(String message, int refStatus) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setTitle("Verification Required");
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            sm.setString("referrer_neighbourhood_status", String.valueOf(refStatus));
+            redirectAccordingToSource();
+            dialog.dismiss();
+        });
+        builder.show();
+    }
+
+
+    private void redirectAccordingToSource() {
+        Intent intent;
+
+        if ("profile".equalsIgnoreCase(source)) {
+            intent = new Intent(SecondPageUserLocationRegisteration.this, ProfileUpdateDocumentUser.class);
+            intent.putExtra("neighbrhood", locationNeighbrhood);
+            intent.putExtra("stUploadDocument", stUploadDoc);
+            intent.putExtra("source", "profile");
+
+        } else if ("wall".equalsIgnoreCase(source)) {
+            intent = new Intent(SecondPageUserLocationRegisteration.this, ProfileUpdateDocumentUser.class);
+            intent.putExtra("stUploadDocument", stUploadDoc);
+            intent.putExtra("source", "wall");
+
+        } else {
+            intent = new Intent(SecondPageUserLocationRegisteration.this, LastPageUserDocumentRegisteration.class);
+            intent.putExtra("source", "unknown");
+        }
+
+        startActivity(intent);
+    }
+
 }

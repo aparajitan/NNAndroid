@@ -65,7 +65,7 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
     private String selectedNeighbourhoodName = ""; // store selected name
     private ArrayList<String> neighbourhoodNames = new ArrayList<>();
     private ArrayList<Integer> neighbourhoodIds = new ArrayList<>();
-    String  ownerNeighbrsname,ownerNeighbrhoodId;
+    String  ownerNeighbrhoodId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,10 +82,9 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameEditText);
         phoneEditText = findViewById(R.id.phoneEditText);
         frmNeighbourhood = findViewById(R.id.frm_neighbourhood);
-        ownerNeighbrsname = sm.getString("neighbrhood_name");
+//        ownerNeighbrsname = sm.getString("neighbrhood_name");
         ownerNeighbrhoodId = sm.getString("neighbrhood");
         Log.d("sdsfsfdse",ownerNeighbrhoodId);
-        itemNeighbrhood.setText(ownerNeighbrsname);
         titleTv.setText("Refer a Neighbour");
         search_btn.setVisibility(View.GONE);
         add_btn.setVisibility(View.GONE);
@@ -136,10 +135,11 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
     private boolean validateForm() {
         String name = nameEditText.getText().toString().trim();
         String phone = phoneEditText.getText().toString().trim();
-       // int neighbourhoodPosition = neighbourhoodSpinner.getSelectedItemPosition();
-
-        // Name validation
-        if (name.isEmpty()) {
+        if (selectedNeighbourhoodId == 0 || selectedNeighbourhoodName == null || selectedNeighbourhoodName.isEmpty()) {
+            Toast.makeText(this, "Please select a neighbourhood", Toast.LENGTH_SHORT).show();
+            itemNeighbrhood.requestFocus();
+            return false;
+        }else if (name.isEmpty()) {
             nameEditText.setError("Please enter name");
             nameEditText.requestFocus();
             return false;

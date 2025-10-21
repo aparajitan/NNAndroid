@@ -3,6 +3,7 @@ package com.app_neighbrsnook.apiService;
 import com.app_neighbrsnook.login.AddressResponse;
 import com.app_neighbrsnook.model.postComment.CommentLikePojo;
 import com.app_neighbrsnook.pojo.GroupJoinPojo;
+import com.app_neighbrsnook.pojo.NeighbhoodAddressModel;
 import com.app_neighbrsnook.pojo.RegisterationOtpPojo;
 import com.app_neighbrsnook.pojo.StateDropdownHomePojo;
 import com.app_neighbrsnook.pojo.marketPlacePojo.DeleteMarketPlaceProduct;
@@ -151,7 +152,15 @@ public interface ApiService {
   );
   @Multipart
   @POST(UrlClass.ADDRESS_PROOF_API)
-  Call<AddressResponse> addressProofPhoto(
+  Call<AddressResponse> addressProofPhotoLast(
+          @Query("flag") String falg,
+          @Part MultipartBody.Part imgFront,
+          @Part MultipartBody.Part imgBack,
+          @PartMap() Map<String, RequestBody> partMap
+  );
+ @Multipart
+  @POST(UrlClass.ADDRESS_PROOF_API)
+  Call<NeighbhoodAddressModel> addressProofPhoto(
           @Query("flag") String falg,
           @Part MultipartBody.Part imgFront,
           @Part MultipartBody.Part imgBack,

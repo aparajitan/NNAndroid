@@ -1465,7 +1465,7 @@ public class ProfileUpdateDocumentUser extends AppCompatActivity implements View
             } else if (select_gender.getText().toString().equals("Other")) {
                 hashMap.put("gender", RequestBody.create(MultipartBody.FORM, "3"));
             }
-            ApiExecutor.getApiService().addressProofPhoto("reg-step-III", aadharFront, aadharBack, hashMap).enqueue(new Callback<AddressResponse>() {
+            ApiExecutor.getApiService().addressProofPhotoLast("reg-step-III", aadharFront, aadharBack, hashMap).enqueue(new Callback<AddressResponse>() {
                 @Override
                 public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
                     UtilityFunction.hideLoading();
