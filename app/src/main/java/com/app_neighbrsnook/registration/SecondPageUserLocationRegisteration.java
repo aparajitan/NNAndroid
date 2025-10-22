@@ -1,4 +1,7 @@
 package com.app_neighbrsnook.registration;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -45,6 +48,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app_neighbrsnook.MainActivity;
 import com.app_neighbrsnook.R;
 import com.app_neighbrsnook.abusive.BadWordFilter;
 import com.app_neighbrsnook.adapter.CountryAdapter;
@@ -237,7 +241,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 edt_address1.setText(stAddressProof);
                 area1 = profileNeighbrhood;
                 Log.d("dfsdfsee",profileNeighbrhood);
-                frm_upload.setVisibility(View.VISIBLE); // Profile edit me visible
+                frm_upload.setVisibility(VISIBLE); // Profile edit me visible
                 tvNext.setText("Next");
                 getSelectNeighbourHoodList(false);
             } else if ("wall".equalsIgnoreCase(source)){
@@ -257,7 +261,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 addressTv.setText(stAddress);
                 edt_address1.setText(stAddressProof);
                 area1 = profileNeighbrhood;
-                frm_upload.setVisibility(View.VISIBLE);
+                frm_upload.setVisibility(VISIBLE);
                 tvNext.setText("Next");
                 Log.d("sourcess",source);
                 getSelectNeighbourHoodList(false);
@@ -267,7 +271,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 city_tv.setText("");
                 areaLocation.setText("");
                 area1 = "";
-                frm_upload.setVisibility(View.VISIBLE); // Registration me bhi dikhao
+                frm_upload.setVisibility(VISIBLE); // Registration me bhi dikhao
             }
         } else {
             // Agar extras hi null aaye (first time registration)
@@ -277,7 +281,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             city_tv.setText("");
             areaLocation.setText("");
             area1 = "";
-            frm_upload.setVisibility(View.VISIBLE);
+            frm_upload.setVisibility(VISIBLE);
         }
 // ✅ Baaki aapka original code
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -289,7 +293,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         stateApi("100");
         state_tv.setOnClickListener(this);
         city_tv.setOnClickListener(this);
-        frmStepId.setVisibility(View.GONE);
+        frmStepId.setVisibility(GONE);
         Places.initialize(getApplicationContext(), getString(R.string.api_key));
         PlacesClient placesClient = Places.createClient(this);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -421,7 +425,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             }
         });
 
-        frm_upload.setVisibility(View.VISIBLE);
+        frm_upload.setVisibility(VISIBLE);
         country_tv.setText("India");
 
 
@@ -487,13 +491,13 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 edt_area1.setText(areaName); //26-11-24
                 selectionNeighbrhoodAdapter.selected = 0;
                 selectionNeighbrhoodAdapter.notifyDataSetChanged();
-                lnrNeighbrhoodUi.setVisibility(View.VISIBLE);
+                lnrNeighbrhoodUi.setVisibility(VISIBLE);
             }else {
-                lnrNeighbrhoodUi.setVisibility(View.VISIBLE);
+                lnrNeighbrhoodUi.setVisibility(VISIBLE);
             }
-            uload_reach_out.setVisibility(View.GONE);
-            recy_selecy_neighbrhood.setVisibility(View.VISIBLE);
-            frm_upload.setVisibility(View.VISIBLE);
+            uload_reach_out.setVisibility(GONE);
+            recy_selecy_neighbrhood.setVisibility(VISIBLE);
+            frm_upload.setVisibility(VISIBLE);
         } else {
             handleEmptyResponse();
         }
@@ -511,11 +515,11 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
     }
 
     private void resetUI() {
-        recy_selecy_neighbrhood.setVisibility(View.GONE);
-        uload_reach_out.setVisibility(View.VISIBLE);
-        frm_upload.setVisibility(View.GONE);
-        lnrNeighbrhoodUi.setVisibility(View.GONE);
-        yourNeighbrhood.setVisibility(View.VISIBLE);
+        recy_selecy_neighbrhood.setVisibility(GONE);
+        uload_reach_out.setVisibility(VISIBLE);
+        frm_upload.setVisibility(GONE);
+        lnrNeighbrhoodUi.setVisibility(GONE);
+        yourNeighbrhood.setVisibility(VISIBLE);
        // edt_area1.setText("");27-08-2025
         //edt_area1.setText(""); reachout me null ja rha tha area iski wajah se
     }
@@ -732,14 +736,14 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
 
 
                 if (subLocality != null && !subLocality.trim().isEmpty()) {
-                    tvYourAddressProofNgh.setVisibility(View.VISIBLE);
-                    tvNghidAddress.setVisibility(View.VISIBLE);
+                    tvYourAddressProofNgh.setVisibility(VISIBLE);
+                    tvNghidAddress.setVisibility(VISIBLE);
 
                     tvYourAddressProofNgh.setText("(For " + subLocality + ")");
                     tvNghidAddress.setText("(For " + subLocality + ")");
                 } else {
-                    tvYourAddressProofNgh.setVisibility(View.GONE);
-                    tvNghidAddress.setVisibility(View.GONE);
+                    tvYourAddressProofNgh.setVisibility(GONE);
+                    tvNghidAddress.setVisibility(GONE);
                 }
 
                 edt_pincode.setText(postalCode);
@@ -1179,11 +1183,12 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                                     String refMsg = body.getReferrerMsg();
                                     int refStatus = body.getReferrerNeighbourhoodStatus();
 
-                                    if (refMsg != null && !refMsg.trim().isEmpty()) {
-                                        // ✅ Save value for next activity
-                                        sm.setString("referrer_neighbourhood_status", String.valueOf(refStatus));
+                                    // ✅ Always save refStatus (even if refMsg is null or empty)
+                                    sm.setString("referrer_neighbourhood_status", String.valueOf(refStatus));
+                                    Log.d("SAVE_STATUS", "Saved refStatus: " + refStatus + " | refMsg: " + refMsg);
 
-                                        // ✅ Show dialog for message
+                                    if (refMsg != null && !refMsg.trim().isEmpty()) {
+                                        // ✅ Show dialog if message available
                                         showReferrerDialog(refMsg, refStatus);
                                     } else {
                                         // 🔹 Normal redirect if no message
@@ -1197,6 +1202,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+
                         }
 
                         @Override
@@ -1290,9 +1296,9 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         tvMessage.setText(message);
         dialog.show();
         TextView frm_choose = dialog.findViewById(R.id.post_frm);
-        frm_choose.setVisibility(View.VISIBLE);
+        frm_choose.setVisibility(VISIBLE);
         TextView tvCancel = dialog.findViewById(R.id.tvCancel);
-        tvCancel.setVisibility(View.GONE);
+        tvCancel.setVisibility(GONE);
         frm_choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1323,8 +1329,8 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         dialog.show();
         TextView frm_choose = dialog.findViewById(R.id.post_frm);
         TextView tvCancel = dialog.findViewById(R.id.tvCancel);
-        frm_choose.setVisibility(View.VISIBLE);
-        tvCancel.setVisibility(View.GONE);
+        frm_choose.setVisibility(VISIBLE);
+        tvCancel.setVisibility(GONE);
 
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1616,17 +1622,48 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
     }
 
     private void showReferrerDialog(String message, int refStatus) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setTitle("Verification Required");
-        builder.setMessage(message);
-        builder.setPositiveButton("OK", (dialog, which) -> {
+        final Dialog dialog = new Dialog(SecondPageUserLocationRegisteration.this);
+        dialog.setContentView(R.layout.thanks_neighbrsnook_layout);
+
+        // Set dialog window attributes
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.CENTER;
+        dialog.getWindow().setBackgroundDrawable(
+                new ColorDrawable(ContextCompat.getColor(SecondPageUserLocationRegisteration.this, android.R.color.transparent))
+        );
+        dialog.getWindow().setAttributes(lp);
+        dialog.setCancelable(false);
+
+        // Initialize views from custom layout
+        TextView tvMessage = dialog.findViewById(R.id.tvMessage); // 👈 Add this TextView in your XML if not exist
+        TextView tvOk = dialog.findViewById(R.id.post_frm);
+        TextView tvCancel = dialog.findViewById(R.id.tvCancel);
+        LinearLayout lnrAddressArea = dialog.findViewById(R.id.lnrAddressArea);
+        lnrAddressArea.setVisibility(GONE);
+        tvMessage.setVisibility(VISIBLE);
+        tvOk.setText("OK");
+        // Set the message text dynamically
+        if (tvMessage != null) {
+            tvMessage.setText(message);
+        }
+
+        // Cancel button listener
+        tvCancel.setOnClickListener(v -> dialog.dismiss());
+
+        // OK button listener (same functionality as old dialog)
+        tvOk.setOnClickListener(v -> {
             sm.setString("referrer_neighbourhood_status", String.valueOf(refStatus));
             redirectAccordingToSource();
             dialog.dismiss();
         });
-        builder.show();
+
+        dialog.show();
     }
+
+
 
 
     private void redirectAccordingToSource() {

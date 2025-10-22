@@ -312,6 +312,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         FirebaseAnalytics.getInstance(this).logEvent("test_event", bundle);
         String refStatus = sm.getString("referrer_neighbourhood_status");
 
+        Log.d("LOAD_STATUS", "Loaded refStatus: " + refStatus);
         int referralStatus = sm.getInt("referral_status", 0); // default 0
 
 
@@ -535,7 +536,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
 
             }
         });
-
         if ("1".equals(refStatus)) {
             // No need for document in this scenario
             doc_section.setVisibility(GONE);
@@ -545,23 +545,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             tvSelectAddressText.setVisibility(VISIBLE);
             frmReferalUi.setVisibility(VISIBLE);
             tvOptional.setVisibility(VISIBLE);
-
             Log.d("ReferralStatus", "Referred user - document optional");
-
-        } else if ("0".equals(refStatus)) {
-            // Special case: referralStatus = 1 but refStatus = 0 → document required
-            tvSelectAddressText.setVisibility(VISIBLE);
-            doc_section.setVisibility(VISIBLE);
-            imgIconPrivacy.setVisibility(VISIBLE);
-            doc_arrow_section.setVisibility(GONE);
-            frmReferalUi.setVisibility(GONE);
-            referedDropdown.setVisibility(VISIBLE);
-            textStatusDoc.setVisibility(VISIBLE);
-            textStatusNoDocs.setVisibility(GONE);
-            tvOptional.setVisibility(GONE);
-
-            Log.d("ReferralStatus", "Referral 1 but refStatus 0 - document required");
-
         } else {
             // Default case: document upload required
             tvSelectAddressText.setVisibility(VISIBLE);
@@ -573,11 +557,8 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
             textStatusDoc.setVisibility(VISIBLE);
             textStatusNoDocs.setVisibility(GONE);
             tvOptional.setVisibility(GONE);
-
             Log.d("ReferralStatus", "No Referral - document required");
         }
-
-
         DatePickerDialog.OnDateSetListener fromdate = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

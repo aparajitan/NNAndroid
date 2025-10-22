@@ -172,13 +172,11 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         nameEditText.setText("");
         phoneEditText.setText("");
     }
-
     private void createReferralApi(String name, String phone) {
         progressDialog.show();
-
         try {
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("referrer_user_id", Integer.parseInt(sm.getString("user_id"))); // user id
+            jsonObject.addProperty("referrer_user_id", Integer.parseInt(sm.getString("user_id")));
             jsonObject.addProperty("referred_name", name);
             jsonObject.addProperty("referred_phone", phone);
             jsonObject.addProperty("neighbourhood_id", selectedNeighbourhoodId);
@@ -200,40 +198,52 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
                     progressDialog.dismiss();
+
                     if (response.isSuccessful() && response.body() != null) {
                         try {
                             JSONObject json = new JSONObject(response.body().toString());
                             boolean success = json.optBoolean("success");
-                            String message = json.optString("message");
+                            String message = json.optString("message", "Something went wrong.");
 
                             if (success) {
                                 JSONObject data = json.optJSONObject("data");
-                                String referralCode = data.optString("referral_code", "N/A");
-                                String referredName = data.optString("referred_name", name);
-                                String referredPhone = data.optString("referred_phone", phone);
-                                String neighbourhoodName = "Neighbourhood ID: " + data.optInt("neighbourhood_id", 104);
+                                if (data != null) {
+                                    String referralCode = data.optString("referral_code", "N/A");
+                                    String referredName = data.optString("referred_name", name);
+                                    String referredPhone = data.optString("referred_phone", phone);
+                                    String neighbourhoodName = "Neighbourhood ID: " + data.optInt("neighbourhood_id", 104);
 
-                                Toast.makeText(ReferAnNeighbourActivity.this,
-                                        "Referral Created Successfully!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ReferAnNeighbourActivity.this,
+                                            "Referral Created Successfully!", Toast.LENGTH_SHORT).show();
 
-                                // ✅ Now trigger share intent
-                                submitReferralShare(referredName, referredPhone, neighbourhoodName, referralCode);
-
-                                // ✅ Reset form
-                                resetForm();
-
+                                    submitReferralShare(referredName, referredPhone, neighbourhoodName, referralCode);
+                                    resetForm();
+                                } else {
+                                    Toast.makeText(ReferAnNeighbourActivity.this,
+                                            "Invalid data received!", Toast.LENGTH_SHORT).show();
+                                }
                             } else {
+                                // ✅ Sirf API message show karega (koi extra text nahi)
                                 Toast.makeText(ReferAnNeighbourActivity.this,
-                                        message, Toast.LENGTH_SHORT).show();
+                                        message, Toast.LENGTH_LONG).show();
                             }
+
                         } catch (Exception e) {
                             e.printStackTrace();
                             Toast.makeText(ReferAnNeighbourActivity.this,
                                     "Parsing error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
-                        Toast.makeText(ReferAnNeighbourActivity.this,
-                                "Failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                        // ✅ HTTP error case me readable message
+                        String errorMsg = "Something went wrong. Please try again.";
+                        try {
+                            if (response.errorBody() != null) {
+                                JSONObject errorJson = new JSONObject(response.errorBody().string());
+                                errorMsg = errorJson.optString("message", errorMsg);
+                            }
+                        } catch (Exception ignored) {}
+                        Toast.makeText(ReferAnNeighbourActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -241,7 +251,7 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
                 public void onFailure(Call<JsonElement> call, Throwable t) {
                     progressDialog.dismiss();
                     Toast.makeText(ReferAnNeighbourActivity.this,
-                            "API Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                            "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (Exception e) {
@@ -249,6 +259,7 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
             Toast.makeText(this, "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void submitReferralShare(String name, String phone, String neighbourhood, String referralCode) {
         StringBuilder message = new StringBuilder();
         /*message.append("🎉 *Refer a Neighbour!*\n\n");
