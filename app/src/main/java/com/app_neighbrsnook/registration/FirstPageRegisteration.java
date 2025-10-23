@@ -536,7 +536,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                     return;
                 }
                 // Final checks
-                if (!isVerifiedOtp) {
+               /* if (!isVerifiedOtp) {
                     Toast.makeText(activity, "Please verify your OTP", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -548,7 +548,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                 if (!checkBox.isChecked()) {
                     globalDialog(); // Show terms & conditions dialog
                     return;
-                }
+                }*/
                 signup();
            /*     emailChecked(new EmailVerificationCallback() {
                     @Override
@@ -741,6 +741,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
         progressDialog.setCancelable(false);
         progressDialog.show();
         logRegistrationEvent("first_step_started_android_app", "step_one_done");
+
         // 1. Name uthao
         String firstName = tv_first_name.getText().toString().trim();
 
@@ -780,19 +781,21 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                         String responseString = response.body().string();
                         JSONObject jsonObject = new JSONObject(responseString);
                         String status = jsonObject.getString("status");
+
                         if (status.equals("success") && jsonObject.has("userid")) {
                             String userid = jsonObject.getString("userid");
-                            int referralStatus = 0; // default value
+                            int referralStatus = 0;
                             if (jsonObject.has("referral_status")) {
                                 referralStatus = jsonObject.getInt("referral_status");
                             }
 
                             // ✅ Save referral_status in SharedPreferences
                             sm.setInt("referral_status", referralStatus);
-                            // Save data in SharedPrefs
+
+                            // ✅ Save basic user info in LoginPojo + SharedPreferences
                             LoginPojo loginPojo = new LoginPojo();
-                            loginPojo.setUsername(tv_first_name.getText().toString());
-                            sm.setString("user_name", tv_first_name.getText().toString());
+                            loginPojo.setUsername(firstName);
+                            sm.setString("user_name", firstName);
                             sm.setString("phone_no", tv_phone_no.getText().toString());
                             loginPojo.setEmailid(tv_mail.getText().toString());
                             loginPojo.setPhoneno(tv_phone_no.getText().toString());
@@ -800,14 +803,67 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                             sm.setString("user_id", userid);
                             smUserId = userid;
                             PrefMananger.SaveLoginData(context, loginPojo);
+
+                            // ✅ Referral data save only if referral_status == 1
+                            if (referralStatus == 1) {
+                                if (jsonObject.has("refer_neighbourhood_id")) {
+                                    String id = jsonObject.getString("refer_neighbourhood_id");
+                                    sm.setString("refer_neighbourhood_id", id);
+                                    Log.d("SignupResponseData", "Neighbourhood ID: " + id);
+                                }
+
+                                if (jsonObject.has("refer_neighbourhood_name")) {
+                                    String name = jsonObject.getString("refer_neighbourhood_name");
+                                    sm.setString("refer_neighbourhood_name", name);
+                                    Log.d("SignupResponseData", "Neighbourhood Name: " + name);
+                                }
+
+                                if (jsonObject.has("refer_city_name")) {
+                                    String city = jsonObject.getString("refer_city_name");
+                                    sm.setString("refer_city_name", city);
+                                    Log.d("SignupResponseData", "City Name: " + city);
+                                }
+
+                                if (jsonObject.has("refer_state_name")) {
+                                    String state = jsonObject.getString("refer_state_name");
+                                    sm.setString("refer_state_name", state);
+                                    Log.d("SignupResponseData", "State Name: " + state);
+                                }
+
+                                if (jsonObject.has("refer_country_name")) {
+                                    String country = jsonObject.getString("refer_country_name");
+                                    sm.setString("refer_country_name", country);
+                                    Log.d("SignupResponseData", "Country Name: " + country);
+                                }
+
+                                if (jsonObject.has("refer_pincode")) {
+                                    String pincode = jsonObject.getString("refer_pincode");
+                                    sm.setString("refer_pincode", pincode);
+                                    Log.d("SignupResponseData", "Pincode: " + pincode);
+                                }
+                            } else {
+                                // 🧹 Clear old referral data (if any)
+                                sm.setString("refer_neighbourhood_id", "");
+                                sm.setString("refer_neighbourhood_name", "");
+                                sm.setString("refer_city_name", "");
+                                sm.setString("refer_state_name", "");
+                                sm.setString("refer_country_name", "");
+                                sm.setString("refer_pincode", "");
+                            }
+
+                            // ✅ Move to next screen with proper source
                             Intent intent = new Intent(FirstPageRegisteration.this, SecondPageUserLocationRegisteration.class);
                             intent.putExtra("step2_page_type", "new");
-                            intent.putExtra("source", "register");
+
+                            if (referralStatus == 1) {
+                                intent.putExtra("source", "referral"); // Referral user
+                            } else {
+                                intent.putExtra("source", "register"); // Normal user
+                            }
 
                             startActivity(intent);
                             finishAffinity();
-                            validateEmail();
-                            validatePassword();
+
                         } else {
                             Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
@@ -828,6 +884,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
             }
         });
     }
+
 
     private boolean validateEmail() {
         String emailInput = tv_mail.getText().toString().trim();

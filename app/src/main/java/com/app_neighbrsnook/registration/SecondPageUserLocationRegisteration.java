@@ -203,27 +203,30 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         sm = new SharedPrefsManager(this);
         calendar = Calendar.getInstance();
         setContentView(R.layout.activity_address_proof_location);
-
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         isManualLocationSelected = prefs.getBoolean(KEY_MANUAL_SELECTED, false);
         String step2PageType = getIntent().getStringExtra("step2_page_type");
         boolean isNewRegistration = "new".equals(step2PageType);
+        init();
+
         if (isNewRegistration) {
             SharedPreferences.Editor editor = prefs.edit();
             editor.remove(KEY_MANUAL_SELECTED);
             editor.apply();
             isManualLocationSelected = false;
         }
+
         if (!checkPermissions() && !isManualLocationSelected && isNewRegistration) {
             showLocationPermissionDialog();
         }
-        init();
+
 
 // ✅ Extras handle safely
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            source = extras.getString("source", ""); // "profile" or "registration"
+            source = extras.getString("source", ""); // "profile", "registration", or "referral"
             if ("profile".equalsIgnoreCase(source)) {
+                // 🧾 PROFILE CASE
                 profileNeighbrhood = extras.getString("neighbrhood", "");
                 cityGet = extras.getString("city", "");
                 stateGet = extras.getString("state", "");
@@ -232,7 +235,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 stAddressProof = extras.getString("addressone", "");
                 locationNeighbrhood = extras.getString("neighbrhood", "");
                 stUploadDoc = extras.getString("stUploadDocument", "");
-               // Log.d("oppopoipop",stUploadDoc);
+
                 state_tv.setText(stateGet);
                 edt_pincode.setText(pincodeGet);
                 city_tv.setText(cityGet);
@@ -240,12 +243,14 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 addressTv.setText(stAddress);
                 edt_address1.setText(stAddressProof);
                 area1 = profileNeighbrhood;
-                Log.d("dfsdfsee",profileNeighbrhood);
-                frm_upload.setVisibility(VISIBLE); // Profile edit me visible
+                Log.d("ProfileData", "Neighbourhood: " + profileNeighbrhood);
+                frm_upload.setVisibility(VISIBLE);
                 tvNext.setText("Next");
                 getSelectNeighbourHoodList(false);
-            } else if ("wall".equalsIgnoreCase(source)){
-                // 📝 REGISTRATION case (blank values rakho)
+
+            }
+            else if ("wall".equalsIgnoreCase(source)) {
+                // 🧾 NORMAL REGISTRATION
                 profileNeighbrhood = extras.getString("neighbrhood", "");
                 cityGet = extras.getString("city", "");
                 stateGet = extras.getString("state", "");
@@ -254,6 +259,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 stAddressProof = extras.getString("addressone", "");
                 locationNeighbrhood = extras.getString("locationNeighbrhood", "");
                 stUploadDoc = extras.getString("stUploadDocument", "");
+
                 state_tv.setText(stateGet);
                 edt_pincode.setText(pincodeGet);
                 city_tv.setText(cityGet);
@@ -261,20 +267,49 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 addressTv.setText(stAddress);
                 edt_address1.setText(stAddressProof);
                 area1 = profileNeighbrhood;
+
                 frm_upload.setVisibility(VISIBLE);
                 tvNext.setText("Next");
-                Log.d("sourcess",source);
+                Log.d("SourceType", "Normal Registration");
                 getSelectNeighbourHoodList(false);
+
+            }
+            else if ("referral".equalsIgnoreCase(source)) {
+
+                // 🧾 REFERRAL REGISTRATION CASE
+                String neighbourhoodName = sm.getString("refer_neighbourhood_name", "");
+                String cityName = sm.getString("refer_city_name", "");
+                String stateName = sm.getString("refer_state_name", "");
+                String countryName = sm.getString("refer_country_name", "");
+                String pincode = sm.getString("refer_pincode", "");
+
+                Log.d("ReferralData",
+                        "Neighbourhood: " + neighbourhoodName + ", City: " + cityName +
+                                ", State: " + stateName + ", Country: " + countryName + ", Pincode: " + pincode);
+
+                // 🔹 Only set UI if data is not empty
+                if (!neighbourhoodName.isEmpty()) areaLocation.setText(neighbourhoodName);
+                if (!cityName.isEmpty()) city_tv.setText(cityName);
+                if (!stateName.isEmpty()) state_tv.setText(stateName);
+                if (!pincode.isEmpty()) edt_pincode.setText(pincode);
+
+                // 🧹 Make sure upload section visible
+                frm_upload.setVisibility(VISIBLE);
+                tvNext.setText("Next");
+                getSelectNeighbourHoodList(true);
+
             } else {
+                // 🧾 Default / Fallback (Blank state)
                 state_tv.setText("");
                 edt_pincode.setText("");
                 city_tv.setText("");
                 areaLocation.setText("");
                 area1 = "";
-                frm_upload.setVisibility(VISIBLE); // Registration me bhi dikhao
+                frm_upload.setVisibility(VISIBLE);
             }
+
         } else {
-            // Agar extras hi null aaye (first time registration)
+            // 🧾 First Time Registration (Extras null)
             source = "registration";
             state_tv.setText("");
             edt_pincode.setText("");
@@ -283,6 +318,8 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             area1 = "";
             frm_upload.setVisibility(VISIBLE);
         }
+
+
 // ✅ Baaki aapka original code
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationRequest = LocationRequest.create();
@@ -1103,55 +1140,6 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             GlobalMethods.getInstance(context).globalDialog(this, "No internet connection.");
         }
     }
-/*
-    private void addressProofDocumentSubmit() {
-        final ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setMessage("Please wait...");
-        dialog.setCancelable(false);
-        dialog.show();
-
-        try {
-            HashMap<String, RequestBody> hashMap = new HashMap<>();
-            hashMap.put("userid", RequestBody.create(MultipartBody.FORM, sm.getString("user_id")));
-            hashMap.put("address", RequestBody.create(MultipartBody.FORM, edt_address1.getText().toString()));
-            hashMap.put("pincode", RequestBody.create(MultipartBody.FORM, edt_pincode.getText().toString()));
-            hashMap.put("areas", RequestBody.create(MultipartBody.FORM, String.valueOf(nbdId)));
-            hashMap.put("lati", RequestBody.create(MultipartBody.FORM, String.valueOf(latitude)));
-            hashMap.put("longi", RequestBody.create(MultipartBody.FORM, String.valueOf(longitude)));
-
-            ApiExecutor.getApiService().addressProofPhoto("reg-step-II", null, null, hashMap)
-                    .enqueue(new Callback<AddressResponse>() {
-                        @Override
-                        public void onResponse(Call<AddressResponse> call, Response<AddressResponse> response) {
-                            UtilityFunction.hideLoading();
-                            try {
-                                if (response.body() != null && response.body().getStatus().equals("success")) {
-                                    dialog.dismiss();
-
-                                } else if (response.body() != null && response.body().getMessage() != null) {
-                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                    dialog.dismiss();
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<AddressResponse> call, Throwable t) {
-                            dialog.dismiss();
-                            Log.e("addressProofError", t.toString());
-                        }
-                    });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            if (dialog != null) {
-                dialog.dismiss();
-            }
-        }
-    }
-*/
 
 
     private void addressProofDocumentSubmit() {
