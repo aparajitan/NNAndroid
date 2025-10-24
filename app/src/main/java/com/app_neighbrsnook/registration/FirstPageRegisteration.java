@@ -745,7 +745,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
         // 1. Name uthao
         String firstName = tv_first_name.getText().toString().trim();
 
-        // 2. Bitmap banao (initials se)
+        // 2. Bitmap banao che(initials se)
         Bitmap generatedBitmap = GlobalMethods.getInstance(context)
                 .getInitialBitmap(new ImageView(context), firstName, this);
 
