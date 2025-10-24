@@ -188,6 +188,18 @@ public class WallPojo {
 
     @SerializedName("verified_status")
     private String verified_status;
+
+    public String getReferred_user_msg() {
+        return referred_user_msg;
+    }
+
+    public void setReferred_user_msg(String referred_user_msg) {
+        this.referred_user_msg = referred_user_msg;
+    }
+
+    @SerializedName("referred_user_msg")
+    private String referred_user_msg;
+
     @SerializedName("verfied_msg")
     private String verfied_msg;
 

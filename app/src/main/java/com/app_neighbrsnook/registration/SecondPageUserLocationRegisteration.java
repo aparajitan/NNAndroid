@@ -298,7 +298,8 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                 tvNext.setText("Next");
                 getSelectNeighbourHoodList(true);
 
-            } else {
+            }
+            else {
                 // 🧾 Default / Fallback (Blank state)
                 state_tv.setText("");
                 edt_pincode.setText("");
@@ -342,6 +343,8 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         if (source.equals("profile")){
            // getLastLocation();
         }else if (source.equals("wall")){
+            //getLastLocation();
+        }else if (source.equals("referral")){
             //getLastLocation();
         }else {
             getLastLocation();

@@ -504,6 +504,8 @@ public class WallFragment extends Fragment implements BusinessWallChildAdapter.I
                     sm.setString("neighbrhood", rootObject.getMy_neighborhood());
                     sm.setString("neighbrhood_name", rootObject.getMy_neighborhood());
                     sm.setString("neighbrhood", rootObject.getMy_neighborhood_id());
+                    sm.setString("referred_msg", rootObject.getReferred_user_msg());
+                    Log.d("dsfsdee",rootObject.getReferred_user_msg());
                     title.setText(rootObject.getMy_neighborhood());
                     title1.setText(rootObject.getMy_neighborhood());
                     try {

@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -65,7 +67,8 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
     private String selectedNeighbourhoodName = ""; // store selected name
     private ArrayList<String> neighbourhoodNames = new ArrayList<>();
     private ArrayList<Integer> neighbourhoodIds = new ArrayList<>();
-    String  ownerNeighbrhoodId;
+    LinearLayout lnrReferNeigh;
+    String  ownerNeighbrhoodId,referrMsg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,10 +84,12 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         add_btn = findViewById(R.id.add_imageview);
         nameEditText = findViewById(R.id.nameEditText);
         phoneEditText = findViewById(R.id.phoneEditText);
+        lnrReferNeigh = findViewById(R.id.lnrReferNeigh);
         frmNeighbourhood = findViewById(R.id.frm_neighbourhood);
 //        ownerNeighbrsname = sm.getString("neighbrhood_name");
         ownerNeighbrhoodId = sm.getString("neighbrhood");
-        Log.d("sdsfsfdse",ownerNeighbrhoodId);
+        referrMsg = sm.getString("referred_msg");
+        Log.d("sdsfsfdse",referrMsg);
         titleTv.setText("Refer a Neighbour");
         search_btn.setVisibility(View.GONE);
         add_btn.setVisibility(View.GONE);
@@ -94,7 +99,22 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         setupPhoneNumberValidation();
         getNeighbourhoodList();
+        if (referrMsg != null && !referrMsg.isEmpty()) {
+            // Layout ko gone kar do
 
+            lnrReferNeigh.setVisibility(View.GONE);
+
+            // Dialog show karo
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Message");
+            builder.setMessage(referrMsg);
+            builder.setPositiveButton("OK", null); // OK button
+            builder.setCancelable(false); // user dialog ke bahar click karke dismiss na kare
+            builder.show();
+        } else {
+            // Agar message null/empty hai toh layout normal dikhe
+            lnrReferNeigh.setVisibility(View.VISIBLE);
+        }
         itemNeighbrhood.setOnClickListener(v -> {
            showNeighbourhoodDialog();
         });
@@ -169,9 +189,30 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
 
 
     private void resetForm() {
+        // EditTexts clear karna
         nameEditText.setText("");
         phoneEditText.setText("");
+
+        // Focus remove karna
+        nameEditText.clearFocus();
+        phoneEditText.clearFocus();
+
+        // Keyboard hide karna
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+        // Neighbourhood TextView clear karna
+        itemNeighbrhood.setText("Select Neighbourhood");
+
+        // Selected values reset karna
+        selectedNeighbourhoodId = 0;
+        selectedNeighbourhoodName = "";
     }
+
+
     private void createReferralApi(String name, String phone) {
         progressDialog.show();
         try {
@@ -213,19 +254,23 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
                                     String referredPhone = data.optString("referred_phone", phone);
                                     String neighbourhoodName = "Neighbourhood ID: " + data.optInt("neighbourhood_id", 104);
 
+                                    // ✅ API se refer_subject aur refer_message le rahe hain
+                                    String referSubject = data.optString("refer_subject", "Refer a Neighbour on Neighbrsnook");
+                                    String referMessage = data.optString("refer_message",
+                                            "Hi! I am referring you to join me on Neighbrsnook - it's a safe, real-neighbour app that helps us stay connected, exchange info, and make our community stronger.\n\n" +
+                                                    "You can download it here:\nhttps://neighbrsnook.com/open-app");
+
                                     Toast.makeText(ReferAnNeighbourActivity.this,
                                             "Referral Created Successfully!", Toast.LENGTH_SHORT).show();
 
-                                    submitReferralShare(referredName, referredPhone, neighbourhoodName, referralCode);
+                                    // Share using API message
+                                    submitReferralShare(referSubject, referMessage);
+
                                     resetForm();
                                 } else {
                                     Toast.makeText(ReferAnNeighbourActivity.this,
                                             "Invalid data received!", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                // ✅ Sirf API message show karega (koi extra text nahi)
-                                Toast.makeText(ReferAnNeighbourActivity.this,
-                                        message, Toast.LENGTH_LONG).show();
                             }
 
                         } catch (Exception e) {
@@ -260,15 +305,15 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         }
     }
 
-    private void submitReferralShare(String name, String phone, String neighbourhood, String referralCode) {
+    /*private void submitReferralShare(String name, String phone, String neighbourhood, String referralCode) {
         StringBuilder message = new StringBuilder();
-        /*message.append("🎉 *Refer a Neighbour!*\n\n");
+        *//*message.append("🎉 *Refer a Neighbour!*\n\n");
         message.append("Name: ").append(name).append("\n");
         message.append("Phone: ").append(phone).append("\n");
         message.append(neighbourhood).append("\n");
         message.append("Referral Code: ").append(referralCode).append("\n\n");
         message.append("I'm referring this person to join our community on Neighbrsnook!");
-*/
+*//*
         message.append("Hi! I am referring you to join me on Neighbrsnook - its a safe, real-neighbour app that helps us stay connected, exchange info, and make our community stronger.\n" +
                 "you can download it here:");
         message.append("https://neighbrsnook.com/open-app");
@@ -278,7 +323,16 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         shareIntent.putExtra(Intent.EXTRA_TEXT, message.toString());
 
         startActivity(Intent.createChooser(shareIntent, "Share via"));
+    }*/
+    private void submitReferralShare(String subject, String messageText) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, messageText);
+
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
+
     private void getNeighbourhoodList() {
         APIInterface service = APIClient.getRetrofit3().create(APIInterface.class);
 

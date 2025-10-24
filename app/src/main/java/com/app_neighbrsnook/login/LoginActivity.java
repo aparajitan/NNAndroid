@@ -95,7 +95,7 @@ public class LoginActivity extends BaseActivity {
         imgShowPassword = findViewById(R.id.img_show_password_login);
         imgHidePassword = findViewById(R.id.imgHidePassword);
         tv_dont_have = findViewById(R.id.tv_id_dont_have);
-       /*et_email_phone.setText("6156177844");
+      /* et_email_phone.setText("6125177844");
       et_password.setText("Admin");*/
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
@@ -309,12 +309,35 @@ public class LoginActivity extends BaseActivity {
                 finish();
                 break;
             case "You can login, Neighbourhood could not be found then take him to address page":
+                // Save all relevant fields from response
                 sm.setString("user_id", jsonObject.getString("id"));
+                sm.setString("req_ndbstatus", jsonObject.optString("req_ndbstatus", ""));
+                sm.setString("referral_status", jsonObject.optString("referral_status", ""));
+                sm.setString("refer_neighbourhood_id", jsonObject.optString("refer_neighbourhood_id", ""));
+                sm.setString("refer_neighbourhood_name", jsonObject.optString("refer_neighbourhood_name", ""));
+                sm.setString("refer_city_name", jsonObject.optString("refer_city_name", ""));
+                sm.setString("refer_state_name", jsonObject.optString("refer_state_name", ""));
+                sm.setString("refer_country_name", jsonObject.optString("refer_country_name", ""));
+                sm.setString("refer_pincode", jsonObject.optString("refer_pincode", ""));
+// ✅ Debug Logs (to confirm values are saved)
+                Log.d("LoginResponse", "User ID: " + jsonObject.optString("id"));
+                Log.d("LoginResponse", "req_ndbstatus: " + jsonObject.optString("req_ndbstatus"));
+                Log.d("LoginResponse", "referral_status: " + jsonObject.optString("referral_status"));
+                Log.d("LoginResponse", "Neighbourhood ID: " + jsonObject.optString("refer_neighbourhood_id"));
+                Log.d("LoginResponse", "Neighbourhood Name: " + jsonObject.optString("refer_neighbourhood_name"));
+                Log.d("LoginResponse", "City: " + jsonObject.optString("refer_city_name"));
+                Log.d("LoginResponse", "State: " + jsonObject.optString("refer_state_name"));
+                Log.d("LoginResponse", "Country: " + jsonObject.optString("refer_country_name"));
+                Log.d("LoginResponse", "Pincode: " + jsonObject.optString("refer_pincode"));
+
+                // Redirect to address page
                 Intent intent5 = new Intent(LoginActivity.this, SecondPageUserLocationRegisteration.class);
-                intent5.putExtra("step2_page_type", "new");
+               // intent5.putExtra("step2_page_type", "new"); change to 24oct
+                intent5.putExtra("source", "referral");
                 startActivity(intent5);
                 finish();
                 break;
+
             default:
                 welcomeDialog(message);
         }

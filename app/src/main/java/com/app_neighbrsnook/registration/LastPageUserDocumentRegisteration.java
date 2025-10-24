@@ -20,6 +20,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -28,6 +29,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -313,7 +317,7 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         String refStatus = sm.getString("referrer_neighbourhood_status");
 
         Log.d("LOAD_STATUS", "Loaded refStatus: " + refStatus);
-        int referralStatus = sm.getInt("referral_status", 0); // default 0
+//        int referralStatus = sm.getInt("referral_status", 0); // default 0
 
 
 
@@ -1190,11 +1194,17 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     tvReferalSet.setText(data.getReferral_code());
                     usernameRefered=data.getReferrer().getName();
                     referNeighbrhoodName=data.getReferrer().getNbd_name();
-                    textStatusNoDocs.setText(
-                            "You have been referred by " + usernameRefered +
-                                    " from " + referNeighbrhoodName +
-                                    ", hence providing ID is optional"
-                    );
+                    String fullText = "You have been referred by " + usernameRefered +
+                            " from " + referNeighbrhoodName +
+                            ", hence providing ID is optional";
+
+                    SpannableString spannable = new SpannableString(fullText);
+                    int start = fullText.indexOf(usernameRefered);
+                    int end = fullText.indexOf(referNeighbrhoodName) + referNeighbrhoodName.length();
+                    spannable.setSpan(new StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+// set to TextView
+                    textStatusNoDocs.setText(spannable);
                     // textReferralCode.setText(data.getReferral_code());
                 } else {
                     Log.e("ReferralAPI", "Failed: " + response.message());
