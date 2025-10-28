@@ -223,62 +223,6 @@ public class LoginActivity extends BaseActivity {
             }
         });
     }
-  /*  private void handleLoginFailure(JSONObject jsonObject) throws JSONException {
-        String message = jsonObject.getString("message");
-        switch (message) {
-            // sm.setString("user_id",  "id");
-            case "DOB Incomplete":
-                sm.setString("user_id", jsonObject.getString("id"));
-                navigateToActivity(AddressProofLocation.class);//31-07 AddressProof
-                break;
-            case "Address Incomplete":
-                sm.setString("user_id", jsonObject.getString("id")); // Save 'id' using sm
-                Log.d("sfsfeweweee",jsonObject.getString("id"));
-                navigateToActivity(AddressProofLocation.class);//31-07 AddressProof
-                break;
-            case "Incomplete documents.":
-                navigateToActivity(AddressProofLocation.class);//31-07 AddressProof
-                break;
-            case "Neighborhood Assigned to user by Admin":
-                navigateToActivity(AddressProofLocation.class);
-                break;
-            case "You can login, Neighbourhood could not be found then take him to address page":
-                sm.setString("user_id", jsonObject.getString("id"));
-                navigateToActivity(AddressProofLocation.class);
-                break;
-            default:
-                welcomeDialog(message);  // Show message in dialog only if it doesn't match specific cases
-        }
-    }
-    private void handleLoginSuccess(JSONObject logindata) throws JSONException {
-        LoginPojo loginPojo = new Gson().fromJson(logindata.toString(), LoginPojo.class);
-        PrefMananger.saveLoginData(getApplicationContext(), loginPojo);
-
-        sm.setString("user_id", logindata.getInt("id")+"");
-        sm.setString("firebase_token", logindata.getString("firebase_token"));
-        sm.setString("user_name", logindata.getString("username"));
-        sm.setInt("user_verified", logindata.getInt("verified"));
-        Log.e("asdf userId", logindata.getInt("id")+"");
-      //
-        saveAdditionalUserData(logindata);
-        int verified = logindata.getInt("verified");
-        int getRequest = logindata.getInt("req_ndbstatus");
-        if (verified == 1 || verified == 2 || verified == 0) {
-            loginSuccessful(verified);
-        } else if (getRequest == 3 || getRequest == 4) {
-            navigateToActivity(AddressProofLocation.class);
-        }
-
-*//*
-        else if ((getRequest == 3 && verified == 0) || getRequest == 4) {
-            navigateToActivity(AddressProof.class);
-        }
-*//*
-
-    }*/
-
-
-
     private void handleLoginFailure(JSONObject jsonObject) throws JSONException {
         String message = jsonObject.getString("message");
         switch (message) {
