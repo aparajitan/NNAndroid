@@ -77,6 +77,7 @@ import com.app_neighbrsnook.utils.PrefMananger;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.app_neighbrsnook.utils.UtilityFunction;
 import com.facebook.appevents.AppEventsConstants;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -502,7 +503,6 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                     if (responseBody != null && "success".equals(responseBody.status)) {
                         neighborhoodLocationStatusUnified(1);
                         handleSuccessfulResponse(responseBody);
-                        logRegistrationEvent("neighborhood_discovered", "search_neighborhood_call");
                     } else if ("failure".equals(responseBody.status)) {
                         handleFailureResponse();
                     } /*else {
@@ -528,6 +528,9 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             if (selectNeighbrhood.size() == 1) {
                 areaName = selectNeighbrhood.get(0).nbd_name;
                 nbdId = Integer.parseInt(selectNeighbrhood.get(0).nbdId);
+                String userFullName = sm.getString("user_name");
+                logFacebookNghFetchEvent(userFullName, areaName, "neighborhood_search_fetch_android_main");
+                logRegistrationEvent("neighborhood_discovered", "search_neighborhood_call");
                 edt_area1.setText(areaName); //26-11-24
                 selectionNeighbrhoodAdapter.selected = 0;
                 selectionNeighbrhoodAdapter.notifyDataSetChanged();
@@ -552,6 +555,29 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
         selectNeighbrhood = new ArrayList<>();
         setUpDataList();
         resetUI();
+    }
+
+    private void logFacebookNghFetchEvent(String userName, String nghString, String method) {
+        try {
+            AppEventsLogger logger = AppEventsLogger.newLogger(this);
+
+            Bundle params = new Bundle();
+            params.putString("Full_name", userName);
+            params.putString("Neighbourhood", nghString);
+            params.putString("method", method);
+            params.putString("platform", "Android");
+
+            logger.logEvent("neighborhood_search_fetch_android_main", params);
+            logger.flush();
+
+            Log.d("FB_Analytics", "📊 Facebook Registration Event Sent: neighborhood_search_fetch_android");
+            Log.d("FB_Analytics", "👤 UserName: " + userName);
+            Log.d("FB_Analytics", "👤 Neighbourhood: " + nghString);
+            Log.d("FB_Analytics", "🔄 Method: " + method);
+
+        } catch (Exception e) {
+            Log.e("FB_Analytics", "❌ Failed to log Facebook registration event: " + e.getMessage());
+        }
     }
 
     private void resetUI() {
@@ -1171,6 +1197,9 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
                                 NeighbhoodAddressModel body = response.body();
                                 if (body != null && "success".equalsIgnoreCase(body.getStatus())) {
 
+                                    String userFullName = sm.getString("user_name");
+                                    facebookSecondRegistrationEvent(userFullName, areaName, "second_app_registration_android_main");
+
                                     String refMsg = body.getReferrerMsg();
                                     int refStatus = body.getReferrerNeighbourhoodStatus();
 
@@ -1210,6 +1239,30 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             }
         }
     }
+
+    private void facebookSecondRegistrationEvent(String userFullName, String nbdNamearea, String method) {
+        try {
+            AppEventsLogger logger = AppEventsLogger.newLogger(this);
+
+            Bundle params = new Bundle();
+            params.putString("Full_name", userFullName);
+            params.putString("Neighbourhood", nbdNamearea);
+            params.putString("method", method);
+            params.putString("platform", "Android");
+
+            logger.logEvent("registration_secondstep_comp_android_main", params);
+            logger.flush();
+
+            Log.d("FB_Analytics", "📊 Facebook Registration Event Sent: registration_secondstep_comp_android");
+            Log.d("FB_Analytics", "👤 UserName: " + userFullName);
+            Log.d("FB_Analytics", "📧 Neighbouhood: " + nbdNamearea);
+            Log.d("FB_Analytics", "🔄 Method: " + method);
+
+        } catch (Exception e) {
+            Log.e("FB_Analytics", "❌ Failed to log Facebook registration event: " + e.getMessage());
+        }
+    }
+
     private void reachOutBtn() {
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Please wait...");

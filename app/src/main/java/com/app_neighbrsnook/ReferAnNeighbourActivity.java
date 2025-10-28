@@ -100,21 +100,36 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         setupPhoneNumberValidation();
         getNeighbourhoodList();
         if (referrMsg != null && !referrMsg.isEmpty()) {
-            // Layout ko gone kar do
-
+            // Layout hide karo
             lnrReferNeigh.setVisibility(View.GONE);
 
+            // Custom Dialog
+            Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.refer_screen_dialog);
+
+            // Dialog cancelable na ho (outside click se band na ho)
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
+
+            // Layout ke views access karo
+            TextView tvMessage = dialog.findViewById(R.id.tvMessage);
+            TextView tvOk = dialog.findViewById(R.id.tvOk);
+
+            // Message set karo
+            tvMessage.setText(referrMsg);
+
+            // OK button click pe dialog dismiss karo
+            tvOk.setOnClickListener(v -> dialog.dismiss());
+
             // Dialog show karo
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Message");
-            builder.setMessage(referrMsg);
-            builder.setPositiveButton("OK", null); // OK button
-            builder.setCancelable(false); // user dialog ke bahar click karke dismiss na kare
-            builder.show();
+            dialog.show();
+
         } else {
-            // Agar message null/empty hai toh layout normal dikhe
+            // Agar message empty/null hai toh layout visible karo
             lnrReferNeigh.setVisibility(View.VISIBLE);
         }
+
+
         itemNeighbrhood.setOnClickListener(v -> {
            showNeighbourhoodDialog();
         });

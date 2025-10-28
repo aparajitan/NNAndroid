@@ -195,6 +195,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.9.3'
     implementation 'androidx.navigation:navigation-ui:2.9.3'
 
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+
     // Testing
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.testng:testng:7.11.0' //  by Arshad Updated library Updated version

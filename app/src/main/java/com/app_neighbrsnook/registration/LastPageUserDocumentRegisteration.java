@@ -83,6 +83,7 @@ import com.app_neighbrsnook.utils.PrefMananger;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.app_neighbrsnook.utils.UtilityFunction;
 import com.facebook.appevents.AppEventsConstants;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -1142,6 +1143,8 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                     try {
                         if (response.body().getStatus().equals("success")) {
                             dialog.dismiss();
+                            String userFullName = sm.getString("user_name");
+                            facebookLastStepReg(userFullName, "last_step_registration_android_main");
                             logRegistrationEvent("registration_completed_android", "user_signup_done_android");
                             String userId = sm.getString("user_id");
                             shouldShowWelcomeDialog = true;
@@ -1170,6 +1173,26 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         }
     }
 
+    private void facebookLastStepReg(String userName, String method) {
+        try {
+            AppEventsLogger logger = AppEventsLogger.newLogger(this);
+
+            Bundle params = new Bundle();
+            params.putString("Full_name", userName);
+            params.putString("method", method);
+            params.putString("platform", "Android");
+
+            logger.logEvent("registration_laststep_comp_android_main", params);
+            logger.flush();
+
+            Log.d("FB_Analytics", "📊 Facebook Registration Event Sent: registration_laststep_comp_android");
+            Log.d("FB_Analytics", "👤 UserName: " + userName);
+            Log.d("FB_Analytics", "🔄 Method: " + method);
+
+        } catch (Exception e) {
+            Log.e("FB_Analytics", "❌ Failed to log Facebook registration event: " + e.getMessage());
+        }
+    }
 
     private void getReferralDetails(String phoneNumber) {
         APIInterface service = APIClient.getRetrofit3().create(APIInterface.class);

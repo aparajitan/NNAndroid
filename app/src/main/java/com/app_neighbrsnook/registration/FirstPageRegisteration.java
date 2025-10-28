@@ -89,6 +89,7 @@ import retrofit2.Response;
 import android.app.Application;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+
 public class FirstPageRegisteration extends AppCompatActivity implements SmsBroadcastReceiver.SmsBroadcastReceiverListener {
     TextView tv_sign;
     FrameLayout frm_register, frm_privacy_policy;
@@ -784,6 +785,11 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
 
                         if (status.equals("success") && jsonObject.has("userid")) {
                             String userid = jsonObject.getString("userid");
+
+                            String userFullName = tv_first_name.getText().toString().trim();
+                            String userEmail = tv_mail.getText().toString().trim();
+                            logFacebookRegistrationEvent(userFullName, userEmail, "firstStep_app_registration_android_main");
+
                             int referralStatus = 0;
                             if (jsonObject.has("referral_status")) {
                                 referralStatus = jsonObject.getInt("referral_status");
@@ -885,6 +891,27 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
         });
     }
 
+    private void logFacebookRegistrationEvent(String userFullName, String email, String method) {
+        try {
+            AppEventsLogger logger = AppEventsLogger.newLogger(this);
+
+            Bundle params = new Bundle();
+            params.putString("Full_name", userFullName);
+            params.putString("method", method);
+            params.putString("platform", "Android");
+
+            logger.logEvent("registration_firststep_comp_android_main", params);
+            logger.flush();
+
+            Log.d("FB_Analytics", "📊 Facebook Registration Event Sent: registration_firststep_comp_android");
+            Log.d("FB_Analytics", "👤 User: " + userFullName);
+            Log.d("FB_Analytics", "📧 Email: " + email);
+            Log.d("FB_Analytics", "🔄 Method: " + method);
+
+        } catch (Exception e) {
+            Log.e("FB_Analytics", "❌ Failed to log Facebook registration event: " + e.getMessage());
+        }
+    }
 
     private boolean validateEmail() {
         String emailInput = tv_mail.getText().toString().trim();
