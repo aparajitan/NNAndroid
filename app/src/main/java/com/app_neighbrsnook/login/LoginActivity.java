@@ -84,17 +84,7 @@ public class LoginActivity extends BaseActivity {
         SharedPreferences prefs = getSharedPreferences("AddressProofPrefs", MODE_PRIVATE);
         prefs.edit().remove("manualSelected").apply();
 
-        tv_forgot = findViewById(R.id.tv_forgot_password);
-        frm_sign_in = findViewById(R.id.sign_in_id);
-        frm_email = findViewById(R.id.frm_email);
-        frm_password = findViewById(R.id.frm_password);
-        et_email_phone = findViewById(R.id.et_email);
-        et_password = findViewById(R.id.password_login_id);
-        tv_registration_activity = findViewById(R.id.tv_registeration);
-        signin = findViewById(R.id.btn_update_password);
-        imgShowPassword = findViewById(R.id.img_show_password_login);
-        imgHidePassword = findViewById(R.id.imgHidePassword);
-        tv_dont_have = findViewById(R.id.tv_id_dont_have);
+        initId();
        /*et_email_phone.setText("6156177844");
       et_password.setText("Admin");*/
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -223,61 +213,6 @@ public class LoginActivity extends BaseActivity {
             }
         });
     }
-  /*  private void handleLoginFailure(JSONObject jsonObject) throws JSONException {
-        String message = jsonObject.getString("message");
-        switch (message) {
-            // sm.setString("user_id",  "id");
-            case "DOB Incomplete":
-                sm.setString("user_id", jsonObject.getString("id"));
-                navigateToActivity(AddressProofLocation.class);//31-07 AddressProof
-                break;
-            case "Address Incomplete":
-                sm.setString("user_id", jsonObject.getString("id")); // Save 'id' using sm
-                Log.d("sfsfeweweee",jsonObject.getString("id"));
-                navigateToActivity(AddressProofLocation.class);//31-07 AddressProof
-                break;
-            case "Incomplete documents.":
-                navigateToActivity(AddressProofLocation.class);//31-07 AddressProof
-                break;
-            case "Neighborhood Assigned to user by Admin":
-                navigateToActivity(AddressProofLocation.class);
-                break;
-            case "You can login, Neighbourhood could not be found then take him to address page":
-                sm.setString("user_id", jsonObject.getString("id"));
-                navigateToActivity(AddressProofLocation.class);
-                break;
-            default:
-                welcomeDialog(message);  // Show message in dialog only if it doesn't match specific cases
-        }
-    }
-    private void handleLoginSuccess(JSONObject logindata) throws JSONException {
-        LoginPojo loginPojo = new Gson().fromJson(logindata.toString(), LoginPojo.class);
-        PrefMananger.saveLoginData(getApplicationContext(), loginPojo);
-
-        sm.setString("user_id", logindata.getInt("id")+"");
-        sm.setString("firebase_token", logindata.getString("firebase_token"));
-        sm.setString("user_name", logindata.getString("username"));
-        sm.setInt("user_verified", logindata.getInt("verified"));
-        Log.e("asdf userId", logindata.getInt("id")+"");
-      //
-        saveAdditionalUserData(logindata);
-        int verified = logindata.getInt("verified");
-        int getRequest = logindata.getInt("req_ndbstatus");
-        if (verified == 1 || verified == 2 || verified == 0) {
-            loginSuccessful(verified);
-        } else if (getRequest == 3 || getRequest == 4) {
-            navigateToActivity(AddressProofLocation.class);
-        }
-
-*//*
-        else if ((getRequest == 3 && verified == 0) || getRequest == 4) {
-            navigateToActivity(AddressProof.class);
-        }
-*//*
-
-    }*/
-
-
 
     private void handleLoginFailure(JSONObject jsonObject) throws JSONException {
         String message = jsonObject.getString("message");
@@ -458,5 +393,19 @@ public class LoginActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void initId(){
+        tv_forgot = findViewById(R.id.tv_forgot_password);
+        frm_sign_in = findViewById(R.id.sign_in_id);
+        frm_email = findViewById(R.id.frm_email);
+        frm_password = findViewById(R.id.frm_password);
+        et_email_phone = findViewById(R.id.et_email);
+        et_password = findViewById(R.id.password_login_id);
+        tv_registration_activity = findViewById(R.id.tv_registeration);
+        signin = findViewById(R.id.btn_update_password);
+        imgShowPassword = findViewById(R.id.img_show_password_login);
+        imgHidePassword = findViewById(R.id.imgHidePassword);
+        tv_dont_have = findViewById(R.id.tv_id_dont_have);
+
     }
 }

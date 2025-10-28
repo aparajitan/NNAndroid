@@ -137,7 +137,6 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
 
         SharedPreferences prefs = getSharedPreferences("AddressProofPrefs", MODE_PRIVATE);
         prefs.edit().remove("manualSelected").apply();
-
         sm = new SharedPrefsManager(this);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mAuth = FirebaseAuth.getInstance();
