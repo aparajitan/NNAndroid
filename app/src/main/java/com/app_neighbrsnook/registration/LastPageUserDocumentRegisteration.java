@@ -316,7 +316,6 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
         bundle.putString(FirebaseAnalytics.Param.METHOD, "manual_debug");
         FirebaseAnalytics.getInstance(this).logEvent("test_event", bundle);
         String refStatus = sm.getString("referrer_neighbourhood_status");
-
         Log.d("LOAD_STATUS", "Loaded refStatus: " + refStatus);
 //        int referralStatus = sm.getInt("referral_status", 0); // default 0
 
@@ -1148,7 +1147,16 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                             logRegistrationEvent("registration_completed_android", "user_signup_done_android");
                             String userId = sm.getString("user_id");
                             shouldShowWelcomeDialog = true;
-                            littleMoreSkip1();
+                            int referralStatus = sm.getInt("referral_status", 0);
+
+                            if (referralStatus == 1) {
+                                // 👉 Directly go to MainActivity
+                                startActivity(new Intent(LastPageUserDocumentRegisteration.this, MainActivity.class));
+                                finishAffinity();
+                            } else {
+                                littleMoreSkip1();
+
+                            }
                         } else if (response.body().getMessage() != null) {
                             Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
@@ -1332,14 +1340,11 @@ public class LastPageUserDocumentRegisteration extends AppCompatActivity impleme
                 new ColorDrawable(ContextCompat.getColor(LastPageUserDocumentRegisteration.this, android.R.color.transparent))
         );
         dialog.getWindow().setAttributes(lp);
-
         TextView frmCancel = dialog.findViewById(R.id.tvCancel);
         TextView frm_choose = dialog.findViewById(R.id.post_frm);
         TextView nghName = dialog.findViewById(R.id.nghName);
         TextView tvcancel = dialog.findViewById(R.id.tvCancel);
-
         nghName.setText(nghString);
-
         frmCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

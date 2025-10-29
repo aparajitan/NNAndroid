@@ -6,49 +6,34 @@
     android:layout_marginTop="@dimen/_10sdp"
     android:layout_marginRight="@dimen/_20sdp"
     android:layout_marginLeft="@dimen/_20sdp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <FrameLayout
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/round_corner_dialog"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <FrameLayout
-                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="vertical"
                 android:background="@drawable/round_corner_dialog"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="@dimen/_12sdp"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/lnrAddressArea"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:fontFamily="@font/montserrat_medium"
                         android:id="@+id/referMsgShow"
                         android:text="Please confirm that the address"
                         android:textColor="@color/dialog_heading_top"
                         android:textSize="@dimen/dialog_text_size" />
 
-                </LinearLayout>
-
-
-
-
             </FrameLayout>
-
-
-
             <TextView
                 android:background="@color/line_color"
                 android:layout_width="match_parent"

@@ -101,7 +101,7 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         getNeighbourhoodList();
         if (referrMsg != null && !referrMsg.isEmpty()) {
             // Layout hide karo
-            lnrReferNeigh.setVisibility(View.GONE);
+          //  lnrReferNeigh.setVisibility(View.GONE);
 
             // Custom Dialog
             Dialog dialog = new Dialog(this);
@@ -112,21 +112,27 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
             dialog.setCanceledOnTouchOutside(false);
 
             // Layout ke views access karo
-            TextView tvMessage = dialog.findViewById(R.id.tvMessage);
+            TextView referMsgShow = dialog.findViewById(R.id.referMsgShow);
             TextView tvOk = dialog.findViewById(R.id.tvOk);
 
             // Message set karo
-            tvMessage.setText(referrMsg);
+            referMsgShow.setText(referrMsg);
 
             // OK button click pe dialog dismiss karo
-            tvOk.setOnClickListener(v -> dialog.dismiss());
+            tvOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(ReferAnNeighbourActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             // Dialog show karo
             dialog.show();
 
         } else {
             // Agar message empty/null hai toh layout visible karo
-            lnrReferNeigh.setVisibility(View.VISIBLE);
+           // lnrReferNeigh.setVisibility(View.VISIBLE);
         }
 
 
@@ -236,9 +242,9 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
             jsonObject.addProperty("referred_name", name);
             jsonObject.addProperty("referred_phone", phone);
             jsonObject.addProperty("neighbourhood_id", selectedNeighbourhoodId);
-            jsonObject.addProperty("api", "DEV-3a9f1d2e7b8c4d6f1234abcd5678ef90");
+           /* jsonObject.addProperty("api", "DEV-3a9f1d2e7b8c4d6f1234abcd5678ef90");*/
             APIInterface service = new Retrofit.Builder()
-                    .baseUrl("https://dev.neighbrsnook.com/admin/api/")
+                    .baseUrl("https://neighbrsnook.com/admin/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(new OkHttpClient.Builder()
                             .connectTimeout(3, TimeUnit.MINUTES)

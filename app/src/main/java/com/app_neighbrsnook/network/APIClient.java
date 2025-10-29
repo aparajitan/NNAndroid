@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIClient {
 
     public static Retrofit   getRetrofit(){
-        final String BASE_URL = "https://dev.neighbrsnook.com/oldadmin/api/";
+        final String BASE_URL = "https://neighbrsnook.com/oldadmin/api/";
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
@@ -32,7 +32,7 @@ public class APIClient {
         return retrofit;
     }
     public static Retrofit getRetrofit2(){
-        final String BASE_URL = "https://dev.neighbrsnook.com/oldadmin/api/";
+        final String BASE_URL = "https://neighbrsnook.com/oldadmin/api/";
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
@@ -52,7 +52,7 @@ public class APIClient {
     }
     public static Retrofit getRetrofit3(){
         //marketplace url
-        final String BASE_URL = "https://dev.neighbrsnook.com/admin/";
+        final String BASE_URL = "https://neighbrsnook.com/admin/";
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
