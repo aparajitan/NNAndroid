@@ -545,14 +545,11 @@ public class WallFragment extends Fragment implements BusinessWallChildAdapter.I
                                 announcement_tv.setText(rootObject.getAnnouncement().get(0).getType());
                                 post_msg_textview.setText(rootObject.getAnnouncement().get(0).getMsg());
                             }
-
                             member_number_tv.setText(rootObject.getMember_count() + " " + "Members");
-
                             // Clear data only on first page load (refresh)
                             if (count == 1) {
                                 listdata.clear();
                             }
-
                             listdata1 = rootObject.getListdata();
                             listdata.addAll(listdata1);
                             adapter.notifyDataSetChanged();

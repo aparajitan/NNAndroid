@@ -1,6 +1,7 @@
 package com.app_neighbrsnook.network;
 
 import com.app_neighbrsnook.apiService.UrlClass;
+import com.app_neighbrsnook.model.OtpResponse;
 import com.app_neighbrsnook.model.postComment.CommentLikePojo;
 import com.app_neighbrsnook.model.wall.PostEmojiListModel;
 import com.app_neighbrsnook.model.wall.WelcomeEmojiListModel;
@@ -181,6 +182,22 @@ public interface APIInterface {
     @FormUrlEncoded
     Call<JsonElement> userExit(@Query("flag") String flag,
                                      @FieldMap HashMap<String, Object> hm);
+
+    @FormUrlEncoded
+    @POST("api/send-otp")
+    Call<OtpResponse> sendOtpApi(@Field("phone_no") String phoneNumber);
+
+    @POST("api/otp_verify")
+    @FormUrlEncoded
+    Call<OtpResponse> verifyOtpApi(@FieldMap HashMap<String,String> hm);
+
+    @FormUrlEncoded
+    @POST("api/send-otp_forgot")
+    Call<OtpResponse> forgetSendOtpApi(@Field("phone_no") String phoneNumber);
+
+    @POST("api/otp_verify_forgot")
+    @FormUrlEncoded
+    Call<OtpResponse> forgetVerifyOtpApi(@FieldMap HashMap<String,String> hm);
 
     @POST("groups")
     @FormUrlEncoded

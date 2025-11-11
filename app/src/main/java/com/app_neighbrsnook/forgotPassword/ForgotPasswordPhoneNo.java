@@ -4,7 +4,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -25,46 +24,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.app_neighbrsnook.apiService.UrlClass;
+import com.app_neighbrsnook.model.OtpResponse;
 import com.app_neighbrsnook.network.APIClient;
 import com.app_neighbrsnook.network.APIInterface;
-import com.app_neighbrsnook.pojo.OtpVerifyCheckPojo;
-import com.app_neighbrsnook.pojo.RegisterationOtpPojo;
 import com.app_neighbrsnook.registration.SmsBroadcastReceiver;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.app_neighbrsnook.R;
 import com.app_neighbrsnook.utils.UtilityFunction;
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ForgotPasswordPhoneNo extends AppCompatActivity {
     FrameLayout mbtnVerifyOtp;
     ImageView img_back;
-    TextView tv_phone_mail,tv_sent_otp;
+    TextView tv_phone_mail, tv_sent_otp;
     private String verificationId;
-    EditText et_one, et_two, et_three, et_four,et_five,et_six;
+    EditText et_one, et_two, et_three, et_four, et_five, et_six;
     Context context;
     Activity activity;
     private FirebaseFirestore db;
@@ -74,30 +61,29 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
     SmsBroadcastReceiver smsBroadcastReceiver;
 
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context=activity=this;
+        context = activity = this;
         setContentView(R.layout.activity_forgot_password_phone_no);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         tv_resend_code = findViewById(R.id.tv_resend_code);
-        etOtpDemo=findViewById(R.id.etOtpDemo);
+        etOtpDemo = findViewById(R.id.etOtpDemo);
 
         tv_OtpTimer = findViewById(R.id.tv_OtpTimer);
 
-        mbtnVerifyOtp =findViewById(R.id.forgot_password_id_send);
-        img_back=findViewById(R.id.img_back);
-        tv_phone_mail=findViewById(R.id.phone_no_id);
-        tv_sent_otp=findViewById(R.id.sent_otp);
+        mbtnVerifyOtp = findViewById(R.id.forgot_password_id_send);
+        img_back = findViewById(R.id.img_back);
+        tv_phone_mail = findViewById(R.id.phone_no_id);
+        tv_sent_otp = findViewById(R.id.sent_otp);
         et_one = findViewById(R.id.et_one);
         et_two = findViewById(R.id.et_two);
         et_three = findViewById(R.id.et_three);
         et_four = findViewById(R.id.et_four);
-        et_five=findViewById(R.id.et_five);
-        et_six=findViewById(R.id.et_six);
+        et_five = findViewById(R.id.et_five);
+        et_six = findViewById(R.id.et_six);
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,24 +95,19 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (tv_phone_mail.getText().toString().equals(""))
-                {
+                if (tv_phone_mail.getText().toString().equals("")) {
                     Toast.makeText(ForgotPasswordPhoneNo.this, "Mobile number is empty", Toast.LENGTH_SHORT).show();
-                }else if (tv_phone_mail.getText().toString().length()<10)
-                {
+                } else if (tv_phone_mail.getText().toString().length() < 10) {
                     Toast.makeText(ForgotPasswordPhoneNo.this, "Mobile number is invalid", Toast.LENGTH_SHORT).show();
-                }
-                else if (tv_phone_mail.getText().toString().length()>=11){
+                } else if (tv_phone_mail.getText().toString().length() >= 11) {
                     Toast.makeText(ForgotPasswordPhoneNo.this, "Please 10 digit mobile", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
                     checkVerify();
-                //    otpSend(tv_phone_mail.getText().toString());
+                    //    otpSend(tv_phone_mail.getText().toString());
                 }
 
             }
-
-
         });
         et_one.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -191,6 +172,7 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
             }
+
             public void afterTextChanged(Editable s) {
 
             }
@@ -210,8 +192,10 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
                     //frm_register.setVisibility(View.GONE);
                 }
             }
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             public void afterTextChanged(Editable s) {
             }
         });
@@ -230,8 +214,10 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
                     //frm_register.setVisibility(View.GONE);
                 }
             }
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             public void afterTextChanged(Editable s) {
             }
         });
@@ -240,7 +226,7 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
                 if (et_six.getText().toString().length() == 1)     //size as per your requirement
                 {
                     et_six.requestFocus();
-                      otp = et_one.getText().toString()+et_two.getText().toString()+et_three.getText().toString()+et_four.getText().toString()+et_five.getText().toString()+et_six.getText().toString();
+                    otp = et_one.getText().toString() + et_two.getText().toString() + et_three.getText().toString() + et_four.getText().toString() + et_five.getText().toString() + et_six.getText().toString();
                     //verifyCode(otp);
                 } else if (et_six.getText().toString().length() == 0) {
                     et_five.requestFocus();
@@ -254,11 +240,14 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
                     //frm_register.setVisibility(View.GONE);
                 }
             }
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             public void afterTextChanged(Editable s) {
             }
         });
+
         et_one.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -335,17 +324,14 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (tv_phone_mail.getText().toString().equals(""))
-                {
+                if (tv_phone_mail.getText().toString().equals("")) {
                     Toast.makeText(ForgotPasswordPhoneNo.this, "Mobile number is empty", Toast.LENGTH_SHORT).show();
-                }else if (tv_phone_mail.getText().toString().length()<10)
-                {
+                } else if (tv_phone_mail.getText().toString().length() < 10) {
                     Toast.makeText(ForgotPasswordPhoneNo.this, "Mobile number is invalid", Toast.LENGTH_SHORT).show();
-                }
-                else if (tv_phone_mail.getText().toString().length()>=11){
+                } else if (tv_phone_mail.getText().toString().length() >= 11) {
                     Toast.makeText(ForgotPasswordPhoneNo.this, "Please 10 digit mobile", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
 //                    otp();
                     otpSend(tv_phone_mail.getText().toString());
                 }
@@ -368,14 +354,13 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
             }
         });
         startSmartUserConsent();
-
     }
 
     private void startSmartUserConsent() {
-        SmsRetrieverClient client= SmsRetriever.getClient(this);
+        SmsRetrieverClient client = SmsRetriever.getClient(this);
         client.startSmsUserConsent(null);
-
     }
+
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -384,16 +369,16 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         // There are no request codes
                         Intent data = result.getData();
-                        String message=data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
+                        String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
                         getOtpFromMessage(message);
                     }
                 }
             });
 
-    private void getOtpFromMessage(String  message) {
-        Pattern otpPattern=Pattern.compile("(|^)\\d{6}");
-        Matcher matcher=otpPattern.matcher(message);
-        if (matcher.find()){
+    private void getOtpFromMessage(String message) {
+        Pattern otpPattern = Pattern.compile("(|^)\\d{6}");
+        Matcher matcher = otpPattern.matcher(message);
+        if (matcher.find()) {
             etOtpDemo.setText(matcher.group(0));
             String fullMsg = etOtpDemo.getText().toString();
             char o1 = fullMsg.charAt(0);
@@ -408,10 +393,9 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
             et_four.setText(o4 + "");
             et_five.setText(o5 + "");
             et_six.setText(o6 + "");
-
-
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -422,6 +406,7 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
 
     private TextView tv_resend_code, tv_OtpTimer;
     private CountDownTimer countDownTimer;
+
     private void startCountDown() {
         tv_OtpTimer.setVisibility(View.VISIBLE);
         tv_resend_code.setVisibility(View.GONE);
@@ -459,22 +444,106 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
         return GETOTP;
     }
 
+//    public void otpSend(String phoneNumber) {
+//        final ProgressDialog progressDialog = new ProgressDialog(context);
+//        progressDialog.setMessage("Please Wait...");
+//        progressDialog.setCancelable(false);
+//        progressDialog.show();
+//        APIInterface apiService = APIClient.getRetrofit().create(APIInterface.class);
+//        Call<RegisterationOtpPojo> call = apiService.forgtoOtp(phoneNumber);
+//        call.enqueue(new Callback<RegisterationOtpPojo>() {
+//            @Override
+//            public void onResponse(Call<RegisterationOtpPojo> call, retrofit2.Response<RegisterationOtpPojo> response) {
+//                progressDialog.dismiss();
+//                if (response.isSuccessful() && response.body() != null) {
+//                    RegisterationOtpPojo otpResponse = response.body();
+//                    if ("success".equalsIgnoreCase(otpResponse.getStatus())) {
+//                        startCountDown();
+//                        resetOtpFields();
+//                        Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    Toast.makeText(context, "Failed to fetch response!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<RegisterationOtpPojo> call, Throwable t) {
+//                progressDialog.dismiss();
+//                Log.e("OTP Error", t.toString());
+//                Toast.makeText(context, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
+    //    private void checkVerify() {
+//        if (UtilityFunction.isNetworkConnected(context)) {
+//            UtilityFunction.showLoading(context, "Please wait...");
+//            HashMap<String, String> hashMap = new HashMap<>();
+//            hashMap.put("reqestmobileno", tv_phone_mail.getText().toString());
+//            hashMap.put("otpvarify", otp);
+//            //   Log.d("otper",otp);
+//            hashMap.put("status", "success");
+//            APIInterface service = APIClient.getRetrofit().create(APIInterface.class);
+//            Call<OtpVerifyCheckPojo> call = service.checkOtp("verification", hashMap);
+//            call.enqueue(new Callback<OtpVerifyCheckPojo>() {
+//                @Override
+//                public void onResponse(Call<OtpVerifyCheckPojo> call, retrofit2.Response<OtpVerifyCheckPojo> response) {
+//                    String status = response.body().getStatus();
+//                    UtilityFunction.hideLoading();
+//                    try {
+//                        if (status.equals("success")) {
+//                            JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body().getDescription()));
+//                            String desc = jsonObject.getString("desc");
+//                            if (desc.equals("Code Matched successfully.")) {
+//                                // imgRightIcon.setVisibility(View.VISIBLE );
+//                                Toast.makeText(ForgotPasswordPhoneNo.this, "OTP Verified", Toast.LENGTH_SHORT).show();
+//                                Intent memberIntent = new Intent(ForgotPasswordPhoneNo.this, ForgotPassword.class);
+//                                memberIntent.putExtra("reqestmobileno", tv_phone_mail.getText().toString());
+//                                startActivity(memberIntent);
+//
+//                            } else if (desc.equals("Code does not match.")) {
+//                                Toast.makeText(ForgotPasswordPhoneNo.this, "Incorrect otp", Toast.LENGTH_SHORT).show();
+//                                // imgRightIcon.setVisibility(View.GONE );
+//
+//                            }
+//                        }
+//                    } catch (Exception e) {
+//
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<OtpVerifyCheckPojo> call, Throwable t) {
+//                    Toast.makeText(ForgotPasswordPhoneNo.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    UtilityFunction.hideLoading();
+//                    Log.d("restrrr", t.getMessage());
+//                }
+//            });
+//        }
+//
+//    }
+
     public void otpSend(String phoneNumber) {
         final ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please Wait...");
         progressDialog.setCancelable(false);
         progressDialog.show();
-        APIInterface apiService = APIClient.getRetrofit().create(APIInterface.class);
-        Call<RegisterationOtpPojo> call = apiService.forgtoOtp(phoneNumber);
-        call.enqueue(new Callback<RegisterationOtpPojo>() {
+        APIInterface apiService = APIClient.getRetrofit3().create(APIInterface.class);
+        Call<OtpResponse> call = apiService.forgetSendOtpApi(phoneNumber);
+        call.enqueue(new Callback<OtpResponse>() {
             @Override
-            public void onResponse(Call<RegisterationOtpPojo> call, retrofit2.Response<RegisterationOtpPojo> response) {
+            public void onResponse(Call<OtpResponse> call, Response<OtpResponse> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful() && response.body() != null) {
-                    RegisterationOtpPojo otpResponse = response.body();
-                    if ("success".equalsIgnoreCase(otpResponse.getStatus())) {
+                    OtpResponse otpResponse = response.body();
+                    if (otpResponse.isStatus()) {
                         startCountDown();
                         resetOtpFields();
+                        startSmartUserConsent(); // Restart SMS Retriever for new OTP
                         Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -485,7 +554,7 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RegisterationOtpPojo> call, Throwable t) {
+            public void onFailure(Call<OtpResponse> call, Throwable t) {
                 progressDialog.dismiss();
                 Log.e("OTP Error", t.toString());
                 Toast.makeText(context, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -500,55 +569,42 @@ public class ForgotPasswordPhoneNo extends AppCompatActivity {
         }
         et_one.requestFocus(); // Set focus to first field
     }
+
     private void checkVerify() {
         if (UtilityFunction.isNetworkConnected(context)) {
             UtilityFunction.showLoading(context, "Please wait...");
             HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("reqestmobileno", tv_phone_mail.getText().toString());
-            hashMap.put("otpvarify", otp);
-         //   Log.d("otper",otp);
-            hashMap.put("status", "success");
-            APIInterface service = APIClient.getRetrofit().create(APIInterface.class);
-            Call<OtpVerifyCheckPojo> call = service.checkOtp("verification",hashMap);
-            call.enqueue(new Callback<OtpVerifyCheckPojo>() {
+            hashMap.put("phone_no", tv_phone_mail.getText().toString());
+            hashMap.put("otp", otp);
+            APIInterface service = APIClient.getRetrofit3().create(APIInterface.class);
+            Call<OtpResponse> call = service.forgetVerifyOtpApi(hashMap);
+            call.enqueue(new Callback<OtpResponse>() {
                 @Override
-                public void onResponse(Call<OtpVerifyCheckPojo> call, retrofit2.Response<OtpVerifyCheckPojo> response) {
-                    String status = response.body().getStatus();
+                public void onResponse(Call<OtpResponse> call, Response<OtpResponse> response) {
                     UtilityFunction.hideLoading();
-                    try {
-                        if (status.equals("success")) {
-                            JSONObject jsonObject=new JSONObject(new Gson().toJson(response.body().getDescription()));
-                            String desc =jsonObject.getString("desc");
-                            if (desc.equals ("Code Matched successfully.")){
-                               // imgRightIcon.setVisibility(View.VISIBLE );
-                                Toast.makeText(ForgotPasswordPhoneNo.this, "OTP Verified", Toast.LENGTH_SHORT).show();
-                                Intent memberIntent = new Intent(ForgotPasswordPhoneNo.this, ForgotPassword.class);
-                                memberIntent.putExtra("reqestmobileno",tv_phone_mail.getText().toString());
-                                startActivity(memberIntent);
 
-                            }
-                            else if (desc.equals("Code does not match.")){
-                                Toast.makeText(ForgotPasswordPhoneNo.this, "Incorrect otp", Toast.LENGTH_SHORT).show();
-                               // imgRightIcon.setVisibility(View.GONE );
-
-                            }
-                        }
-                    }catch (Exception e){
-
+                    OtpResponse otpResponse = response.body();
+                    if (otpResponse.isStatus()) {
+                        Toast.makeText(ForgotPasswordPhoneNo.this, "OTP Verified", Toast.LENGTH_SHORT).show();
+                        Intent memberIntent = new Intent(ForgotPasswordPhoneNo.this, ForgotPassword.class);
+                        memberIntent.putExtra("reqestmobileno", tv_phone_mail.getText().toString());
+                        startActivity(memberIntent);
+                    } else {
+                        Toast.makeText(ForgotPasswordPhoneNo.this, "Incorrect otp", Toast.LENGTH_SHORT).show();
                     }
-
                 }
 
                 @Override
-                public void onFailure(Call<OtpVerifyCheckPojo> call, Throwable t) {
-                    Toast.makeText(ForgotPasswordPhoneNo.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<OtpResponse> call, Throwable t) {
                     UtilityFunction.hideLoading();
-                    Log.d("restrrr", t.getMessage());
+                    Log.e("OTPVerify", "API call failed: " + t.getMessage(), t);
+                    Toast.makeText(ForgotPasswordPhoneNo.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        } else {
+            Toast.makeText(ForgotPasswordPhoneNo.this, "No internet connection", Toast.LENGTH_SHORT).show();
         }
-
     }
-    }
+}
 
 

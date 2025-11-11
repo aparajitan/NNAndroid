@@ -326,25 +326,6 @@ public class ReferAnNeighbourActivity extends AppCompatActivity {
         }
     }
 
-    /*private void submitReferralShare(String name, String phone, String neighbourhood, String referralCode) {
-        StringBuilder message = new StringBuilder();
-        *//*message.append("🎉 *Refer a Neighbour!*\n\n");
-        message.append("Name: ").append(name).append("\n");
-        message.append("Phone: ").append(phone).append("\n");
-        message.append(neighbourhood).append("\n");
-        message.append("Referral Code: ").append(referralCode).append("\n\n");
-        message.append("I'm referring this person to join our community on Neighbrsnook!");
-*//*
-        message.append("Hi! I am referring you to join me on Neighbrsnook - its a safe, real-neighbour app that helps us stay connected, exchange info, and make our community stronger.\n" +
-                "you can download it here:");
-        message.append("https://neighbrsnook.com/open-app");
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Refer a Neighbour");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, message.toString());
-
-        startActivity(Intent.createChooser(shareIntent, "Share via"));
-    }*/
     private void submitReferralShare(String subject, String messageText) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");

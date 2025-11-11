@@ -1250,7 +1250,7 @@ public class SecondPageUserLocationRegisteration extends AppCompatActivity imple
             params.putString("method", method);
             params.putString("platform", "Android");
 
-            logger.logEvent("registration_secondstep_comp_android_main", params);
+            logger.logEvent("regis_second_comp_android_main", params);
             logger.flush();
 
             Log.d("FB_Analytics", "📊 Facebook Registration Event Sent: registration_secondstep_comp_android");

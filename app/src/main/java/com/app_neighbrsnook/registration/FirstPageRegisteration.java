@@ -41,6 +41,7 @@ import androidx.core.content.ContextCompat;
 import com.app_neighbrsnook.R;
 import com.app_neighbrsnook.abusive.BadWordFilter;
 import com.app_neighbrsnook.login.LoginActivity;
+import com.app_neighbrsnook.model.OtpResponse;
 import com.app_neighbrsnook.network.APIClient;
 import com.app_neighbrsnook.network.APIInterface;
 import com.app_neighbrsnook.pojo.EmailPojoStatus;
@@ -537,7 +538,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                     return;
                 }
                 // Final checks
-               /* if (!isVerifiedOtp) {
+                if (!isVerifiedOtp) {
                     Toast.makeText(activity, "Please verify your OTP", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -549,7 +550,7 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
                 if (!checkBox.isChecked()) {
                     globalDialog(); // Show terms & conditions dialog
                     return;
-                }*/
+                }
                 signup();
            /*     emailChecked(new EmailVerificationCallback() {
                     @Override
@@ -954,41 +955,6 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
         }.start();
     }
 
-    public void otp(String phoneNumber) {
-        final ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Please Wait...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        APIInterface apiService = APIClient.getRetrofit().create(APIInterface.class);
-        Call<RegisterationOtpPojo> call = apiService.sendOtp(phoneNumber);
-        call.enqueue(new Callback<RegisterationOtpPojo>() {
-            @Override
-            public void onResponse(Call<RegisterationOtpPojo> call, Response<RegisterationOtpPojo> response) {
-                progressDialog.dismiss();
-                if (response.isSuccessful() && response.body() != null) {
-                    RegisterationOtpPojo otpResponse = response.body();
-                    if ("success".equalsIgnoreCase(otpResponse.getStatus())) {
-                        startCountDown();
-                        resetOtpFields();
-                        startSmartUserConsent(); // Restart SMS Retriever for new OTP
-                        Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(context, "Failed to fetch response!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RegisterationOtpPojo> call, Throwable t) {
-                progressDialog.dismiss();
-                Log.e("OTP Error", t.toString());
-                Toast.makeText(context, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     private void resetOtpFields() {
         EditText[] otpFields = {et_one, et_two, et_three, et_four, et_five, et_six};
         for (EditText field : otpFields) {
@@ -1001,54 +967,32 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
         if (UtilityFunction.isNetworkConnected(context)) {
             UtilityFunction.showLoading(context, "Please wait...");
             HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("reqestmobileno", tv_phone_no.getText().toString());
-            hashMap.put("otpvarify", otp);
-            hashMap.put("status", "success");
-            APIInterface service = APIClient.getRetrofit().create(APIInterface.class);
-            Call<OtpVerifyCheckPojo> call = service.checkOtp("verification", hashMap);
-            call.enqueue(new Callback<OtpVerifyCheckPojo>() {
+            hashMap.put("phone_no", tv_phone_no.getText().toString());
+            hashMap.put("otp", otp);
+            APIInterface service = APIClient.getRetrofit3().create(APIInterface.class);
+            Call<OtpResponse> call = service.verifyOtpApi(hashMap);
+            call.enqueue(new Callback<OtpResponse>() {
                 @Override
-                public void onResponse(Call<OtpVerifyCheckPojo> call, Response<OtpVerifyCheckPojo> response) {
+                public void onResponse(Call<OtpResponse> call, Response<OtpResponse> response) {
                     UtilityFunction.hideLoading();
 
-                    if (response.body() == null || response.body().getStatus() == null) {
-                        //Log.e("OTPVerify", "Response body or status is null");
-                        Toast.makeText(FirstPageRegisteration.this, "Verification failed. Please try again.", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    String status = response.body().getStatus();
-                    if ("success".equals(status)) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body().getDescription()));
-                            String desc = jsonObject.getString("desc");
-
-                            if ("Code Matched successfully.".equals(desc)) {
-                                imgRightIcon.setVisibility(View.VISIBLE);
-                                imgCrossIcon.setVisibility(View.GONE);
-
-                                isVerifiedOtp = true;
-                                Toast.makeText(FirstPageRegisteration.this, "OTP Verified", Toast.LENGTH_SHORT).show();
-                            } else if ("Code does not match.".equals(desc)) {
-                                isVerifiedOtp = false;
-                                Toast.makeText(FirstPageRegisteration.this, "Incorrect OTP", Toast.LENGTH_SHORT).show();
-                                imgCrossIcon.setVisibility(View.VISIBLE);
-                                imgRightIcon.setVisibility(View.GONE);
-
-                            }
-                        } catch (Exception e) {
-                            Log.e("OTPVerify", "Error parsing response: " + e.getMessage(), e);
-                            Toast.makeText(FirstPageRegisteration.this, "Error processing verification. Please try again.", Toast.LENGTH_SHORT).show();
-                        }
+                    OtpResponse otpResponse = response.body();
+                    if (otpResponse.isStatus()) {
+                        imgRightIcon.setVisibility(View.VISIBLE);
+                        imgCrossIcon.setVisibility(View.GONE);
+                        isVerifiedOtp = true;
+                        Toast.makeText(FirstPageRegisteration.this, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     } else {
+                        imgRightIcon.setVisibility(View.GONE);
+                        imgCrossIcon.setVisibility(View.VISIBLE);
                         isVerifiedOtp = false;
-                        Log.e("OTPVerify", "Verification failed with status: " + status);
-                        Toast.makeText(FirstPageRegisteration.this, "Verification failed. Please try again.", Toast.LENGTH_SHORT).show();
+                        Log.e("OTPVerify", "Verification failed with status: " + otpResponse.getMessage());
+                        Toast.makeText(FirstPageRegisteration.this, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<OtpVerifyCheckPojo> call, Throwable t) {
+                public void onFailure(Call<OtpResponse> call, Throwable t) {
                     UtilityFunction.hideLoading();
                     Log.e("OTPVerify", "API call failed: " + t.getMessage(), t);
                     Toast.makeText(FirstPageRegisteration.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -1175,5 +1119,39 @@ public class FirstPageRegisteration extends AppCompatActivity implements SmsBroa
 
     public interface EmailVerificationCallback {
         void onResult(boolean isVerified, String message);
+    }
+    public void otp(String phoneNumber) {
+        final ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        APIInterface apiService = APIClient.getRetrofit3().create(APIInterface.class);
+        Call<OtpResponse> call = apiService.sendOtpApi(phoneNumber);
+        call.enqueue(new Callback<OtpResponse>() {
+            @Override
+            public void onResponse(Call<OtpResponse> call, Response<OtpResponse> response) {
+                progressDialog.dismiss();
+                if (response.isSuccessful() && response.body() != null) {
+                    OtpResponse otpResponse = response.body();
+                    if (otpResponse.isStatus()) {
+                        startCountDown();
+                        resetOtpFields();
+                        startSmartUserConsent(); // Restart SMS Retriever for new OTP
+                        Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, otpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(context, "Failed to fetch response!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<OtpResponse> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.e("OTP Error", t.toString());
+                Toast.makeText(context, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
