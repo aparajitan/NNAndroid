@@ -905,6 +905,40 @@ public class GlobalMethods {
         }
         return true; // All permissions are granted
     }
+
+    public static boolean checkCameraAndMediaPermission(Activity activity) {
+        String[] permissions;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Android 13 and above
+            permissions = new String[]{
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_MEDIA_IMAGES,
+                    Manifest.permission.READ_MEDIA_VIDEO
+            };
+        } else {
+            // Below Android 13
+            permissions = new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA
+            };
+        }
+        boolean allPermissionsGranted = true;
+        // Check if all permissions are granted
+        for (String permission : permissions) {
+            if (ActivityCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
+                allPermissionsGranted = false;
+                break;
+            }
+        }
+        if (!allPermissionsGranted) {
+            // Request permissions
+            ActivityCompat.requestPermissions(activity, permissions, 200);
+            return false; // Permissions not yet granted
+        }
+        return true; // All permissions are granted
+    }
+
     public static boolean checkConnection(Context context) {
         final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connMgr != null) {
