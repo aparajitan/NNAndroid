@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:background="@drawable/sort_filter_sort_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/_16ssp"
+            android:text="Sort by"
+            android:textColor="@color/t2_color"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/montserrat_semibold"
+            android:layout_height="wrap_content"/>
+
+        <FrameLayout
+            android:layout_width="@dimen/_27sdp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/sort_layout_shanku_type_background"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_height="@dimen/_5sdp"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:background="@color/background_color"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:background="@drawable/sort_relevance_background"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_height="@dimen/_35sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Distance"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="@dimen/_12ssp"
+                android:layout_gravity="center"
+                android:textColor="@color/t2_color"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:background="@drawable/whatsapp_pp_back"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_height="@dimen/_35sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Price-Low to High"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="@dimen/_12ssp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:background="@drawable/sort_relevance_background"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_height="@dimen/_35sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Price-High to Low"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="@dimen/_12ssp"
+                android:layout_gravity="center"
+                android:textColor="@color/t2_color"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:background="@drawable/sort_relevance_background"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_height="@dimen/_35sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Date Added"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="@dimen/_12ssp"
+                android:layout_gravity="center"
+                android:textColor="@color/t2_color"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

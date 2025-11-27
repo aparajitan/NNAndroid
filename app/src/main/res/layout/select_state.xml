@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="@dimen/_15sdp"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Select State"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_16ssp" />
+
+                <ImageView
+                    android:id="@+id/iv_cancel"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+
+                    android:layout_gravity="end|center_vertical"
+                    />
+
+
+            </FrameLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="25dp"
+                android:background="#E6E0E0" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="@dimen/_20sdp"
+                >
+
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:background="@null"
+                    android:backgroundTint="@null"
+                    android:hint="Enter Search State"
+                    android:singleLine="true"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="@dimen/_12ssp" />
+
+                <ImageView
+
+                    android:id="@+id/search_filters"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="10dp"
+
+                    android:src="@drawable/search_icon_p" />
+
+            </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_states"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+            <!--<ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="@dimen/filter_padding_20sp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="@dimen/filter_padding_20sp"
+                        android:background="@drawable/search_view_background_home">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@null"
+                            android:backgroundTint="@null"
+                            android:hint="Enter Search State"
+                            android:singleLine="true"
+                            android:textColorHint="#C4BEBE"
+                            android:textSize="12sp" />
+
+
+                        <ImageView
+
+                            android:id="@+id/search_filters"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginRight="10dp"
+
+                            android:src="@drawable/serch_iconp" />
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_marginTop="20dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hariyana"
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button" />
+
+
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Punjab"
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rajasthan"
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Uttar Pradesh
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delhi
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Uttarakhand
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Himachal Pradesh
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maharashtra
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Madhya Pradesh
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_marginTop="12dp"
+                        android:paddingRight="17dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gujrat
+            "
+                            android:textColor="#000"
+                            android:fontFamily="@font/roboto_mediaum_second"
+                            android:textSize="16sp"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/radio_button_second" />
+
+
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+
+
+
+            </ScrollView>
+                        -->
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E6E0E0" />
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="8dp"
+                android:id="@+id/card_submit"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardBackgroundColor="@color/yellow"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="#ffff"
+                    android:text="Submit"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+
+</androidx.cardview.widget.CardView>

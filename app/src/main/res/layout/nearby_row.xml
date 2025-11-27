@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/root"
+    android:paddingBottom="@dimen/_5sdp"
+    android:layout_gravity="clip_horizontal"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/category_name_iv"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:src="@drawable/location"
+        android:padding="@dimen/_7sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/round_shadow_button"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:fontFamily="@font/montserrat_semibold"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/_12ssp"/>
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat_medium"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/_12ssp"/>
+
+
+</LinearLayout>

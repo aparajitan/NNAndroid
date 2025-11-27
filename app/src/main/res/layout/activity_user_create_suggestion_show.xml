@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    android:layout_height="match_parent"
+    tools:context=".suggestion.UserCreateSuggestionShow">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/yellow">
+            <FrameLayout
+                android:id="@+id/frm_group_bar_hide"
+                android:layout_marginLeft="20dp"
+                android:visibility="visible"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/img_back"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+                    <TextView
+                        android:text="My Suggestions"
+                        android:textSize="@dimen/toolbar_text_size"
+                        android:textColor="#fff"
+                        android:id="@+id/group_id"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/plus_icon_size"
+                    android:visibility="gone"
+                    android:id="@+id/suggestion_create_pluse"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/plus_icon_size" />
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/frm_show_second_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:src="@drawable/search_icon_white"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="25dp" />
+                    <EditText
+                        android:hint="Groups"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:backgroundTint="@null"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/plus_icon_size"
+                    android:src="@drawable/close_dark"
+                    android:id="@+id/id_cancel"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_height="@dimen/plus_icon_size" />
+            </FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/suggestion_show_profile_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

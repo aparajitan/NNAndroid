@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical"> 
+
+    <TextView
+        android:id="@+id/msg_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:textSize="@dimen/dialog_text_size"
+        android:text=""
+        android:layout_marginBottom="@dimen/dialog_padding_top_gap"
+        android:layout_marginTop="@dimen/dialog_padding_top_gap"
+        android:textColor="@color/dialog_heading_top"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserrat_medium"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".8dp"
+        android:background="@color/divider_color"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/cancel_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_7sdp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Cancel"
+            android:gravity="center"
+
+            android:textColor="@color/color_announcement"
+            android:layout_weight="1"
+            android:textSize="@dimen/_14ssp" />
+
+        <View
+            android:layout_width=".8dp"
+            android:layout_height="match_parent"
+            android:background="@color/divider_color"/>
+
+
+        <TextView
+            android:id="@+id/confirm_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_7sdp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="OK"
+            android:gravity="center"
+
+            android:textColor="@color/them_color"
+            android:layout_weight="1"
+            android:textSize="@dimen/_12ssp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/round_corner_dialog"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Select Gender"
+                android:textColor="@color/dialog_top_color"
+                android:textSize="@dimen/_14ssp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_12ssp"
+                    android:text="Male"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_12ssp"
+                    android:text="Female"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/_12ssp"
+                    android:text="Other"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/text_color"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="end|top"
+        app:cardElevation="@dimen/_15sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:cardBackgroundColor="@color/white"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp">
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/oval_card_background"
+            app:cardCornerRadius="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp">
+
+
+            <ImageView
+                android:id="@+id/iv9"
+                android:src="@drawable/close_icon_p"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_15sdp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</FrameLayout>

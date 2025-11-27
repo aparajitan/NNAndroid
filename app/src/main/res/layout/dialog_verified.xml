@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_background"
+    android:gravity="center"
+    android:id="@+id/dialog_verified"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:visibility="visible">
+
+    <!-- Success Icon -->
+    <ImageView
+        android:id="@+id/successIcon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:src="@drawable/bouquet_emoji"
+        android:visibility="visible"/>
+
+    <!-- Success Title -->
+    <TextView
+        android:id="@+id/successTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="center"
+        android:text="Welcome!"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold" />
+
+    <!-- Success Message -->
+    <TextView
+        android:id="@+id/successMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center"
+        android:text="You are now a verified member.\n Happy Neighbrsnooking!!!"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_13ssp" />
+
+    <!-- OK Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/okButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:background="@drawable/round_corner_btn"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_8sdp"/>
+
+</LinearLayout>

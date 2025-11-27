@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".realStateModule.RealStateDetailScreen">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <FrameLayout
+                        android:visibility="gone"
+                        android:background="@drawable/pg_five"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp">
+                        <FrameLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="@dimen/_18sdp"
+                                android:src="@drawable/back_arrow_white"
+                                android:layout_height="@dimen/_18sdp"/>
+
+                            <TextView
+                                android:text="Girls PG"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/white"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:layout_gravity="center_vertical"
+                                android:textSize="@dimen/_14ssp"
+                                android:layout_marginLeft="@dimen/_35sdp"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:layout_gravity="end"
+                                android:layout_width="@dimen/_22sdp"
+                                android:src="@drawable/share_icon_whtie"
+                                android:layout_height="@dimen/_22sdp"/>
+                        </FrameLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_gravity="end|center_vertical"
+                            android:src="@drawable/right_arrow_ic"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_height="@dimen/_22sdp"/>
+                        <FrameLayout
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_gravity="bottom"
+                            android:layout_width="@dimen/_35sdp"
+                            android:background="@drawable/details_bg_black_transp"
+                            android:layout_height="@dimen/_20sdp">
+
+                            <ImageView
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/_2sdp"
+                                android:layout_width="@dimen/_15sdp"
+                                android:src="@drawable/gallary_ic_white"
+                                android:layout_height="@dimen/_15sdp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="1/8"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:textColor="@color/white"
+                                android:layout_marginRight="@dimen/_2sdp"
+                                android:layout_gravity="end|center_vertical"
+                                android:textSize="@dimen/_10ssp"
+                                android:layout_height="wrap_content"/>
+
+                        </FrameLayout>
+                        <FrameLayout
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_gravity="bottom|end"
+                            android:layout_width="@dimen/_44sdp"
+                            android:background="@drawable/details_bg_black_transp"
+                            android:layout_height="@dimen/_20sdp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Kitchen"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:textColor="@color/white"
+                                android:layout_gravity="center"
+                                android:textSize="@dimen/_10ssp"
+                                android:layout_marginRight="@dimen/_2sdp"
+                                android:layout_marginLeft="@dimen/_2sdp"
+                                android:layout_height="wrap_content"/>
+                        </FrameLayout>
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Girls PG"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:text="Triple Sharing, Double Sharing, Private Room"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="for"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_10ssp"
+                                android:layout_height="wrap_content"/>
+                            <FrameLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_width="@dimen/_40sdp"
+                                android:background="@drawable/post_select_background"
+                                android:layout_height="@dimen/_18sdp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="GIRLS"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_8ssp"
+                                    android:textColor="@color/white"
+                                    android:layout_height="wrap_content"/>
+
+                            </FrameLayout>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textSize="@dimen/_16ssp"
+                                android:text="₹3,000/bed"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Onwards"
+                                android:layout_marginLeft="@dimen/_5sdp"
+                                android:textSize="@dimen/_10ssp"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:layout_height="wrap_content"/>
+
+
+                            <TextView
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:textSize="@dimen/_10ssp"
+                                android:text="See room offerings"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:textColor="@color/yellow"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+                        <FrameLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:visibility="gone"
+                            android:background="@drawable/whatsapp_pp_back"
+                            android:layout_height="@dimen/_90sdp">
+                            <FrameLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_width="@dimen/_50sdp"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/map_oval_bg"
+                                android:layout_height="@dimen/_50sdp">
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/location_icon_blue"
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"/>
+                            </FrameLayout>
+                            <LinearLayout
+                                android:layout_marginLeft="@dimen/_70sdp"
+                                android:orientation="vertical"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_width="wrap_content"
+                                    android:text="Property Location"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:text="Okhla Phase ||,Okhla New Delhi"
+                                    android:textColor="@color/black"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_12ssp"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/yellow"
+                                    android:layout_width="wrap_content"
+                                    android:text="Property Location"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Overview"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Common Details"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:background="@drawable/overview_background_details_pages"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_240sdp">
+                            <LinearLayout
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:background="@drawable/whatsapp_pp_back"
+                                android:layout_height="@dimen/_30sdp">
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:src="@drawable/svg_user"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_height="@dimen/_22sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:text="Property Managed by"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="@color/ti_color"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:text="Landlord"
+                                    android:layout_height="wrap_content"/>
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:orientation="vertical"
+                                    android:layout_width="@dimen/_120sdp"
+                                    android:layout_height="wrap_content">
+
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/text_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Meals Types"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/ti_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Breakfast, Lunce,\nDinner"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+
+
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/text_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Total Beds"
+                                        android:layout_marginTop="@dimen/_15sdp"
+                                        android:layout_height="wrap_content"/>
+
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/ti_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="40"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/text_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Power Backup"
+                                        android:layout_marginTop="@dimen/_15sdp"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/ti_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Inverter (No A/C\nSupport)"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_marginLeft="@dimen/_25sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:orientation="vertical"
+                                    android:layout_width="@dimen/_120sdp"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/text_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Meal Offering"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/ti_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="North Indian\nSouth India"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/text_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Notice Period"
+                                        android:layout_marginTop="@dimen/_15sdp"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/ti_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="30 Days"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/text_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Parking"
+                                        android:layout_marginTop="@dimen/_15sdp"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="match_parent"
+                                        android:textColor="@color/ti_color"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_11ssp"
+                                        android:text="Two Wheeler\nparking"
+                                        android:layout_marginTop="@dimen/_5sdp"
+                                        android:layout_height="wrap_content"/>
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Rooms Offering"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Triple Sharing"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:visibility="visible"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_5sdp"
+                            android:layout_height="@dimen/_200sdp">
+                            <LinearLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Option 1"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="Triple Sharing"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_12ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="₹3,000/bed"
+                                        android:layout_gravity="end"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_14ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+                                </FrameLayout>
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="One Time Security Deposit"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/t2_color"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="₹3,000"
+                                        android:layout_gravity="end"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+
+                                </FrameLayout>
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Additional Services"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_height="wrap_content"/>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_width="@dimen/_140sdp"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Independent Cupboard"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Attached Bathroom"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Table-Chair"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+
+
+
+
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_width="@dimen/_150sdp"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Attached Balcony"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="TV"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="AC"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+                                        </LinearLayout>
+
+
+
+
+
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:visibility="gone"
+                            app:cardCornerRadius="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="@dimen/_200sdp">
+                            <LinearLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Option 2"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="Double Sharing"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_12ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="₹3,500/bed"
+                                        android:layout_gravity="end"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_14ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+                                </FrameLayout>
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="One Time Security Deposit"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/t2_color"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="₹3,000"
+                                        android:layout_gravity="end"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+
+                                </FrameLayout>
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Additional Services"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_height="wrap_content"/>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_width="@dimen/_145sdp"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Independent Cupboard"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="TV"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="AC"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+
+
+
+
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_width="@dimen/_150sdp"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Attached Balcony"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Table-Chair"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:visibility="gone"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            app:cardCornerRadius="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="@dimen/_200sdp">
+                            <LinearLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Option 3"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="Triple Sharing"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_12ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="₹5,500/bed"
+                                        android:layout_gravity="end"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_14ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+                                </FrameLayout>
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="One Time Security Deposit"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/t2_color"
+                                        android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="₹5,000"
+                                        android:layout_gravity="end"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+
+                                </FrameLayout>
+
+
+                                <TextView
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:layout_width="wrap_content"
+                                    android:text="Additional Services"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_height="wrap_content"/>
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_width="@dimen/_145sdp"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Independent Cupboard"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Attached Bathroom"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Table-Chair"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+
+
+
+
+
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:layout_width="@dimen/_150sdp"
+                                        android:layout_height="wrap_content">
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="Attached Balcony"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="TV"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
+                                            <ImageView
+                                                android:layout_width="@dimen/_15sdp"
+                                                android:src="@drawable/done_icon_text_color"
+                                                android:layout_height="@dimen/_15sdp"/>
+                                            <TextView
+                                                android:layout_marginLeft="@dimen/_5sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:layout_width="wrap_content"
+                                                android:text="AC"
+                                                android:fontFamily="@font/montserrat_medium"
+                                                android:textSize="@dimen/_10ssp"
+                                                android:textColor="@color/ti_color"
+                                                android:layout_height="wrap_content"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Tops Furnishing"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+                        <LinearLayout
+                            android:background="@drawable/overview_background_details_pages"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp">
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:src="@drawable/fridge_icon"
+                                    android:layout_gravity="center"
+                                    android:layout_height="@dimen/_40sdp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Fridge"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:src="@drawable/fridge_icon"
+                                    android:layout_gravity="center"
+                                    android:layout_height="@dimen/_40sdp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Water\nPurifier"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:src="@drawable/common_room"
+                                    android:layout_gravity="center"
+                                    android:layout_height="@dimen/_40sdp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Common\nRoom TV"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:layout_marginLeft="@dimen/_20sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:src="@drawable/washing_machine"
+                                    android:layout_gravity="center"
+                                    android:layout_height="@dimen/_40sdp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Washing\nMachine"
+                                    android:layout_gravity="center_horizontal"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:gravity="center"
+                                    android:textColor="@color/text_color"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+
+
+
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Top Amenities"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:background="@drawable/whatsapp_pp_back"
+                            android:layout_width="match_parent"
+                            android:visibility="visible"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="@dimen/_125sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Security"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:textSize="@dimen/_12ssp"
+                                android:textColor="@color/ti_color"
+                                android:layout_height="wrap_content"/>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_100sdp">
+                                <LinearLayout
+                                    android:layout_gravity="center_vertical"
+                                    android:orientation="vertical"
+                                    android:layout_marginBottom="@dimen/_5sdp"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="@dimen/_40sdp"
+                                        android:src="@drawable/biometric_icon"
+                                        android:layout_gravity="center"
+                                        android:layout_height="@dimen/_40sdp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="Biometric\nSecurity"
+                                        android:layout_gravity="center_horizontal"
+                                        android:fontFamily="@font/montserrat_regular"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:gravity="center"
+                                        android:textColor="@color/text_color"
+                                        android:layout_height="wrap_content"/>
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_gravity="center_vertical"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="@dimen/_40sdp"
+                                        android:src="@drawable/hrs_icon"
+                                        android:layout_gravity="center"
+                                        android:layout_height="@dimen/_40sdp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="24 Hrs\nSecurity"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal"
+                                        android:fontFamily="@font/montserrat_regular"
+                                        android:textSize="@dimen/_10ssp"
+
+                                        android:textColor="@color/text_color"
+                                        android:layout_height="wrap_content"/>
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_gravity="center_vertical"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="@dimen/_40sdp"
+                                        android:src="@drawable/common_room"
+                                        android:layout_gravity="center"
+                                        android:layout_height="@dimen/_40sdp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="Gated\nCommunity"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal"
+                                        android:fontFamily="@font/montserrat_regular"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_gravity="center_vertical"
+                                    android:orientation="vertical"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:layout_width="@dimen/_40sdp"
+                                        android:src="@drawable/cctv_camera"
+                                        android:layout_gravity="center"
+                                        android:layout_height="@dimen/_40sdp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="CCTV"
+                                        android:layout_gravity="center_horizontal"
+                                        android:fontFamily="@font/montserrat_regular"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:gravity="center"
+                                        android:textColor="@color/text_color"
+                                        android:layout_height="wrap_content"/>
+
+                                </LinearLayout>
+
+
+
+
+                            </LinearLayout>
+
+
+
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Rules"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="@dimen/_14ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:visibility="visible"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Availabe for Working Professional"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Non veg food is allowed"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Smoking is not allowed"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Drinking is not allowed"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Guardian is allowed"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Visitor are allowed"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:src="@drawable/right_arrow_green"
+                                    android:layout_height="@dimen/_15sdp"/>
+                                <TextView
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/t2_color"
+                                    android:layout_width="wrap_content"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Guests of opposite gender are not allowed"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Contact Owner"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="@dimen/_16ssp"
+                            android:textColor="@color/ti_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Contact for Unique PG"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/t2_color"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="₹7500/bed onwards"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_12ssp"
+                            android:textColor="@color/t2_color"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_45sdp"
+                                android:src="@drawable/user_icon_p"
+                                android:layout_height="@dimen/_45sdp"/>
+                            <LinearLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="S C Saluja"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textColor="@color/ti_color"
+                                    android:textSize="@dimen/_12ssp"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="Landlord"
+                                    android:layout_marginTop="@dimen/_3sdp"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:textColor="@color/t2_color"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="98560....."
+                                    android:layout_marginTop="@dimen/_3sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textColor="@color/ti_color"
+                                    android:textSize="@dimen/_12ssp"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:visibility="visible"
+
+                            android:layout_marginBottom="@dimen/_50sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_5sdp"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <FrameLayout
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:text="Please share your contact"
+                                        android:fontFamily="@font/montserrat_semibold"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:textColor="@color/ti_color"
+                                        android:layout_height="wrap_content"/>
+                                </FrameLayout>
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:hint="Name"
+                                    android:backgroundTintMode="@null"
+                                    android:backgroundTint="@null"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/text_size_short"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:layout_height="wrap_content"/>
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:hint="Phone No"
+                                    android:backgroundTintMode="@null"
+                                    android:backgroundTint="@null"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/text_size_short"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:layout_height="wrap_content"/>
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:hint="arsadali636@gmail.com"
+                                    android:backgroundTintMode="@null"
+                                    android:backgroundTint="@null"
+                                    android:visibility="visible"
+                                    android:layout_marginBottom="@dimen/_10sdp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/text_size_short"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <CheckBox
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_width="@dimen/_25sdp"
+                                android:layout_height="@dimen/_25sdp"/>
+                            <TextView
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_10ssp"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:text="Allow other sellers to get in touch"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+        <androidx.cardview.widget.CardView
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="@dimen/_60sdp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/_70sdp"
+                    android:background="@drawable/chat_background_post"
+                    android:layout_height="@dimen/_35sdp">
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/_22sdp"
+                        android:src="@drawable/whats_app_icon"
+                        android:layout_height="@dimen/_22sdp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Chat"
+                        android:layout_marginLeft="@dimen/_30sdp"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="#31AC36"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/_75sdp"
+                    android:background="@drawable/feedback_background"
+                    android:layout_height="@dimen/_35sdp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Enquiry"
+                        android:layout_gravity="center"
+                        android:textColor="@color/yellow"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_height="wrap_content"/>
+                </FrameLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/no_background"
+                    android:layout_height="@dimen/_35sdp">
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/_22sdp"
+                        android:src="@drawable/call_icon_post_property"
+                        android:layout_height="@dimen/_22sdp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="8126177819"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

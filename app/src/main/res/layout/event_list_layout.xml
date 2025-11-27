@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lnr_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_first"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_corner_dialog"
+            app:cardCornerRadius="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/img_event_list"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_size_event"
+                android:scaleType="centerCrop"
+                android:src="@drawable/event_background_wall" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_80sdp"
+                android:background="@color/them_color">
+
+                <TextView
+                    android:id="@+id/tv_tittle_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:layout_marginRight="@dimen/_3sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="center"
+                    android:text="Blood Donation Camp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+</LinearLayout>

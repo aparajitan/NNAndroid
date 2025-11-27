@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".realStateModule.RealStateLandmarkLocality">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardBackgroundColor="#63FBF8F8"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_width="@dimen/_17sdp"
+                            android:id="@+id/back_arrow_id"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/back_arrow_landmark"
+                            android:layout_height="@dimen/_17sdp"/>
+                        <TextView
+                            android:text="Select Locality or Landmark in Delhi"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:layout_height="wrap_content"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            app:cardCornerRadius="@dimen/_5sdp"
+                            android:layout_height="@dimen/_50sdp">
+                            <RelativeLayout
+                                android:id="@+id/location_rl_location"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_5sdp"
+                                android:layout_marginRight="@dimen/_12sdp"
+                                android:background="@drawable/round_corner_white">
+                                <ImageView
+                                    android:id="@+id/location_iv"
+                                    android:layout_width="@dimen/_24sdp"
+                                    android:layout_height="@dimen/_20sdp"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/location"
+
+                                    app:tint="@color/text_color" />
+
+                                <LinearLayout
+                                    android:id="@+id/location_ll"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/location_iv"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/location"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_gravity="center_vertical"
+                                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+
+                                        android:gravity="center_vertical"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:includeFontPadding="false"
+                                        android:text="Search Locality,Landmark"
+                                        android:textColor="@color/text_color"
+                                        android:textSize="@dimen/_10ssp" />
+                                    <TextView
+                                        android:id="@+id/address"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:gravity="center_vertical"
+                                        android:layout_gravity="center_vertical"
+                                        android:drawablePadding="@dimen/_5sdp"
+                                        android:fontFamily="@font/montserrat_regular"
+                                        android:includeFontPadding="false"
+                                        android:text="Okhla near Nazeer food"
+                                        android:textColor="@color/text_color"
+                                        android:textSize="@dimen/_8ssp" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <FrameLayout
+                            android:layout_marginBottom="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:text="Use my current location"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textSize="@dimen/_13ssp"
+                                android:layout_marginLeft="@dimen/post_property_start_padding"
+                                android:layout_height="wrap_content"/>
+                            <ImageView
+                                android:layout_marginRight="@dimen/_15sdp"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_gravity="end|center_vertical"
+                                android:src="@drawable/search_icon_p"
+                                android:layout_height="@dimen/_20sdp"/>
+
+                        </FrameLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/post_property_start_padding"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Popular Localities"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_height="wrap_content"/>
+
+                    <FrameLayout
+                        android:id="@+id/frm_okhla_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Okhla"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:text="₹16.4 k /bedroom"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_height="wrap_content"
+                            tools:ignore="HardcodedText" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Saket"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="₹15.4 k /bedroom"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_height="wrap_content"
+                            tools:ignore="HardcodedText" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Tuglakabad"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="₹12 k /bedroom"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_height="wrap_content"
+                            tools:ignore="HardcodedText" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Rohini"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="₹11 k /bedroom"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_height="wrap_content"
+                            tools:ignore="HardcodedText" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Laxmi nagar"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:text="₹8 k /bedroom"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_height="wrap_content"
+                            tools:ignore="HardcodedText" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="Lazpatnagar"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_12ssp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:text="₹12.2 k /bedroom"
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_height="wrap_content"
+                            tools:ignore="HardcodedText" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

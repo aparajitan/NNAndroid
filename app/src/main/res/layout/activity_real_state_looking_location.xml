@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".realStateModule.RealStateLookingLocation">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="@dimen/_20sdp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="Looking to PG/CO-Living in"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14ssp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_marginLeft="@dimen/post_property_start_padding"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    android:layout_height="@dimen/_50sdp">
+                    <RelativeLayout
+                        android:id="@+id/location_rl_location"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:background="@drawable/round_corner_white">
+                        <ImageView
+                            android:id="@+id/location_iv"
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/location"
+
+                            app:tint="@color/text_color" />
+
+                        <LinearLayout
+                            android:id="@+id/location_ll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@+id/location_iv"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center_vertical"
+                                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+
+                                android:gravity="center_vertical"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:includeFontPadding="false"
+                                android:text="Noida"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_10ssp" />
+
+                            <TextView
+                                android:id="@+id/address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"
+
+                                android:drawablePadding="@dimen/_5sdp"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:includeFontPadding="false"
+
+                                android:text="BGR, Building Plor No #1,3rd Floor, Film City"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8ssp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+
+
+                </androidx.cardview.widget.CardView>
+
+                <FrameLayout
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Use my current location"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_13ssp"
+                        android:layout_marginLeft="@dimen/post_property_start_padding"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_gravity="end|center_vertical"
+                        android:src="@drawable/search_icon_p"
+                        android:layout_height="@dimen/_20sdp"/>
+
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:background="#CAC8C8"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <FrameLayout
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_width="match_parent"
+                        android:background="#FAF9F9"
+                        android:layout_height="@dimen/_30sdp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Pupular Cities"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_marginLeft="@dimen/post_property_start_padding"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content"/>
+
+
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:background="#CAC8C8"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_height="@dimen/_1sdp"/>
+
+
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/post_property_start_padding"
+                    android:layout_marginTop="@dimen/_10ssp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Delhi"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/black"
+                        android:id="@+id/tv_delhi"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Mumbai"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Bangluru"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Kolkata"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Chennai"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Heydrabad"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Pune"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Noida"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Gurgaon"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Ahamdabad"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:background="@color/line_color"
+                        android:layout_height="@dimen/_1sdp"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    tools:context=".SalesModuleMarketPlace.SellerChatActivity">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/custom_toolbar_chat" />
+
+    <RelativeLayout
+        android:id="@+id/chat_rv_rl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:background="@drawable/round_corner_dialog"
+        android:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:scrollbars="vertical"
+            android:scrollingCache="true" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/chat_et_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/round_corner_dialog"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/subjectId"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12ssp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textColor="@color/them_color"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Subject : "/>
+
+        <EditText
+            android:id="@+id/subject_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:background="@android:color/transparent"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            android:fontFamily="@font/montserrat_medium"
+            android:textColor="@color/them_color"
+            android:textColorHint="@color/them_color"
+            android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewId"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+
+            >
+
+            <TextView
+                android:id="@+id/rupee_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingRight="@dimen/_5sdp"
+                android:text="₹"
+                android:textColor="@color/them_color"
+                android:textSize="@dimen/_12sdp"
+                android:visibility="gone" />
+
+
+
+            <EditText
+                android:id="@+id/item_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_toStartOf="@+id/send_msg_iv"
+                android:layout_toEndOf="@+id/rupee_tv"
+                android:background="@android:color/transparent"
+                android:hint="Type a message"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLines="6"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/text_color"
+                android:textColorHint="#757C82"
+                android:textSize="@dimen/_12ssp" />
+
+            <ImageView
+                android:id="@+id/send_msg_iv"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+
+                app:srcCompat="@drawable/send_message_icon"
+                app:tint="#757C82" />
+
+            <TextView
+                android:id="@+id/pay_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_desgin"
+                android:padding="@dimen/_5sdp"
+                android:text="Pay"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

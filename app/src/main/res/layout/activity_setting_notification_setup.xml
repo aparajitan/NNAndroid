@@ -1,0 +1,1203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background_color"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".setting.SettingAcitivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/yellow">
+
+            <FrameLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp">
+
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/img_back"
+                        android:src="@drawable/demo_left_p"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="45dp" />
+
+                    <TextView
+                        android:text="Notification"
+                        android:textSize="@dimen/toolbar_text_size"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:background="@drawable/round_corner_dialog"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/background_gap_centre"
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_width="@dimen/_25sdp"
+                                android:visibility="visible"
+                                android:src="@drawable/ic_outline_notifications_none_24"
+                                android:layout_height="@dimen/_25sdp" />
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_medium"
+                                android:layout_width="wrap_content"
+                                android:text="Notification"
+                                android:layout_marginLeft="@dimen/_2sdp"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_14ssp"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/down_iv"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                            app:tint="@color/black" />
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:id="@+id/up_iv"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_25sdp"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                            app:tint="@color/black" />
+
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:id="@+id/layoutGone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_medium"
+                                android:layout_width="wrap_content"
+                                android:text="Activities"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_14ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|end">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|end"
+                                    android:layout_marginRight="@dimen/_40sdp"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:text="Phone"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12ssp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|end"
+                                    android:fontFamily="@font/montserrat_regular"
+                                    android:text="Email"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12ssp" />
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Posts"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:id="@+id/comment_phone"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest" />
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/comment_mail"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Poll "
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:id="@+id/phone_poll"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest" />
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/mail_poll"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Event"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:id="@+id/poll_phone"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"/>
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/poll_mail"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Event"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"/>
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Group"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:id="@+id/group_phone"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest" />
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/group_mail"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Business"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:id="@+id/business_phone"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest" />
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/business_mail"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Direct message"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:id="@+id/dm_phone"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest" />
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/dm_mail"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@color/line_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" />
+
+                        <LinearLayout
+                            android:layout_marginRight="@dimen/setting_left_right_padding"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="@dimen/setting_left_right_padding"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/montserrat_regular"
+                                android:layout_width="@dimen/_150sdp"
+                                android:text="Market"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_12ssp"
+                                android:layout_height="wrap_content" />
+
+                            <FrameLayout
+                                android:layout_gravity="end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_2sdp"
+                                    android:id="@+id/market_phone"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest" />
+
+                                <CheckBox
+                                    android:layout_width="@dimen/_12sdp"
+                                    android:layout_height="@dimen/_12sdp"
+                                    android:layout_gravity="end"
+                                    android:id="@+id/market_mail"
+                                    android:background="@drawable/choose_interest"
+                                    android:button="@drawable/choose_interest"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_margin="@dimen/_2sdp"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:visibility="gone"
+                    android:background="@drawable/round_corner_dialog"
+                    android:layout_marginTop="@dimen/background_gap_centre"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/background_gap_centre"
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/_23sdp"
+                            android:src="@drawable/mail_icon"
+                            android:layout_height="@dimen/_23sdp" />
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_medium"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:text="Public Profile Visibility"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_14ssp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="@dimen/_150sdp"
+                            android:text="Email Address"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:layout_gravity="end"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:id="@+id/email_address_rg"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:layoutDirection="rtl"
+                                        android:id="@+id/email_rb_hide"
+                                        android:text="Hide"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/yellow"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:text="Show"
+                                        android:id="@+id/email_rb_show"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/yellow"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+
+                                </RadioGroup>
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/background_gap_centre"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="@dimen/_150sdp"
+                            android:text="Phone number"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:layout_gravity="end"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:id="@+id/phone_no_hide"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:showText="true"
+                                        android:id="@+id/phone_rb_hide"
+                                        android:text="Hide"
+                                        android:layoutDirection="rtl"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/yellow"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:showText="true"
+                                        android:text="Show"
+                                        android:id="@+id/phone_rb_show"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/yellow"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                </RadioGroup>
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="@dimen/_150sdp"
+                            android:text="Emergency\ncontact number"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:layout_gravity="end"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:showText="true"
+                                        android:id="@+id/emergency_rb_hide"
+                                        android:text="Hide"
+                                        android:layoutDirection="rtl"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_26sdp" />
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:showText="true"
+                                        android:text="Show"
+                                        android:layoutDirection="rtl"
+                                        android:id="@+id/emergency_rb_show"
+                                        android:layout_marginRight="@dimen/_7sdp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                </RadioGroup>
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="@dimen/_150sdp"
+                            android:text="Address line 1"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:layout_gravity="end"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:id="@+id/address_line_rb_hide"
+                                        android:text="Hide"
+                                        android:layoutDirection="rtl"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:text="Show"
+                                        android:layoutDirection="rtl"
+                                        android:id="@+id/address_line_rb_show"
+                                        android:layout_marginRight="@dimen/_7sdp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                </RadioGroup>
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="@dimen/_150sdp"
+                            android:text="Address line 2"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:layout_gravity="end"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_gravity="end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:id="@+id/address_line2_hide"
+                                        android:text="Hide"
+                                        android:layoutDirection="rtl"
+                                        android:layout_marginRight="@dimen/_5sdp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:textSize="@dimen/_10ssp"
+                                        android:text="Show"
+                                        android:layoutDirection="rtl"
+                                        android:id="@+id/address_line2_show"
+                                        android:layout_marginRight="@dimen/_7sdp"
+                                        android:textColor="@color/text_color"
+                                        android:layout_gravity="end"
+                                        android:layout_height="@dimen/_25sdp" />
+
+                                </RadioGroup>
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/round_corner_dialog"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:id="@+id/tvAboutUs"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="About us"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/about_us"
+                            android:layout_height="@dimen/_17sdp" />
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <FrameLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:id="@+id/tvPrivacyPolicy"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="Privacy Polivy"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/privacy"
+                            android:layout_height="@dimen/_20sdp" />
+                    </FrameLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <FrameLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:id="@+id/tvFaq"
+                        android:layout_marginTop="@dimen/background_gap_centre"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="Faq"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/faq"
+                            android:layout_height="@dimen/_17sdp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/round_corner_dialog"
+                    android:layout_marginLeft="@dimen/screens_padding_left_right"
+                    android:layout_marginRight="@dimen/screens_padding_left_right"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:id="@+id/change_password_id"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="Change password"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/change_password_icon"
+                            android:layout_height="@dimen/_17sdp" />
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <FrameLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:layout_width="match_parent"
+                        android:id="@+id/deactivate_accound_id"
+                        android:layout_marginTop="@dimen/background_gap_centre"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="Deactivate account"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_17sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/change_password_icon"
+                            android:layout_height="@dimen/_17sdp" />
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@color/line_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                    <FrameLayout
+                        android:layout_marginRight="@dimen/setting_left_right_padding"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/setting_left_right_padding"
+                        android:id="@+id/frm_logout"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:fontFamily="@font/montserrat_regular"
+                            android:layout_width="wrap_content"
+                            android:text="Logout"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_12ssp"
+                            android:layout_height="wrap_content" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_gravity="end"
+                            android:src="@drawable/logout_icon_text_color"
+                            android:layout_height="@dimen/_20sdp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:gravity="center"
+                    android:id="@+id/btn_save_setting"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/upload_button_background"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/button_height">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Save"
+                        android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/button_size"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:layout_height="wrap_content" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </ScrollView>
+
+</LinearLayout>

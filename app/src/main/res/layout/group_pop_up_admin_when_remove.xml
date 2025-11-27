@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/dialog_screen_padding_parent"
+    android:layout_marginLeft="@dimen/dialog_screen_padding_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/round_corner_dialog"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:layout_marginTop="@dimen/dialog_padding_top_gap"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Are you sure you want to remove"
+                    android:textColor="@color/dialog_heading_top"
+                    android:textSize="@dimen/dialog_text_size" />
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Amar Dubey from the group?"
+                android:layout_marginBottom="@dimen/dialog_padding_top_gap"
+
+                android:textColor="@color/dialog_heading_top"
+                android:textSize="@dimen/dialog_text_size" />
+
+            <TextView
+                android:background="@color/line_color_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="No"
+                    android:id="@+id/no_id"
+                    android:gravity="center"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="#F44336"
+                    android:layout_marginLeft="@dimen/_65sdp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_height="wrap_content"/>
+                <FrameLayout
+                    android:background="@color/line_color"
+                    android:layout_gravity="center|top"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="@dimen/_40sdp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Yes"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:id="@+id/yes_id"
+                    android:textColor="@color/green_color"
+                    android:layout_gravity="center_vertical|end"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginRight="@dimen/_65sdp"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <androidx.cardview.widget.CardView
+    android:layout_gravity="end|top"
+    app:cardElevation="@dimen/_15sdp"
+    app:cardCornerRadius="@dimen/_15sdp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_width="@dimen/_20sdp"
+    android:layout_height="@dimen/_20sdp">
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@color/oval_card_background"
+        app:cardCornerRadius="@dimen/_15sdp"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp">
+
+
+        <ImageView
+            android:id="@+id/iv9"
+            android:src="@drawable/close_icon_p"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:layout_height="@dimen/_15sdp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.cardview.widget.CardView>
+
+
+
+
+</FrameLayout>

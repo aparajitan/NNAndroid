@@ -1,0 +1,126 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/gray"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="1dp"
+            tools:ignore="MissingConstraints">
+
+            <FrameLayout
+                android:id="@+id/fl_image_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_360sdp"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="6dp" />
+
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_360sdp"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    tools:layout_editor_absoluteX="6dp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_video_frame"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_360sdp"
+                android:visibility="visible">
+
+                <com.app_neighbrsnook.utils.CustomVideoPlayerView
+                    android:id="@+id/video_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/iv_mute_image"
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="left|bottom"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_marginBottom="@dimen/_7sdp"
+                    android:background="@drawable/round_corner_white"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/baseline_volume_off_24"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/iv_play_pouse"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_gravity="right|bottom"
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:src="@drawable/baseline_play_arrow_24"
+                    android:visibility="visible" />
+
+            </FrameLayout>
+
+            <SeekBar
+                android:id="@+id/video_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/image_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/round_corner_white"
+                android:paddingLeft="@dimen/_7sdp"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingRight="@dimen/_7sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:text="1/1"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardView"
+                app:layout_constraintHorizontal_bias="0.976"
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/cardView"
+                app:layout_constraintVertical_bias="0.088"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/image_full_sreen"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="5dp"
+                android:src="@drawable/baseline_fullscreen_24"
+                android:visibility="gone" />
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+</FrameLayout>

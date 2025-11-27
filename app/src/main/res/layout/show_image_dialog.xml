@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/image_layout"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_400sdp"
+
+        android:background="@drawable/round_corner_white"
+        >
+
+        <ImageView
+            android:id="@+id/full_screen_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp" />
+    </RelativeLayout>
+
+</RelativeLayout>

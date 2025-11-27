@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    tools:context=".nearBy.NearByActivity">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/custom_toolbar" />
+    <RelativeLayout
+        android:id="@+id/location_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:background="@drawable/round_corner_white"
+        >
+
+<!--        <ImageView-->
+<!--            android:id="@+id/back_btn"-->
+<!--            android:layout_width="@dimen/_24sdp"-->
+<!--            android:layout_height="@dimen/_24sdp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:src="@drawable/demo_left_p"-->
+<!--            app:tint="@color/black" />-->
+
+
+
+        <ImageView
+            android:id="@+id/location_iv"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/location"
+
+            app:tint="@color/text_color" />
+
+        <LinearLayout
+            android:id="@+id/location_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/location_iv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+
+                android:gravity="center_vertical"
+                android:fontFamily="@font/montserrat_medium"
+                android:includeFontPadding="false"
+                android:text="Bgr Tower"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:includeFontPadding="false"
+
+                android:text="Noida"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8ssp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_nearby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

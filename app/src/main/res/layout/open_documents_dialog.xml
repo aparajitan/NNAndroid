@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_dialog_exit"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        app:cardBackgroundColor="@color/oval_card_background"
+        app:cardCornerRadius="@dimen/_15sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_15sdp"
+            app:cardElevation="6dp"
+            app:cardMaxElevation="8dp">
+
+            <ImageView
+                android:id="@+id/cross_imageview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="2dp"
+                android:src="@drawable/baseline_close_24"
+                app:tint="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/documentViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

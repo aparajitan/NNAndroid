@@ -1,0 +1,15 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        // Specific repositories for problematic dependencies
+        // Add specific repositories for the dependencies
+        // maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+        // maven { url 'https://artifactory.oss.navercorp.com/artifactory/maven/' } // For Korean libraries
+    }
+}
+rootProject.name = "Neighbrsnook"
+include ':app'
+include ':facebook-android-sdk-main'
