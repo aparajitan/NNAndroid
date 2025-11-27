@@ -1,16 +1,5 @@
 package com.app_neighbrsnook.post;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,17 +15,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
-import android.media.MediaMuxer;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.SystemClock;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
@@ -53,10 +35,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.app_neighbrsnook.MainActivity;
 import com.app_neighbrsnook.R;
 import com.app_neighbrsnook.abusive.BadWordFilter;
@@ -64,7 +53,7 @@ import com.app_neighbrsnook.adapter.ImageUploadAdapter;
 import com.app_neighbrsnook.adapter.ImageUploadAdapter1;
 import com.app_neighbrsnook.adapter.MediaViewAdapter;
 import com.app_neighbrsnook.adapter.SelectPostTypeAdapter;
-import com.app_neighbrsnook.apiService.UrlClass;
+import com.app_neighbrsnook.libraries.cropper.CropImage;
 import com.app_neighbrsnook.model.ImagePOJO;
 import com.app_neighbrsnook.network.APIClient;
 import com.app_neighbrsnook.network.APIInterface;
@@ -73,17 +62,13 @@ import com.app_neighbrsnook.pojo.PostPojo;
 import com.app_neighbrsnook.pojo.StatePojo;
 import com.app_neighbrsnook.utils.GlobalMethods;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
-import com.app_neighbrsnook.libraries.cropper.CropImage;
 import com.app_neighbrsnook.utils.VideoCompressor;
-
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,7 +112,7 @@ public class CreatePostActivity extends AppCompatActivity implements ImageUpload
     ProgressDialog progressDialog;
     int totalImageCount = 2, totalVideoCount = 1, itemCount, postVideoSize;
     LinearLayout root;
-    String apiStatus;
+    String apiStatus = "";
     private ArrayList<String> videoFilePaths = new ArrayList<>();
     private static final int PERMISSION_REQUEST_CODE = 123;
 
@@ -583,25 +568,35 @@ public class CreatePostActivity extends AppCompatActivity implements ImageUpload
         call.enqueue(new Callback<PostPojo>() {
             @Override
             public void onResponse(Call<PostPojo> call, Response<PostPojo> response) {
-                if (response.body().getStatus().equals("success")) {
-                    apiStatus = "success";
-                    mailSendApi();
-
-                    for (String filePath : videoFilePaths) {
-                        File file = new File(filePath);
-                        if (file.exists()) {
-                            file.delete();
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equals("success")) {
+                        for (String filePath : videoFilePaths) {
+                            File file = new File(filePath);
+                            if (file.exists()) {
+                                file.delete();
+                            }
                         }
+                        videoFilePaths.clear();
+                        progressDialog.dismiss();
+                        Intent i = new Intent(CreatePostActivity.this, MainActivity.class);
+                        startActivity(i);
+                        finish();
+                        Toast.makeText(CreatePostActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(CreatePostActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                    videoFilePaths.clear();
+
                 }
+                progressDialog.dismiss();
                 Log.d("responseApi", response.toString());
             }
 
             @Override
             public void onFailure(Call<PostPojo> call, Throwable t) {
                 Toast.makeText(CreatePostActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("response", t.getMessage());
+                Log.d("res---", t.getMessage());
+                progressDialog.dismiss();
             }
         });
     }
@@ -811,7 +806,7 @@ public class CreatePostActivity extends AppCompatActivity implements ImageUpload
     public void onClick(View view) {
         if (checkAllFields()) {
             progressDialog.show();
-            new SimulateTask().execute();
+            postApi();
         }
     }
 
@@ -844,50 +839,6 @@ public class CreatePostActivity extends AppCompatActivity implements ImageUpload
             image_textview.setVisibility(View.GONE);
             image_dialog.cancel();
         }
-    }
-
-    public class SimulateTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            if (checkAllFields()) {
-                postApi();
-            }
-            SystemClock.sleep(5000);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            if (apiStatus.equals("success")) {
-                Intent i = new Intent(CreatePostActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-            progressDialog.dismiss();
-        }
-    }
-
-    public void mailSendApi() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, UrlClass.MAIL_API, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    Log.e("dfadfkjkkjkjksa", response);
-                    JSONObject jsonObject = new JSONObject(response);
-                    String status = jsonObject.getString("status");
-                    status.equals("success");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("fasdfafsd", error.toString());
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        Volley.newRequestQueue(context).add(stringRequest);
     }
 
     public boolean checkAllFields() {
