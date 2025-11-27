@@ -95,29 +95,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     ExpandableListAdapter expandableListAdapter;
-    private Button button;
     private View notificationBadge;
     NotificationFragment notificationFragment;
     DmFragment dmFragment;
-    EmergencyFragment emergencyFragment;
     FavFragment favFragment;
-    ImageView img_back, img_plus;
     WallFragment wallFragment;
-    SellFragment sellFragment;
-    MarketPlaceFragment marketPlaceFragment;
-    String fname, lName, neighbrhoodName;
+    String fname, neighbrhoodName;
     int count;
-    RentSellPgFragment rentSellPgFragment;
     TextView user_neighbourhood;
     ExpandableListView expandableListView;
-    HashMap<String, Object> hashMapProfile;
     TextView tv;
     LinearLayout ll_expend_profile;
     TextView tv_user_name;
     ImageView img_photo;
     Context context;
     Activity activity;
-    int version;
     String vs;
     SharedPrefsManager sm;
     HashMap<String, Object> hashMap;
@@ -138,12 +130,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         sm = new SharedPrefsManager(this);
         PrefMananger.saveScreen(context, PrefMananger.MAIN_ACTIVITY);
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // API 21+
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.them_color));
-        }*/
         hashMap = new HashMap<>();
         hashMap.put("loggeduser", Integer.parseInt(sm.getString("user_id")));
         userProfile(hashMap);
@@ -164,15 +150,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.home);
         expandableListView = findViewById(R.id.expandableListView);
-//            button = findViewById(R.id.button);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         img_photo = navigationView.getHeaderView(0).findViewById(R.id.img_profile);
         ll_expend_profile = navigationView.getHeaderView(0).findViewById(R.id.ll_expend_profile);
         tv_user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name);
-
-
-//            Picasso.get().load(sm.getString("userphoto")).into(img_photo);
 
         user_neighbourhood = navigationView.getHeaderView(0).findViewById(R.id.user_neighbourhood);
 
@@ -208,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 });
     }
 
-
     private void addBadgeView() {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(3);
@@ -217,7 +198,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         tv.setVisibility(GONE);
         itemView.addView(notificationBadge);
     }
-
 
     private void prepareMenuData() {
         MenuModel menuModel = new MenuModel("My Profile", true, false, "");
@@ -229,11 +209,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         menuModel = new MenuModel("Business", true, false, "");
         headerList.add(menuModel);
 
-/*
-        menuModel = new MenuModel("Direct Message", true, false, "");
-        headerList.add(menuModel);
-*/
-
         menuModel = new MenuModel("Event", true, false, "");
         headerList.add(menuModel);
 
@@ -242,9 +217,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         menuModel = new MenuModel("Market", true, false, "");
         headerList.add(menuModel);
-        /*menuModel = new MenuModel("Favourite", true, false, "");
-        headerList.add(menuModel);
-        */
 
         menuModel = new MenuModel("Poll", true, false, "");
         headerList.add(menuModel);
@@ -261,22 +233,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         menuModel = new MenuModel("Share app", true, false, "");
         headerList.add(menuModel);
 
-
         menuModel = new MenuModel("Settings", true, false, "");
         headerList.add(menuModel);
 
-        /*menuModel = new MenuModel("About Us", true, false, "");
-        headerList.add(menuModel);
-
-        menuModel = new MenuModel("FAQ", true, false, "");
-        headerList.add(menuModel);
-
-        menuModel = new MenuModel("Privacy Policy", true, false, "");
-        headerList.add(menuModel);*/
-
         menuModel = new MenuModel("Contact us", true, false, "");
         headerList.add(menuModel);
-
 
         menuModel = new MenuModel(vs, true, false, "");
         headerList.add(menuModel);
@@ -286,25 +247,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         int[] icon = {R.drawable.profile,
                 R.drawable.location,
                 R.drawable.business,
-                //   R.drawable.ic_outline_send_dm_24,
                 R.drawable.event_ict,
                 R.drawable.marketplace_ic,
-                //  R.drawable.ic_baseline_star_outline_24,
                 R.drawable.group_ict,
                 R.drawable.poll_ict,
                 R.drawable.post_ict,
                 R.drawable.public_dir,
                 R.drawable.ic_refer,
                 R.drawable.share,
-
-                // R.drawable.ic_market,
-                // R.drawable.contact_us,
-                //  R.drawable.about_us,
-                //   R.drawable.faq,
-                //18.02.25 R.drawable.realstate_ict,
                 R.drawable.setting_ict,
                 R.drawable.contact_ict,
-//                   R.drawable.setting,
                 0};
 
         expandableListAdapter = new ExpandableListAdapter(this, headerList, childList, icon);
@@ -337,38 +289,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             intent.putExtra("source", "wall");
                             startActivity(intent);
                             drawerLayout.close();
-                        }
-
-//                            else if (headerList.get(groupPosition).menuName.equals("My near by")) {
-//                                Intent intent = new Intent(MainActivity.this, NearByActivity.class);
-//                                intent.putExtra("title", "My near by");
-//                                startActivity(intent);
-//                                drawerLayout.close();
-//                                bottomNavigationView.setSelectedItemId(R.id.home);
-//                            }
-
-                        /*else if (headerList.get(groupPosition).menuName.equals("Direct Message")) {
-                            if (isVerifiedUser) {
-                                dmFragment = new DmFragment();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dmFragment).addToBackStack("Direct_msg").commit();
-                            } else {
-                                GlobalMethods.getInstance(MainActivity.this).globalDialog(MainActivity.this, "You have limited access till verification is complete.");
-                            }
-                            drawerLayout.close();
-//                                bottomNavigationView.setSelectedItemId(R.id.home);
-                        } else if (headerList.get(groupPosition).menuName.equals("Favourite")) {
-                            favFragment = new FavFragment();
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                    favFragment).addToBackStack("fav").commit();
-//                                bottomNavigationView.setSelectedItemId(R.id.favourite);
-                            drawerLayout.close();
-                        }*/
-
-                        else if (headerList.get(groupPosition).menuName.equals("Group")) {
+                        } else if (headerList.get(groupPosition).menuName.equals("Group")) {
                             Intent i = new Intent(MainActivity.this, GroupActivity.class);
                             i.putExtra("neighbrhood", "drawar");
                             startActivity(i);
-
                             drawerLayout.close();
                         } else if (headerList.get(groupPosition).menuName.equals("Event")) {
                             Intent intent = new Intent(MainActivity.this, EventAllListCurrentData.class);
@@ -379,15 +303,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             Intent intent = new Intent(MainActivity.this, MarketPlace.class);
                             startActivity(intent);
                             drawerLayout.close();
-
                         } else if (headerList.get(groupPosition).menuName.equals("My Profile")) {
                             Intent intent = new Intent(MainActivity.this, MyProfile.class);
-//                                intent.putExtra("title", "Public Agency Directory");
                             startActivity(intent);
                             drawerLayout.close();
                         } else if (headerList.get(groupPosition).menuName.equals("My Neighbourhood")) {
                             Intent intent = new Intent(MainActivity.this, MyNeighbourhoodActivity.class);
-//                                intent.putExtra("title", "Public Agency Directory");
                             startActivity(intent);
                             drawerLayout.close();
                         } else if (headerList.get(groupPosition).menuName.equals("Refer a neighbour")) {
@@ -413,14 +334,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             Intent intent = new Intent(MainActivity.this, ContactUsActivity.class);
                             startActivity(intent);
                             drawerLayout.close();
-                        } /*else if (headerList.get(groupPosition).menuName.equals("Realstate")) {
-                            Intent intent = new Intent(MainActivity.this, RealStateMainScreenPg.class);
-                            startActivity(intent);
-                            drawerLayout.close();
-                        } */ else if (headerList.get(groupPosition).menuName.equals("Logout")) {
-                            // showExitAlert();
+                        } else if (headerList.get(groupPosition).menuName.equals("Logout")) {
                             logoutDialog();
-
                         } else if (headerList.get(groupPosition).menuName.equals(vs)) {
                             headerList.get(groupPosition).setMenuName(vs);
                         }
@@ -431,11 +346,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         });
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-                                        int childPosition, long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (childList.get(headerList.get(groupPosition)) != null) {
                     MenuModel model = childList.get(headerList.get(groupPosition)).get(childPosition);
-
                     if (model.menuName.equals("List of Investors")) {
                     }
                 }
@@ -452,7 +365,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void onFragmentInteraction(Boolean isVerifiedUser) {
         this.isVerifiedUser = isVerifiedUser;
-
     }
 
     @Override
@@ -656,7 +568,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         });
     }
 
-
     public void logoutDialog() {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.logout_pop_up);
@@ -702,7 +613,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             e.printStackTrace();
         }
     }
-
 
     private void userProfile(HashMap<String, Object> hm) {
         ProgressDialog dialog = new ProgressDialog(this);
@@ -818,5 +728,4 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         });
     }
-
 }
