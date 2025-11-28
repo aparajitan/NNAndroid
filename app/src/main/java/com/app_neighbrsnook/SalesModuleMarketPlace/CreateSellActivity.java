@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -68,6 +69,7 @@ import com.app_neighbrsnook.utils.GlobalMethods;
 import com.app_neighbrsnook.utils.SharedPrefsManager;
 import com.app_neighbrsnook.libraries.cropper.CropImage;
 import com.app_neighbrsnook.utils.VideoCompressor;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -124,6 +126,7 @@ public class CreateSellActivity extends AppCompatActivity implements MarketPlace
     private ArrayList<String> videoFilePaths = new ArrayList<>();
     MediaViewAdapter mediaViewAdapter;
     RelativeLayout rlPriceMp;
+    private static final int PERMISSION_REQUEST_CODE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +160,7 @@ public class CreateSellActivity extends AppCompatActivity implements MarketPlace
                 break;
 
             case R.id.video_or_image_upload_rl:
-                if (GlobalMethods.checkCameraAndGalleryPermission(CreateSellActivity.this)) {
+                if (GlobalMethods.checkCameraAndMediaPermission(CreateSellActivity.this)) {
                     if (bitmapList.size() < 100) {
                         CLICK_ON = FIRST_IMAGE;
                         upload_options_rl.setVisibility(View.VISIBLE);
@@ -950,10 +953,21 @@ public class CreateSellActivity extends AppCompatActivity implements MarketPlace
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 200) {
+    public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions, @androidx.annotation.NonNull int[] grantResults) {
+
+        // ✅ Always call super first!
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            // ✅ Validate before processing
+            if (permissions == null || grantResults == null || permissions.length == 0) {
+                Toast.makeText(this, "Permission request cancelled", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             boolean allGranted = true;
 
+            // Check if all permissions are granted
             for (int result : grantResults) {
                 if (result != PackageManager.PERMISSION_GRANTED) {
                     allGranted = false;
@@ -962,64 +976,110 @@ public class CreateSellActivity extends AppCompatActivity implements MarketPlace
             }
 
             if (allGranted) {
-                // All permissions granted
-                Toast.makeText(this, "Permissions granted!", Toast.LENGTH_SHORT).show();
+                // ✅ All permissions granted
+                Toast.makeText(this, "✓ Permissions granted!", Toast.LENGTH_SHORT).show();
+
+                // Show upload options
                 if (bitmapList.size() < 100) {
                     CLICK_ON = FIRST_IMAGE;
                     upload_options_rl.setVisibility(View.VISIBLE);
                 }
             } else {
-                // Check if "Don't Ask Again" is selected
-                boolean shouldShowRationale = false;
-                for (String permission : permissions) {
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                        shouldShowRationale = true;
-                        break;
-                    }
-                }
-
-                if (shouldShowRationale) {
-                    // User denied permissions without "Don't Ask Again"
-                    Toast.makeText(this, "Permissions are required for this feature.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // User selected "Don't Ask Again"
-                    showSettingsDialog();
-                }
+                // ❌ Some permissions denied
+                handlePermissionsDenied(permissions);
             }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
-    private void showSettingsDialog() {
-        String message;
+    private void handlePermissionsDenied(String[] permissions) {
+        List<String> deniedPermissions = new ArrayList<>();
 
-        // Customize message based on Android version
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            message = "Camera permission is required for this feature. Please allow it from Settings.";
-        } else {
-            message = "Camera and storage permissions are required for this feature. Please allow them from Settings.";
+        // Check which permissions were denied
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission)
+                    != PackageManager.PERMISSION_GRANTED) {
+                deniedPermissions.add(permission);
+            }
         }
 
-        new AlertDialog.Builder(this)
+        if (deniedPermissions.isEmpty()) {
+            return; // No denied permissions
+        }
+
+        // Check if "Don't Ask Again" is selected
+        boolean hasNeverAskAgain = false;
+
+        for (String permission : deniedPermissions) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                // If shouldShowRationale is false and permission is still denied,
+                // it means "Don't Ask Again" is selected
+                hasNeverAskAgain = true;
+                break;
+            }
+        }
+
+        if (hasNeverAskAgain) {
+            // User selected "Don't Ask Again" - Show settings dialog
+            showSettingsDialog(deniedPermissions);
+        } else {
+            // User denied but didn't select "Don't Ask Again"
+            Toast.makeText(this,
+                    "Permissions are required to access camera and gallery.",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void showSettingsDialog(List<String> deniedPermissions) {
+        String message;
+
+        // Customize message based on denied permissions and Android version
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13+
+            if (deniedPermissions.contains(Manifest.permission.CAMERA)) {
+                message = "Camera permission is required to take photos/videos.\n\n" +
+                        "Please enable it in Settings > Permissions > Camera";
+            } else if (deniedPermissions.contains(Manifest.permission.READ_MEDIA_IMAGES) ||
+                    deniedPermissions.contains(Manifest.permission.READ_MEDIA_VIDEO)) {
+                message = "Media access permission is required to upload photos/videos.\n\n" +
+                        "Please enable it in Settings > Permissions > Photos and Videos";
+            } else {
+                message = "Required permissions are denied.\n\n" +
+                        "Please enable them in Settings > Permissions";
+            }
+        } else {
+            // Android 12 and below
+            message = "Camera and storage permissions are required for this feature.\n\n" +
+                    "Please enable them in Settings > Permissions";
+        }
+
+        // ✅ Use MaterialAlertDialogBuilder (Modern Material Design)
+        new MaterialAlertDialogBuilder(this)
                 .setTitle("Permissions Required")
-                .setMessage(message) // Set the custom message
-                .setPositiveButton("Go to Settings", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivity(intent);
-                    }
+                .setMessage(message)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setCancelable(false)
+                .setPositiveButton("Open Settings", (dialogInterface, i) -> {
+                    openAppSettings();
+                    dialogInterface.dismiss();
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    Toast.makeText(CreateSellActivity.this,
+                            "Permissions required to continue",
+                            Toast.LENGTH_SHORT).show();
                 })
-                .create()
                 .show();
+    }
+
+    private void openAppSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e("PermissionError", "Cannot open settings: " + e.getMessage());
+            Toast.makeText(this, "Cannot open settings", Toast.LENGTH_SHORT).show();
+        }
     }
 }

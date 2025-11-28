@@ -1,5 +1,6 @@
 package com.app_neighbrsnook.businessModule;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -92,6 +93,7 @@ import com.app_neighbrsnook.utils.VideoCompressor;
 import com.bumptech.glide.Glide;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.app_neighbrsnook.libraries.cropper.CropImage;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONObject;
 
@@ -183,6 +185,7 @@ public class CreateBusinessPageActivity extends AppCompatActivity implements Vie
     DocumentUploadAdapter documentUploadAdapter;
     private String downloadedFilePath;
     StringBuilder builder;
+    private static final int PERMISSION_REQUEST_CODE = 200;
 
     @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     @Override
@@ -319,7 +322,7 @@ public class CreateBusinessPageActivity extends AppCompatActivity implements Vie
                 break;
 
             case R.id.add_imageview1:
-                if (GlobalMethods.checkCameraAndGalleryPermission(CreateBusinessPageActivity.this)) {
+                if (GlobalMethods.checkCameraAndMediaPermission(CreateBusinessPageActivity.this)) {
                     hideKeyboard1();
                     if (mArrayUri.size() < itemCount) {
                         upload_options_rl.setVisibility(View.VISIBLE);
@@ -1931,7 +1934,6 @@ public class CreateBusinessPageActivity extends AppCompatActivity implements Vie
         return System.currentTimeMillis() + "." + extension;
     }
 
-
     private class DownloadTask extends AsyncTask<String, Void, Uri> {
 
         private String downloadedFilePath;
@@ -2079,153 +2081,21 @@ public class CreateBusinessPageActivity extends AppCompatActivity implements Vie
         }
     }
 
-
-//    private class DownloadTask extends AsyncTask<String, Void, Uri> {
-//
-//        private String downloadedFilePath;
-//        private boolean isImage = false;
-//
-//        @Override
-//        protected Uri doInBackground(String... urls) {
-//            String mediaUrl = urls[0];
-//            String fileName;
-//
-//            if (mediaUrl.endsWith(".mp4")) {
-//                fileName = generateFileName("mp4");
-//            } else if (mediaUrl.endsWith(".jpg") || mediaUrl.endsWith(".png")) {
-//                fileName = generateFileName("jpg");
-//                isImage = true;
-//            } else {
-//                return null; // Unsupported file type
-//            }
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-//                // Android 10 and above: Use MediaStore
-//                return downloadToMediaStore(mediaUrl, fileName);
-//            } else {
-//                // Android 9 and below: Use legacy storage
-//                return downloadToLegacyStorage(mediaUrl, fileName);
-//            }
-//        }
-//
-//        private Uri downloadToMediaStore(String mediaUrl, String fileName) {
-//            try {
-//                URL url = new URL(mediaUrl);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.connect();
-//
-//                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-//                    return null;
-//                }
-//
-//                ContentValues values = new ContentValues();
-//                values.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
-//
-//                if (isImage) {
-//                    values.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
-//                    values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES);
-//                } else {
-//                    values.put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4");
-//                    values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_MOVIES);
-//                }
-//
-//                Uri mediaUri = getContentResolver().insert(isImage ? MediaStore.Images.Media.EXTERNAL_CONTENT_URI : MediaStore.Video.Media.EXTERNAL_CONTENT_URI, values);
-//                if (mediaUri == null) {
-//                    return null;
-//                }
-//
-//                InputStream inputStream = new BufferedInputStream(connection.getInputStream());
-//                OutputStream outputStream = getContentResolver().openOutputStream(mediaUri);
-//
-//                byte[] data = new byte[4096];
-//                int count;
-//                while ((count = inputStream.read(data)) != -1) {
-//                    outputStream.write(data, 0, count);
-//                }
-//
-//                outputStream.flush();
-//                outputStream.close();
-//                inputStream.close();
-//                return mediaUri;
-//            } catch (Exception e) {
-//                Log.e("DownloadTask", "Error: " + e.getMessage());
-//                return null;
-//            }
-//        }
-//
-//
-//        private Uri downloadToLegacyStorage(String mediaUrl, String fileName) {
-//            downloadedFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + fileName;
-//
-//            try {
-//                URL url = new URL(mediaUrl);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.connect();
-//
-//                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-//                    return null;
-//                }
-//
-//                InputStream inputStream = new BufferedInputStream(connection.getInputStream());
-//                FileOutputStream outputStream = new FileOutputStream(new File(downloadedFilePath));
-//
-//                byte[] data = new byte[4096];
-//                int count;
-//                while ((count = inputStream.read(data)) != -1) {
-//                    outputStream.write(data, 0, count);
-//                }
-//
-//                outputStream.flush();
-//                outputStream.close();
-//                inputStream.close();
-//                return Uri.fromFile(new File(downloadedFilePath));
-//            } catch (Exception e) {
-//                Log.e("DownloadTask", "Error: " + e.getMessage());
-//                return null;
-//            }
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Uri mediaUri) {
-//            if (mediaUri != null) {
-//                if (isImage) {
-//                    imageUris.add(mediaUri);
-//                    try {
-//                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(CreateBusinessPageActivity.this.getContentResolver(), mediaUri);
-//                        mArrayGalleryPhoto.add(bitmap);
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    updateImageTextView();
-////                    Toast.makeText(CreateBusinessPageActivity.this, "Image downloaded and added to list: " + mediaUri.toString(), Toast.LENGTH_LONG).show();
-//                } else {
-//                    videoUris.add(mediaUri);
-//                    updateVideoTextView();
-
-    /// /                    Toast.makeText(CreateBusinessPageActivity.this, "Video downloaded and added to list: " + mediaUri.toString(), Toast.LENGTH_LONG).show();
-//                }
-//
-//                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && downloadedFilePath != null) {
-//                    File file = new File(downloadedFilePath);
-//                    if (file.exists() && file.delete()) {
-//                        Toast.makeText(CreateBusinessPageActivity.this, "File deleted from local storage", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(CreateBusinessPageActivity.this, "Failed to delete file", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            } else {
-//                Toast.makeText(CreateBusinessPageActivity.this, "Download failed", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//    }
-
-
-    // Handle Permission Results
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 200) {
+    public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions, @androidx.annotation.NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            // ✅ Validate before processing
+            if (permissions == null || grantResults == null || permissions.length == 0) {
+                Toast.makeText(this, "Permission request cancelled", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             boolean allGranted = true;
 
+            // Check if all permissions are granted
             for (int result : grantResults) {
                 if (result != PackageManager.PERMISSION_GRANTED) {
                     allGranted = false;
@@ -2234,68 +2104,116 @@ public class CreateBusinessPageActivity extends AppCompatActivity implements Vie
             }
 
             if (allGranted) {
-                // All permissions granted
-                Toast.makeText(this, "Permissions granted!", Toast.LENGTH_SHORT).show();
+                // ✅ All permissions granted
+                Toast.makeText(this, "✓ Permissions granted!", Toast.LENGTH_SHORT).show();
                 hideKeyboard1();
+
+                // Show upload options
                 if (mArrayUri.size() < itemCount) {
                     upload_options_rl.setVisibility(View.VISIBLE);
                 } else {
                     upload_options_rl.setVisibility(View.GONE);
-                    GlobalMethods.getInstance(CreateBusinessPageActivity.this).globalDialog(CreateBusinessPageActivity.this, "You can only add up to " + itemCount + " media items (" + totalVideoCount + " video and " + totalImageCount + " images)");
+                    GlobalMethods.getInstance(CreateBusinessPageActivity.this)
+                            .globalDialog(CreateBusinessPageActivity.this,
+                                    "You can only add up to " + itemCount + " media items ("
+                                            + totalVideoCount + " video and " + totalImageCount + " images)");
                 }
             } else {
-                // Check if "Don't Ask Again" is selected
-                boolean shouldShowRationale = false;
-                for (String permission : permissions) {
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                        shouldShowRationale = true;
-                        break;
-                    }
-                }
-
-                if (shouldShowRationale) {
-                    // User denied permissions without "Don't Ask Again"
-                    Toast.makeText(this, "Permissions are required for this feature.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // User selected "Don't Ask Again"
-                    showSettingsDialog();
-                }
+                // ❌ Some permissions denied
+                handlePermissionsDenied(permissions);
             }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
-    // Show Settings Dialog for "Don't Ask Again"
-    private void showSettingsDialog() {
-        String message;
+    private void handlePermissionsDenied(String[] permissions) {
+        List<String> deniedPermissions = new ArrayList<>();
 
-        // Customize message based on Android version
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            message = "Camera permission is required for this feature. Please allow it from Settings.";
-        } else {
-            message = "Camera and storage permissions are required for this feature. Please allow them from Settings.";
+        // Check which permissions were denied
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission)
+                    != PackageManager.PERMISSION_GRANTED) {
+                deniedPermissions.add(permission);
+            }
         }
 
-        new AlertDialog.Builder(this)
+        if (deniedPermissions.isEmpty()) {
+            return; // No denied permissions
+        }
+
+        // Check if "Don't Ask Again" is selected
+        boolean hasNeverAskAgain = false;
+
+        for (String permission : deniedPermissions) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                // If shouldShowRationale is false and permission is still denied,
+                // it means "Don't Ask Again" is selected
+                hasNeverAskAgain = true;
+                break;
+            }
+        }
+
+        if (hasNeverAskAgain) {
+            // User selected "Don't Ask Again" - Show settings dialog
+            showSettingsDialog(deniedPermissions);
+        } else {
+            // User denied but didn't select "Don't Ask Again"
+            Toast.makeText(this,
+                    "Permissions are required to access camera and gallery.",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void showSettingsDialog(List<String> deniedPermissions) {
+        String message;
+
+        // Customize message based on denied permissions and Android version
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13+
+            if (deniedPermissions.contains(Manifest.permission.CAMERA)) {
+                message = "Camera permission is required to take photos/videos.\n\n" +
+                        "Please enable it in Settings > Permissions > Camera";
+            } else if (deniedPermissions.contains(Manifest.permission.READ_MEDIA_IMAGES) ||
+                    deniedPermissions.contains(Manifest.permission.READ_MEDIA_VIDEO)) {
+                message = "Media access permission is required to upload photos/videos.\n\n" +
+                        "Please enable it in Settings > Permissions > Photos and Videos";
+            } else {
+                message = "Required permissions are denied.\n\n" +
+                        "Please enable them in Settings > Permissions";
+            }
+        } else {
+            // Android 12 and below
+            message = "Camera and storage permissions are required for this feature.\n\n" +
+                    "Please enable them in Settings > Permissions";
+        }
+
+        // ✅ Use MaterialAlertDialogBuilder (Modern Material Design)
+        new MaterialAlertDialogBuilder(this)
                 .setTitle("Permissions Required")
-                .setMessage(message) // Set the custom message
-                .setPositiveButton("Go to Settings", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivity(intent);
-                    }
+                .setMessage(message)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setCancelable(false)
+                .setPositiveButton("Open Settings", (dialogInterface, i) -> {
+                    openAppSettings();
+                    dialogInterface.dismiss();
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    Toast.makeText(CreateBusinessPageActivity.this,
+                            "Permissions required to continue",
+                            Toast.LENGTH_SHORT).show();
                 })
-                .create()
                 .show();
+    }
+
+    private void openAppSettings() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            Log.e("PermissionError", "Cannot open settings: " + e.getMessage());
+            Toast.makeText(this, "Cannot open settings", Toast.LENGTH_SHORT).show();
+        }
     }
 }
